@@ -1,0 +1,55 @@
+---
+import Section from '@/components/Section.astro'
+import { basics } from '@cv'
+
+const { summary } = basics
+
+---
+
+
+<Section title="About">
+
+    <div class="container">
+        <h1 id="about">Acerca de mí</h1>
+        <p class="info">
+            {summary}
+        </p>
+
+    </div>
+
+
+</Section>
+
+<style>
+
+.container{
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: justify;
+    padding-top: 50px;
+}
+
+h1{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.info {
+    padding-top: 60px;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    width: 70%;
+  }
+
+
+  @media screen and (max-width: 600px) {
+    .info {
+    width: 85%;
+  }
+}  
+
+
+</style>

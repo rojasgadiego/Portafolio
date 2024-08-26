@@ -1,0 +1,105 @@
+---
+import { basics } from '@cv'
+import Section from '@/components/Section.astro'
+import Mail from '@/icons/Mail.astro'
+import Phone from '@/icons/Phone.astro'
+
+const { name, email, label, image, location, phone } = basics
+const { address, addresst,  } = location
+
+---
+
+
+<div class="container">
+    <div class="text">
+        <h1>{name}</h1>
+        <h2>{label}</h2>
+        <span>
+            { address } - { addresst }
+        </span>
+        <footer>
+            {
+                email && ( <a href={`mailto:${email}`} 
+                title={`Enviar un correo electrónico a ${name} al correo ${email}`}><Mail/></a> )
+            }
+            
+            { 
+                phone && ( <a href={`tel:${phone}`} 
+                title={`Llamar a ${name} al número ${phone}`}><Phone/></a> ) 
+            }
+        </footer>
+    </div>
+    <div class="image">
+        <img src={image} alt="Diego">
+    </div>
+</div>
+
+<style>
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; /* Distribuye el espacio alrededor de los elementos */
+  padding: 190px; /* Controla el espacio alrededor del contenedor en general */
+  gap: 20px; /* Espacio entre el texto y la imagen */
+  background-color: #444444c1;
+  color: #fff;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+footer{
+    margin-top: 10px;
+}
+
+h2{
+    font-weight: 500;
+    font-size: 1.4rem;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+
+.text {
+  flex: 1; /* Esto permite que el texto ocupe el espacio disponible */
+}
+
+.image img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 324px;
+    border-radius: 6px;
+}
+
+@media (max-width: 1377px) {
+  .container {
+    flex-direction: column;
+    text-align: center; /* Centra el texto cuando está en columna */
+    padding: 30px;
+    padding-top: 70px; /* Menos padding en dispositivos pequeños */
+  }
+
+    h1{
+        font-size: 1.5rem;
+        padding-top: 1rem;
+    } 
+
+    h2{
+        font-size: 1.2rem;
+        padding: 1rem;
+
+    }
+
+  .image  img{
+        padding-bottom: 20px;
+        margin-right: 0px;
+        width: 224px;
+    } 
+
+
+
+
+</style>

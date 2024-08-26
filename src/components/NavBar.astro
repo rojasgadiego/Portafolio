@@ -1,0 +1,121 @@
+---
+// Navbar.astro
+---
+<nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Diego Rojas</a>
+      <button class="menu-toggle" id="menu-toggle">
+        &#9776; <!-- Icono de hamburguesa -->
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">Acerca de mí</a></li>
+        <li><a href="#projects">Experiencia</a></li>
+        <li><a href="#skills">Estudios</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <style>
+    .navbar {
+      background-color: #333;
+      padding: 1rem;
+      position: fixed; /* Fija la barra de navegación en su posición */
+      top: 0; /* La coloca en la parte superior de la página */
+      width: 100%; /* Asegura que la barra ocupe todo el ancho de la pantalla */
+      z-index: 1000; /* Asegura que la navbar esté por encima del contenido */
+    }
+    .container {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      padding-right: 80px;
+      padding-left: 40px;
+    }
+    .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      transition: max-height 0.3s ease;
+    }
+    .nav-links li {
+      margin: 0;
+      margin-left: 15px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #1e90ff;
+    }
+  
+    /* Estilos para dispositivos móviles */
+    @media (max-width: 800px) {
+        .container{
+        padding-right: 20px;
+        padding-left: 0px;
+        }
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 78%; /* Justo debajo de la navbar */
+        right: 0;
+        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-links.open {
+        max-height: 200px; /* Ajusta según cuántos enlaces tengas */
+      }
+      .nav-links li {
+        text-align: center;
+        margin: 1rem 0;
+      }
+    }
+  
+    /* Asegura que el contenido no quede oculto detrás de la barra de navegación fija */
+    body {
+      padding-top: 70px; /* Ajusta este valor según la altura de la navbar */
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
+  const navLinks = document.getElementById('nav-links') as HTMLUListElement;
+
+  // Verifica que los elementos existen antes de añadir los event listeners
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    const links = navLinks.querySelectorAll('a');
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+});
+  </script>

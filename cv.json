@@ -1,0 +1,103 @@
+{
+  "basics": {
+    "name": "Diego Ignacio Rojas García",
+    "label": "Ingeniero Civil en Computación e Informática con 1 año y 6 meses de experiencia como analista de sistemas TI",
+    "image": "https://media.licdn.com/dms/image/v2/C4E03AQG5FjTYRvwscQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1663785269356?e=1730332800&v=beta&t=HNDLmGaD6frMV0qVECiz3DcNUlyLCRUlDVGxZ6_rsO8",
+    "email": "rojasgadiego@gmail.com",
+    "phone": "(569) 61355579",
+    "url": "",
+    "summary": "Graduado en Ingeniería Civil Computación e Informática con experiencia en el mantenimiento de sistemas informáticos, análisis de requerimientos y resolución de incidentes en entornos de alta demanda, poseo conocimientos sobre el desarrollo de software en diferentes plataformas, también en el diseño de arquitecturas, bases de datos, programación y metodologías ágiles. Hábil en la comunicación y análisis de necesidades, transformo requerimientos en soluciones efectivas. Mi enfoque en la innovación y la mejora continua me permite enfrentar desafíos con creatividad y eficiencia.",
+    "location": {
+      "address": "Av ossandon Psje guayacan #178, Coquimbo",
+      "addresst": "Av Bernado O'higgins #345, Quilicura Santiago",
+      "postalCode": "17800000",
+      "city": "Coquimbo",
+      "cityt": "Santiago",
+      "region": "IV",
+      "regiont": "Región Metropolitana"
+    },
+    "profiles": [
+      {
+        "network": "Linkedin",
+        "username": "diego rojas garcia",
+        "url": "https://www.linkedin.com/in/diego-rojas-garcia/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Socius arquitectura y plataformas tecnológicas",
+      "position": "Analista de sistemas TI",
+      "url": "https://sociuscorp.com/",
+      "startDate": "Agosto de 2021",
+      "endDate": "Abril de 2023",
+      "summary": "Mantenimiento preventivo a los servidores del Banco Santander Santiago, participación activa en reuniones para la resolución de incidencias, manipulación de bases de datos, ejecución de servicios SOAP/REST y comunicación con diversas áreas para la resolución y continuidad del sistema.",
+      "highlights": ["Started the company"]
+    },
+    {
+      "name": "Socius arquitectura y plataformas tecnológicas",
+      "position": "Desarrollador TIBCO BW",
+      "url": "https://sociuscorp.com/",
+      "startDate": "Agosto de 2021",
+      "endDate": "Octubre de 2021",
+      "summary": "Primera experiencia laboral en donde tuve la oportunidad de poder mostrar mi conocimiento a través del desarrollo de servicios TIBCO.",
+      "highlights": ["Started the company"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Católica del Norte, Coquimbo.",
+      "url": "https://www.ucn.cl/",
+      "area": "Ingeniería Civil",
+      "studyType": "Educación Superior",
+      "startDate": "2017-08-01",
+      "endDate": "2023-12-05",
+      "score": "5.6"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certificado API GEE",
+      "date": "2022-06-01",
+      "issuer": "Coursera",
+      "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/8NPNKPUXNGZG"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Master",
+      "keywords": ["HTML", "CSS", "JavaScript"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Intermedio"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": ["Ferrets", "Unicorns"]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Sistema de monitoreo de actividades académicas",
+      "startDate": "Marzo de 2024",
+      "endDate": "Junio de 2024",
+      "description": "Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas en laboratorios de computación de la Escuela de Ingeniería"
+    }
+  ]
+}
