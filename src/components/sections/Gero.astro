@@ -1,65 +1,91 @@
 ---
 import { basics } from '@cv'
-import Section from '@/components/Section.astro'
 import Mail from '@/icons/Mail.astro'
 import Phone from '@/icons/Phone.astro'
+import Linkedin from '@/icons/Linkedin.astro'
 
-const { name, email, label, image, location, phone } = basics
+const { name, email, label, image, location, phone, profiles } = basics
 const { address, addresst,  } = location
+const { network, url } = profiles
 
 ---
 
 
 <div class="container">
-    <div class="text">
-        <h1>{name}</h1>
-        <h2>{label}</h2>
-        <span>
-            { address } - { addresst }
-        </span>
-        <footer>
-            {
-                email && ( <a href={`mailto:${email}`} 
-                title={`Enviar un correo electrónico a ${name} al correo ${email}`}><Mail/></a> )
-            }
-            
-            { 
-                phone && ( <a href={`tel:${phone}`} 
-                title={`Llamar a ${name} al número ${phone}`}><Phone/></a> ) 
-            }
-        </footer>
+    <div class="containerinfo">
+        <div class="text">
+            <h1>Hola, mi nombre es</h1>
+            <h2>{name}</h2>
+            <h3 >{label}</h3>
+            <!-- <span>
+                { address } - { addresst }
+            </span> -->
+            <footer>
+                {
+                    email && ( <a href={`mailto:${email}`} 
+                    title={`Enviar un correo electrónico a ${name} al correo ${email}`}><Mail/></a> )
+                }
+                { 
+                    phone && ( <a href={`tel:${phone}`} 
+                    title={`Llamar a ${name} al número ${phone}`}><Phone/></a> ) 
+                }
+                { 
+                    network && ( <a href={`${url}`} 
+                    title={`Linkedin ${name}`}><Linkedin/></a> ) 
+                }
+            </footer>
+        </div>
+        <div class="image">
+            <img src={image} alt="Diego">
+        </div>
     </div>
-    <div class="image">
-        <img src={image} alt="Diego">
-    </div>
-</div>
+    
+</div> 
 
 <style>
 
 .container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around; /* Distribuye el espacio alrededor de los elementos */
-  padding: 190px; /* Controla el espacio alrededor del contenedor en general */
-  gap: 20px; /* Espacio entre el texto y la imagen */
-  background-color: #444444c1;
-  color: #fff;
+    width: 100%; /* Asegura que la barra ocupe todo el ancho de la pantalla */
+    display: flex;
+    justify-content:center; 
+    align-items: center;
+    background-color: darkgray;
+    padding-top: 40px;
 }
+
+.containerinfo{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
 
 h1{
-    font-size: 2rem;
-}
-
-footer{
-    margin-top: 10px;
+    font-size: 3.5rem;
+    font-weight: 500;
 }
 
 h2{
-    font-weight: 500;
-    font-size: 1.4rem;
-    padding-top: 15px;
+    font-weight: 600;
+    font-size: 2.5rem;
     padding-bottom: 10px;
+}
+
+h3{
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+}
+
+span{
+    font-size: 1.1rem;
+}
+
+
+footer{
+    margin-top: 10px;
 }
 
 
@@ -71,15 +97,15 @@ h2{
     aspect-ratio: 1 / 1;
     object-fit: cover;
     width: 324px;
-    border-radius: 6px;
+    border-radius: 50%;
 }
 
 @media (max-width: 1377px) {
-  .container {
+  .containerinfo {
     flex-direction: column;
     text-align: center; /* Centra el texto cuando está en columna */
     padding: 30px;
-    padding-top: 70px; /* Menos padding en dispositivos pequeños */
+    padding-top: 50px; /* Menos padding en dispositivos pequeños */
   }
 
     h1{
@@ -90,14 +116,17 @@ h2{
     h2{
         font-size: 1.2rem;
         padding: 1rem;
-
     }
 
-  .image  img{
+    .image  img{
         padding-bottom: 20px;
         margin-right: 0px;
         width: 224px;
     } 
+
+    footer{
+        padding: 10px;
+    }
 
 
 
