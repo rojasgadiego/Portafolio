@@ -4,25 +4,268 @@ import Section from '@/components/Section.astro'
 
 
 <Section title="Experience">
-
-    <div class="container">
-        <h1>Experiencia</h1>
+    <div class="container" id="experience">
+        <div class="containerinfo">
+            <div class="section">
+                <div class="section_column">
+                    <h1>Experiencia</h1>
+                        <div class="experiencia">
+                            <div class="cardBox">
+                                <div class="card">
+                                <div class="front">
+                                    <p>Desarrollador Tibco BW</p>
+                                </div>
+                                <div class="back">
+                                    <p>Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas</p>
+                                    <span>Marzo de 2024 - Julio de 2024</span>
+                                    <a href="#">Más información</a>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="cardBox">
+                                <div class="card">
+                                <div class="front">
+                                    <p>Analista de sistemas TI</p>
+                                </div>
+                                <div class="back">
+                                    <p>Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas</p>
+                                    <span>Marzo de 2024 - Julio de 2024</span>
+                                    <a href="#">Más información</a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <div class="gotoaction">
+                    <div class="form-container">
+                        <h1>
+                            ¿Algún proyecto en mente?, trabajemos!</h1>
+                        <form action="mailto:rojasgadiego@gmail.com" method="post" enctype="text/plain">
+                            <div class="form-group">
+                                <label for="name">Nombre:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Idea:</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+            </div>
+        </div>
     </div>
-
-
 </Section>
 
 <style>
 
-.container{
-    height: 300px;
-    color:black;
-}
-
 h1{
-    padding-top: 40px;
     font-size: 2rem;
     text-align: center;
 }
+
+.container{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    /* background-color: darkgray; */
+}
+
+.containerinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 530px;
+}
+
+.section{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.section_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.experiencia{
+    width: 100%;
+    display: flex;
+    height: 380px;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gotoaction{
+    width: 40%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cardcontainer{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.cardBox {
+  float: left;
+  font-size: 1em;
+  margin: 1% 0 0 1%;
+  perspective: 800px;
+  transition: all 0.3s ease 0s;
+  width: 450px;
+}
+
+.cardBox:hover .card {
+  transform: rotateY( 180deg);
+}
+
+.card {
+  background: #222;
+  cursor: default;
+  height: 320px;
+  border-radius: 5%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  width: 100%;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.card p {
+  margin-bottom: 1.8em;
+}
+
+.card .front,
+.card .back {
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2em;
+  height: 100%;
+  padding: 0.8em;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.card .front strong {
+  background: #fff;
+  border-radius: 100%;
+  color: #222;
+  font-size: 1.5em;
+  line-height: 30px;
+  padding: 0 7px 4px 6px;
+}
+
+.card .back {
+  transform: rotateY( 180deg);
+  font-size: 0.8em;
+}
+
+.card .back a {
+  padding: 0.3em 0.5em;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 1px;
+  font-size: 0.9em;
+  transition: all 0.2s ease 0s;
+  margin-top: 60px;
+}
+
+.cardBox:nth-child(2) .card {
+  -webkit-animation: giro 1.5s 1;
+  animation: giro 1.5s 1;
+}
+
+.form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 480px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input, 
+        .form-group textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+
+@-webkit-keyframes giro {
+  from {
+    transform: rotateY( 180deg);
+  }
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+@keyframes giro {
+  from {
+    transform: rotateY( 180deg);
+  }
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+
 
 </style>

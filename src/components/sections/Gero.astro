@@ -33,11 +33,16 @@ const { network, url } = profiles
                     network && ( <a href={`${url}`} 
                     title={`Linkedin ${name}`}><Linkedin/></a> ) 
                 }
+                <a class="opentowork" title={`Linkedin ${name}`}>Open to Work</a>
+                
+        
             </footer>
         </div>
         <div class="image">
             <img src={image} alt="Diego">
         </div>
+        
+        
     </div>
     
 </div> 
@@ -51,6 +56,7 @@ const { network, url } = profiles
     align-items: center;
     background-color: darkgray;
     padding-top: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .containerinfo{
@@ -58,14 +64,22 @@ const { network, url } = profiles
     justify-content:space-between;
     align-items: center;
     width: 80%;
-    padding-top: 80px;
+    margin-top: 80px;
     padding-bottom: 40px;
+}
+
+.opentowork{
+    padding-left: 10px;
+    color:rgba(129, 223, 36, 0.503);
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 
 h1{
     font-size: 3.5rem;
     font-weight: 500;
+    
 }
 
 h2{
@@ -76,7 +90,12 @@ h2{
 
 h3{
     font-size: 1.5rem;
-    padding-bottom: 10px;
+    font-weight: 400;
+}
+
+h4{
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 span{
@@ -98,6 +117,7 @@ footer{
     object-fit: cover;
     width: 324px;
     border-radius: 50%;
+
 }
 
 @media (max-width: 1377px) {
@@ -114,9 +134,14 @@ footer{
     } 
 
     h2{
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         padding: 1rem;
     }
+
+    h3{
+        font-size: 1.3rem;
+    }
+
 
     .image  img{
         padding-bottom: 20px;
