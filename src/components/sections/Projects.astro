@@ -1,10 +1,291 @@
 ---
 import Section from '@/components/Section.astro'
+import CardComponent from '@/components/Card.astro';
+
+const cards: any[] = [
+    { title: "Card 1", description: "Descripción de la tarjeta 1.", imgSrc: "https://via.placeholder.com/300x200" },
+    { title: "Card 2", description: "Descripción de la tarjeta 2.", imgSrc: "https://via.placeholder.com/300x200" },
+    { title: "Card 3", description: "Descripción de la tarjeta 3.", imgSrc: "https://via.placeholder.com/300x200" },
+    { title: "Card 4", description: "Descripción de la tarjeta 4.", imgSrc: "https://via.placeholder.com/300x200" },
+    { title: "Card 5", description: "Descripción de la tarjeta 5.", imgSrc: "https://via.placeholder.com/300x200" },
+    { title: "Card 6", description: "Descripción de la tarjeta 6.", imgSrc: "https://via.placeholder.com/300x200" }
+];
+
 ---
 
 
-
 <Section title="Projects">
-
-
+    <div class="container">
+        <div class="contenedor">
+            <h1>Proyectos</h1>
+            <div class="slider-content">
+                <div class="slider">
+                    <a href="#slide-1">1</a>
+                    <a href="#slide-2">2</a>
+                    <a href="#slide-3">3</a>
+                    <a href="#slide-4">4</a>
+                    <a href="#slide-5">5</a>
+                    <div class="slides">
+                      <div id="slide-1">
+                        1
+                      </div>
+                      <div id="slide-2">
+                        2
+                      </div>
+                      <div id="slide-3">
+                        3
+                      </div>
+                      <div id="slide-4">
+                        4
+                      </div>
+                      <div id="slide-5">
+                        5
+                      </div>
+                    </div>
+                </div>
+                <div class="slider">
+                    <a href="#slide-1">1</a>
+                    <a href="#slide-2">2</a>
+                    <a href="#slide-3">3</a>
+                    <a href="#slide-4">4</a>
+                    <a href="#slide-5">5</a>
+                    <div class="slides">
+                      <div id="slide-1">
+                        1
+                      </div>
+                      <div id="slide-2">
+                        2
+                      </div>
+                      <div id="slide-3">
+                        3
+                      </div>
+                      <div id="slide-4">
+                        4
+                      </div>
+                      <div id="slide-5">
+                        5
+                      </div>
+                    </div>
+                </div>
+                <div class="slider">
+                    <a href="#slide-1">1</a>
+                    <a href="#slide-2">2</a>
+                    <a href="#slide-3">3</a>
+                    <a href="#slide-4">4</a>
+                    <a href="#slide-5">5</a>
+                    <div class="slides">
+                      <div id="slide-1">
+                        1
+                      </div>
+                      <div id="slide-2">
+                        2
+                      </div>
+                      <div id="slide-3">
+                        3
+                      </div>
+                      <div id="slide-4">
+                        4
+                      </div>
+                      <div id="slide-5">
+                        5
+                      </div>
+                    </div>
+                </div>
+                <div class="slider">
+                    <a href="#slide-1">1</a>
+                    <a href="#slide-2">2</a>
+                    <a href="#slide-3">3</a>
+                    <a href="#slide-4">4</a>
+                    <a href="#slide-5">5</a>
+                    <div class="slides">
+                      <div id="slide-1">
+                        1
+                      </div>
+                      <div id="slide-2">
+                        2
+                      </div>
+                      <div id="slide-3">
+                        3
+                      </div>
+                      <div id="slide-4">
+                        4
+                      </div>
+                      <div id="slide-5">
+                        5
+                      </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+              
+        </div>
+    </div>
 </Section>
+
+
+<style>
+    .container {
+        display: flex; /* Ajusta el contenido en una columna */
+        background-color: black;
+        justify-content: center;
+        padding: 20px 20px;
+    }   
+
+    .contenedor{
+        width:80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        padding: 20px 20px;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .slider-content{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Muestra 4 tarjetas por fila */
+        gap: 100px;
+        padding: 20px; /* Muestra 4 tarjetas por fila */
+        justify-content: center;
+    }
+
+    @media (max-width: 1900px) {
+            .slider-content {
+                grid-template-columns: repeat(3, 1fr); /* 2 tarjetas por fila en pantallas pequeñas */
+            }
+        }
+
+        @media (max-width: 1455px) {
+            .slider-content {
+                grid-template-columns: repeat(2, 1fr); /* 2 tarjetas por fila en pantallas pequeñas */
+            }
+        }
+
+    /* Consultas de medios para ajustar el diseño en pantallas más pequeñas */
+    @media (max-width: 1200px) {
+            .slider-content {
+                grid-template-columns: repeat(2, 1fr); /* 3 tarjetas por fila en pantallas medianas */
+            }
+        }
+        @media (max-width: 900px) {
+            .slider-content {
+                grid-template-columns: repeat(1, 1fr); /* 2 tarjetas por fila en pantallas pequeñas */
+            }
+        }
+        @media (max-width: 600px) {
+            .slider-content {
+                grid-template-columns: repeat(1, 1fr); /* 1 tarjeta por fila en pantallas muy pequeñas */
+            }
+        }
+
+    .slider {
+  width: 300px;
+  text-align: center;
+}
+
+.slides {
+  display: flex;
+  
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  
+  
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  
+  /*
+  scroll-snap-points-x: repeat(300px);
+  scroll-snap-type: mandatory;
+  */
+}
+.slides::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slides > div {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  margin-right: 50px;
+  border-radius: 10px;
+  background: #fff;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 0.5s;
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+}
+.slides > div:target {
+/*   transform: scale(0.8); */
+}
+.author-info {
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+.author-info a {
+  color: white;
+}
+img {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slider > a {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+}
+.slider > a:active {
+  top: 1px;
+}
+.slider > a:focus {
+  background: #000;
+}
+
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+  .slider > a {
+    display: none;
+  }
+}
+
+
+   
+</style>
+

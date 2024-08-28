@@ -1,10 +1,13 @@
 ---
 import Section from '@/components/Section.astro'
+import { work } from '@cv'
+
+
 ---
 
 
-<Section title="Experience">
-    <div class="container" id="experience">
+<Section title="Experience" >
+    <div class="container" id="experience" >
         <div class="containerinfo">
             <div class="section">
                 <div class="section_column">
@@ -59,7 +62,7 @@ import Section from '@/components/Section.astro'
                             </div>
                         </form>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </div>
@@ -70,22 +73,19 @@ import Section from '@/components/Section.astro'
 h1{
     font-size: 2rem;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .container{
-    height: auto;
     display: flex;
     justify-content: center;
-    padding: 40px 20px;
-    /* background-color: darkgray; */
 }
 
 .containerinfo{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     width: 80%;
-    height: 530px;
 }
 
 .section{
@@ -100,13 +100,12 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 60%;
 }
 
 .experiencia{
     width: 100%;
     display: flex;
-    height: 380px;
     justify-content: space-around;
     flex-direction: row;
     align-items: center;
@@ -116,22 +115,22 @@ h1{
     width: 40%;
     margin-bottom: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
 .cardcontainer{
-    width: 45%;
+    width: 40%;
     display: flex;
     justify-content: center;
 }
 
 .cardBox {
-  float: left;
   font-size: 1em;
   margin: 1% 0 0 1%;
   perspective: 800px;
   transition: all 0.3s ease 0s;
-  width: 450px;
+  width: 400px;
 }
 
 .cardBox:hover .card {
@@ -205,13 +204,12 @@ h1{
 .form-container {
             background: white;
             padding: 20px;
+            margin-top: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            height: 480px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 80%;
         }
-        h1 {
-            margin-top: 0;
+        .form-container h1 {
             color: #333;
             margin-bottom: 10px;
         }
@@ -232,10 +230,10 @@ h1{
         }
         .form-group textarea {
             resize: vertical;
-            height: 150px;
+            height: 50px;
         }
         .form-group button {
-            background-color: #007bff;
+            background-color: #333;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -265,6 +263,122 @@ h1{
     transform: rotateY( 0deg);
   }
 }
+
+@media screen and (max-width: 1377px) {
+
+    .form-container {
+        width: 100%;
+        height: 370px;
+    }
+
+    .form-container h1 {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .gotoaction{
+        width: 37%;
+        margin-left: 20px;
+    }
+
+}
+
+@media(min-width: 430px) and (max-width: 790px) {
+
+    .container{
+        height: 1320px ;
+    }
+
+    h1{
+        margin-bottom: 20px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .section{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .experiencia{
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+        text-align: center;
+        height: auto;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .gotoaction{
+        width: 63%;
+        margin-left: 0px;
+    }
+
+    
+}
+
+
+@media screen and (max-width: 430px) {
+
+    .container{
+        height: 1340px ;
+    }
+
+    h1{
+        margin-bottom: 20px;
+    }
+
+    .section{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .experiencia{
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+        text-align: center;
+        height: auto;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .cardBox {
+        font-size: 1em;
+        margin: 1% 0 0 1%;
+        perspective: 800px;
+        transition: all 0.3s ease 0s;
+        width: 330px;
+    }
+
+    .gotoaction{
+        width: 95%;
+        margin-left: 0px;
+    }
+
+    .form-container {
+        height: 450px;
+    }
+
+    .form-container h1 {
+        font-size: 1em;
+    }
+}  
+
+@media screen and (max-width: 429px) {
+    .container{
+        height: 1280px ;
+    }
+
+    .form-container {
+        height: 400px;
+    }
+}  
 
 
 

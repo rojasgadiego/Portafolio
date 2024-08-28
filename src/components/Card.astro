@@ -1,0 +1,18 @@
+---
+// src/components/Card.astro
+interface Props {
+    card: {
+        title: string;
+        description: string;
+        imgSrc: string;
+    };
+}
+const { card } = Astro.props;
+---
+<div class="card">
+    <img src={card.imgSrc} alt={card.title} />
+    <div class="card-content">
+        <h2 class="card-title">{card.title}</h2>
+        <p class="card-description">{card.description}</p>
+    </div>
+</div>

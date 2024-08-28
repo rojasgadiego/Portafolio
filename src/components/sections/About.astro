@@ -7,7 +7,7 @@ const { institution,title,startDate, endDate, url } = education
 
 ---
 
-<Section title="About">
+<Section title="About" >
     <div class="container" id="about">
         <h1 >Acerca de mí</h1>
         <div class="containerinfo">
@@ -55,7 +55,8 @@ const { institution,title,startDate, endDate, url } = education
     flex-direction: column;
     align-items: center;
     text-align: justify;
-    padding-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 h1{
@@ -63,23 +64,14 @@ h1{
     text-align: center;
 }
 
-.info {
-    padding-top: 60px;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    width: 40%;
-}
-
 .containerinfo{
     display: flex;
     justify-content: space-between;
     width: 80%;
-    height: 400px;
-    margin-top: 20px;
 }
 
 .aboutme{
-    width: 50%;
+    width: 47%;
     font-size: 1.5rem;
     line-height: 1.5rem;
     display: flex;
@@ -141,6 +133,7 @@ section span{
 }
 
 .card {
+  display: flex;
   background: #222;
   cursor: default;
   height: 300px;
@@ -224,12 +217,15 @@ section span{
 }
 
 
-
-
   @media screen and (max-width: 1377px) {
 
     .container{
         height: 550px;
+        padding-bottom: 70px;
+    }
+
+    .cardBox {
+      width: 410px;
     }
 
     .containerinfo{
@@ -256,14 +252,27 @@ section span{
 
 @media(min-width: 430px) and (max-width: 790px) {
     .container{
-        height: 980px;
+        height: 720px;
     }
 
     .sections{
         display: flex;
-        flex-direction: column;  
+        flex-direction: row;  
         align-items: center;
         text-align: center;
+    }
+
+    .cardBox {
+      width: 400px;
+    }
+
+    .study{
+      height: auto;
+      padding-bottom: 50px;
+    }
+
+     h1{
+      padding: 20px;
     }
     
     section p{
@@ -277,9 +286,18 @@ section span{
 
 @media screen and (max-width: 430px) {
     .container{
-        height: 740px;
+        height: 830px;
     }
 
+    .cardBox {
+      width: 340px;
+    }
+}  
+
+@media screen and (max-width: 429px) {
+    .container{
+        height: 780px;
+    }
 }  
 
 
