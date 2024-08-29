@@ -42,8 +42,8 @@ import { work } from '@cv'
                 
                 <div class="gotoaction">
                     <div class="form-container">
-                        <h1>
-                            ¿Algún proyecto en mente?, trabajemos!</h1>
+                        <h2>
+                            ¿Algún proyecto en mente?, trabajemos!</h2>
                         <form action="mailto:rojasgadiego@gmail.com" method="post" enctype="text/plain">
                             <div class="form-group">
                                 <label for="name">Nombre:</label>
@@ -74,6 +74,10 @@ h1{
     font-size: 2rem;
     text-align: center;
     padding-bottom: 20px;
+}
+
+h2{
+    padding-bottom: 15px;
 }
 
 .container{
@@ -139,11 +143,13 @@ h1{
 }
 
 .card {
-  background: #3C3D37;
+  display: flex;
+  background: #697565;
   cursor: default;
-  height: 320px;
-  border-radius: 5%;
+  height: 300px;
+  border-radius: 4%;
   transform-style: preserve-3d;
+  font-size: 1.4rem;
   transition: transform 0.4s ease 0s;
   width: 100%;
   -webkit-animation: giro 1s 1;
@@ -164,7 +170,6 @@ h1{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.2em;
   height: 100%;
   padding: 0.8em;
   position: absolute;
@@ -281,6 +286,8 @@ h1{
         width: 37%;
         margin-left: 20px;
     }
+
+
 
 }
 

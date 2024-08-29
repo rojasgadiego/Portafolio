@@ -93,7 +93,6 @@ h1{
     justify-content: center;
     margin-top: 20px;
     width: 100%;
-    font-size: 1.5rem;
 }
 
 
@@ -134,12 +133,13 @@ section span{
 
 .card {
   display: flex;
-  background: #3C3D37;
+  background: #697565;
   cursor: default;
   height: 300px;
   border-radius: 4%;
   transform-style: preserve-3d;
   transition: transform 0.4s ease 0s;
+  font-size: 1.4rem;
   width: 100%;
   -webkit-animation: giro 1s 1;
   animation: giro 1s 1;
@@ -159,7 +159,7 @@ section span{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 1em;
   height: 100%;
   padding: 0.8em;
   position: absolute;
@@ -181,6 +181,11 @@ section span{
   font-size: 0.8em;
 }
 
+.card .back p{
+  height: 90px;
+  align-items: center;
+}
+
 .card .back a {
   padding: 0.3em 0.5em;
   background: #333;
@@ -189,7 +194,7 @@ section span{
   border-radius: 1px;
   font-size: 0.9em;
   transition: all 0.2s ease 0s;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .cardBox:nth-child(2) .card {
@@ -250,7 +255,6 @@ section span{
 
     .sections{
         gap: 10px;
-        font-size: 1rem;
     }
 }  
 
