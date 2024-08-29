@@ -54,9 +54,12 @@ const { institution,title,startDate, endDate, url } = education
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: justify;
+    background-color: #697565;
     padding-top: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+    /* height: 500px; */
 }
 
 h1{
@@ -66,30 +69,30 @@ h1{
 
 .containerinfo{
     display: flex;
-    justify-content: space-between;
     width: 80%;
 }
 
 .aboutme{
-    width: 47%;
+    width: 50%;
     font-size: 1.5rem;
     line-height: 1.5rem;
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
+    max-height: 350px;
+    margin-right: 20px;
 }
 
 .study{
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .sections{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 20px;
     width: 100%;
     font-size: 1.5rem;
@@ -120,9 +123,8 @@ section span{
 }
 
 .cardBox {
-  float: left;
   font-size: 1em;
-  margin: 1% 0 0 1%;
+  margin: 1%;
   perspective: 800px;
   transition: all 0.3s ease 0s;
   width: 340px;
@@ -134,7 +136,7 @@ section span{
 
 .card {
   display: flex;
-  background: #222;
+  background: #3C3D37;
   cursor: default;
   height: 300px;
   border-radius: 4%;
@@ -217,21 +219,25 @@ section span{
 }
 
 
-  @media screen and (max-width: 1377px) {
+  @media screen and (max-width: 1023px) {
 
-    .container{
-        height: 550px;
-        padding-bottom: 70px;
+     .container{
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .aboutme{
+        margin-top: 20px;
     }
 
     .cardBox {
       width: 410px;
-    }
+    } 
 
     .containerinfo{
         flex-direction: column;
         margin-top: 0px;
-        height: 480px;
+        height:auto;
     }
 
     .aboutme{
@@ -250,25 +256,27 @@ section span{
     }
 }  
 
-@media(min-width: 430px) and (max-width: 790px) {
-    .container{
-        height: 720px;
+@media (max-width: 767px)  and (min-width: 320px) {
+
+  .container{
+        overflow:auto;
+        height: auto;
     }
 
+    .containerinfo{
+        flex-direction: column;
+        height: auto;
+    }
+    
     .sections{
         display: flex;
-        flex-direction: row;  
+        flex-direction: column;  
         align-items: center;
         text-align: center;
     }
 
     .cardBox {
-      width: 400px;
-    }
-
-    .study{
-      height: auto;
-      padding-bottom: 50px;
+      width: 330px;
     }
 
      h1{
@@ -283,23 +291,6 @@ section span{
         width: 70%;
     }
 }  
-
-@media screen and (max-width: 430px) {
-    .container{
-        height: 830px;
-    }
-
-    .cardBox {
-      width: 340px;
-    }
-}  
-
-@media screen and (max-width: 429px) {
-    .container{
-        height: 780px;
-    }
-}  
-
 
 
 </style>
