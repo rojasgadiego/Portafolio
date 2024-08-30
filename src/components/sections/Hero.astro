@@ -4,6 +4,7 @@ import Mail from '@/icons/Mail.astro'
 import Phone from '@/icons/Phone.astro'
 import Linkedin from '@/icons/Linkedin.astro'
 import Section from '@/components/Section.astro'
+import Button from '../Button.astro'
 
 const { name, email, label, image, phone, profiles } = basics
 const { network, url } = profiles
@@ -37,19 +38,24 @@ const { network, url } = profiles
                 <img src={image} alt="Diego">
             </div>
         </div>
+        <Button fileName="cv" filePath="/files/cv.pdf" />
     </div>
+    
+
 </Section>
  
 
 <style>
 
+
 .container {
     width: 100%; /* Asegura que la barra ocupe todo el ancho de la pantalla */
     display: flex;
+    flex-direction: column;
     justify-content:center; 
     align-items: center;
     background-color: #ECDFCC;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-top: 80px;
 }
 
@@ -61,6 +67,22 @@ const { network, url } = profiles
     margin-top: 40px;
     padding-bottom: 40px;
 }
+
+.btn-download {
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  .btn-download:hover {
+    background-color: #0056b3;
+  }
+
 
 
 h1{
