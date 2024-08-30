@@ -6,6 +6,7 @@ const { fileName, filePath } = Astro.props;
   href={filePath}
   download={fileName} 
   class="btn-download"
+  title="Descargar cv"
 >
     {fileName}
 </a>
@@ -13,14 +14,13 @@ const { fileName, filePath } = Astro.props;
 <style>
   .btn-download {
     display: inline-block;
-    padding: 10px 10px;
+    padding: 8px 8px;
     font-size: 16px;
     color: #fff;
     background: #697565;
     text-decoration: none;
     border-radius: 50%;
     text-align: center;
-    margin-bottom: 20px;
     cursor: pointer;
   }
 

@@ -28,17 +28,18 @@ const { network, url } = profiles
                         title={`Llamar a ${name} al número ${phone}`}><Phone height='20px' width='20px'/></a> ) 
                     }
                     { 
-                        network && ( <a href={`${url}`} 
+                        Linkedin && ( <a href={`${url}`} 
                         title={`Linkedin ${name}`}><Linkedin height='20px' width='20px'/></a> ) 
                     }
                     <a class="opentowork" title={`Linkedin ${name}`}>Open to Work</a>
+                    <Button fileName="cv" filePath="/files/cv.pdf" />
                 </footer>
             </div>
             <div class="image">
                 <img src={image} alt="Diego">
             </div>
         </div>
-        <Button fileName="cv" filePath="/files/cv.pdf" />
+        
     </div>
     
 
@@ -113,6 +114,9 @@ span{
 
 footer{
     margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 footer a{
