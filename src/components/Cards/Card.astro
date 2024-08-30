@@ -1,0 +1,161 @@
+---
+// src/components/Card.astro
+interface Props {
+    card: {
+        title: string;
+        institution: string;
+        url: string;
+        startDate: string;
+        endDate: string;
+    };
+}
+
+const { card } = Astro.props;
+---
+
+<div class="cardBox">
+    <div class="card">
+      <div class="front">
+        <p>{card.institution}</p>
+      </div>
+      <div class="back">
+        <p>{card.title}</p>
+        <span>{card.startDate} - {card.endDate}</span>
+        <a href=`${card.url}`>{card.url}</a>
+      </div>
+    </div>
+</div>
+
+
+<style>
+
+.cardBox {
+  margin: 1%;
+  perspective: 800px;
+  transition: all 0.3s ease 0s;
+  width: 340px;
+}
+
+.cardBox:hover .card {
+  transform: rotateY( 180deg);
+}
+
+.card {
+  display: flex;
+  background: #697565;
+  cursor: default;
+  height: 300px;
+  border-radius: 4%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease 0s;
+  width: 100%;
+  -webkit-animation: giro 1s 1;
+  animation: giro 1s 1;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card .front,
+.card .back {
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0.8em;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.card .front strong {
+  background: #fff;
+  border-radius: 100%;
+  color: #222;
+  font-size: 1.5em;
+  line-height: 30px;
+  padding: 0 7px 4px 6px;
+}
+
+.card .back {
+  transform: rotateY( 180deg);
+  padding-top: 0;
+}
+
+.card .front p{
+  padding-top: 0;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5dvw;
+}
+
+.card .back p{
+  height: 130px;
+  align-items: center;
+}
+
+.card .back a {
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease 0s;
+  margin-top: 40px;
+}
+
+.cardBox:nth-child(2) .card {
+  -webkit-animation: giro 1.5s 1;
+  animation: giro 1.5s 1;
+}
+
+@-webkit-keyframes giro {
+  from {
+    transform: rotateY( 180deg);
+  }
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+@keyframes giro {
+  from {
+    transform: rotateY( 180deg);
+  }
+  to {
+    transform: rotateY( 0deg);
+  }
+}
+
+
+
+@media screen and (max-width: 1024px) {
+  
+  .cardBox {
+    width: 400px;
+  }
+
+  .card .front p{
+        font-size: 1.2em;
+  }
+
+}
+
+@media (max-width: 767px)  and (min-width: 320px) {
+
+    .card .front p{
+        font-size: 1.2em;
+    }
+
+    .cardBox {
+        width: 300px;
+    }
+
+}
+
+
+
+
+
+</style>

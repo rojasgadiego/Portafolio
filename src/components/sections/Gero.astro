@@ -32,7 +32,6 @@ const { network, url } = profiles
                         title={`Linkedin ${name}`}><Linkedin/></a> ) 
                     }
                     <a class="opentowork" title={`Linkedin ${name}`}>Open to Work</a>
-                    
                 </footer>
             </div>
             <div class="image">
@@ -63,13 +62,6 @@ const { network, url } = profiles
     padding-bottom: 40px;
 }
 
-.opentowork{
-    padding-left: 10px;
-    color:#697565;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
 
 h1{
     font-size: 3.5rem;
@@ -97,9 +89,18 @@ span{
     font-size: 1.1rem;
 }
 
-
 footer{
     margin-top: 10px;
+}
+
+footer a{
+    color: #1E201E;
+    padding-right: 5px ;
+}
+
+.opentowork{
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 
@@ -113,7 +114,6 @@ footer{
     object-fit: cover;
     width: 324px;
     border-radius: 50%;
-
 }
 
 @media (max-width: 1024px) {
@@ -148,5 +148,6 @@ footer{
         padding: 10px;
     }
 
+}
 
 </style>

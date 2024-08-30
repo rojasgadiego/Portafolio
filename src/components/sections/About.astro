@@ -1,7 +1,7 @@
 ---
 import Section from '@/components/Section.astro'
 import { basics, educationdos } from '@cv'
-import Card from '@/components/Card.astro'
+import Card from '@/components/Cards/Card.astro'
 
 const { summary } = basics
 ---
@@ -36,6 +36,7 @@ const { summary } = basics
     text-align: justify;
     padding-top: 20px;
     padding-bottom: 20px;
+    
 }
 
 h1{
@@ -74,29 +75,16 @@ h1{
 }
 
 
-section:hover {
-  transform: rotateY(180deg);
-}
-
-section a{
-    font-size: 0.8rem;
-    color: black;
-}
-
-
 @media screen and (max-width: 1024px) {
+
     .container{
       padding-top: 30px;
       padding-bottom: 50px;
-}
+    }
 
     .aboutme{
         margin-top: 20px;
     }
-
-    .cardBox {
-      width: 410px;
-    } 
 
     .containerinfo{
         flex-direction: column;
@@ -117,11 +105,12 @@ section a{
     .sections{
         gap: 10px;
     }
+
 }  
 
 @media (max-width: 767px)  and (min-width: 320px) {
 
-  .container{
+    .container{
         overflow:auto;
         height: auto;
     }
@@ -136,10 +125,6 @@ section a{
         flex-direction: column;  
         align-items: center;
         text-align: center;
-    }
-
-    .cardBox {
-      width: 400px;
     }
 
      h1{

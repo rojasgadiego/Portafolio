@@ -1,8 +1,7 @@
 ---
 import Section from '@/components/Section.astro'
 import { work } from '@cv'
-
-
+import Card from '@/components/Cards/CardExperience.astro'
 ---
 
 
@@ -13,30 +12,9 @@ import { work } from '@cv'
                 <div class="section_column">
                     <h1>Experiencia</h1>
                         <div class="experiencia">
-                            <div class="cardBox">
-                                <div class="card">
-                                <div class="front">
-                                    <p>Desarrollador Tibco BW</p>
-                                </div>
-                                <div class="back">
-                                    <p>Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas</p>
-                                    <span>Marzo de 2024 - Julio de 2024</span>
-                                    <a href="#">Más información</a>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="cardBox">
-                                <div class="card">
-                                <div class="front">
-                                    <p>Analista de sistemas TI</p>
-                                </div>
-                                <div class="back">
-                                    <p>Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas</p>
-                                    <span>Marzo de 2024 - Julio de 2024</span>
-                                    <a href="#">Más información</a>
-                                </div>
-                                </div>
-                            </div>
+                            {work.map((experiencie) => (
+                                <Card card={experiencie} />
+                            ))}
                         </div>
                 </div>
                 
@@ -91,6 +69,7 @@ h2{
     flex-direction: column;
     align-items:center;
     width: 80%;
+    
 }
 
 .section{
@@ -130,82 +109,6 @@ h2{
     justify-content: center;
 }
 
-.cardBox {
-  font-size: 1em;
-  margin: 1% 0 0 1%;
-  perspective: 800px;
-  transition: all 0.3s ease 0s;
-  width: 400px;
-}
-
-.cardBox:hover .card {
-  transform: rotateY( 180deg);
-}
-
-.card {
-  display: flex;
-  background: #697565;
-  cursor: default;
-  height: 300px;
-  border-radius: 4%;
-  transform-style: preserve-3d;
-  font-size: 1.4rem;
-  transition: transform 0.4s ease 0s;
-  width: 100%;
-  -webkit-animation: giro 1s 1;
-  animation: giro 1s 1;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-
-.card p {
-  margin-bottom: 1.8em;
-}
-
-.card .front,
-.card .back {
-  backface-visibility: hidden;
-  box-sizing: border-box;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding: 0.8em;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.card .front strong {
-  background: #fff;
-  border-radius: 100%;
-  color: #222;
-  font-size: 1.5em;
-  line-height: 30px;
-  padding: 0 7px 4px 6px;
-}
-
-.card .back {
-  transform: rotateY( 180deg);
-  font-size: 0.8em;
-}
-
-.card .back a {
-  padding: 0.3em 0.5em;
-  background: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 1px;
-  font-size: 0.9em;
-  transition: all 0.2s ease 0s;
-  margin-top: 60px;
-}
-
-.cardBox:nth-child(2) .card {
-  -webkit-animation: giro 1.5s 1;
-  animation: giro 1.5s 1;
-}
 
 .form-container {
             background: white;
@@ -252,25 +155,19 @@ h2{
         }
 
 
-@-webkit-keyframes giro {
-  from {
-    transform: rotateY( 180deg);
-  }
-  to {
-    transform: rotateY( 0deg);
-  }
-}
-
-@keyframes giro {
-  from {
-    transform: rotateY( 180deg);
-  }
-  to {
-    transform: rotateY( 0deg);
-  }
-}
-
 @media screen and (max-width: 1024px) {
+
+    .section{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .section_column{
+        width: 100%;
+    }
 
     .form-container {
         width: 100%;
@@ -283,11 +180,8 @@ h2{
     }
 
     .gotoaction{
-        width: 37%;
-        margin-left: 20px;
+        width: 98%;
     }
-
-
 
 }
 
@@ -322,11 +216,9 @@ h2{
     }
 
     .form-container {
-            min-width: 360px;
+            min-width: 260px;
             min-height: 420px;
-        }
-
-    
+    }
 }
 
 
