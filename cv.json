@@ -51,6 +51,26 @@
     "endDate": "Diciembre de 2023",
     "score": "5.6"
   },
+  "educationdos": [
+    {
+      "institution": "Universidad Católica del Norte",
+      "url": "https://www.ucn.cl/",
+      "area": "Ingeniería Civil",
+      "title": "Ingeniería Civil Computación e Informática",
+      "startDate": "Junio de 2017",
+      "endDate": "Diciembre de 2023",
+      "score": "5.6"
+    },
+    {
+      "institution": "Proyecto de título",
+      "url": "https://www.ucn.cl/",
+      "area": "Ingeniería Civil",
+      "title": "Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas",
+      "startDate": "Marzo de 2024",
+      "endDate": "Julio de 2024",
+      "score": ""
+    }
+  ],
   "certificates": [
     {
       "name": "Certificado API GEE",

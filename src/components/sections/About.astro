@@ -1,46 +1,24 @@
 ---
 import Section from '@/components/Section.astro'
-import { basics, education } from '@cv'
+import { basics, educationdos } from '@cv'
+import Card from '@/components/Card.astro'
 
 const { summary } = basics
-const { institution,title,startDate, endDate, url } = education
-
 ---
 
-<Section title="About" >
-    <div class="container" id="about">
+<Section title="About" id="about">
+    <div class="container">
         <h1 >Acerca de mí</h1>
         <div class="containerinfo">
             <div class="aboutme">
                 {summary}
             </div>
             <div class="study">
-                <h1 id="about">Estudios</h1>
+                <h1>Estudios</h1>
                 <div class="sections">
-                    <div class="cardBox">
-                        <div class="card">
-                          <div class="front">
-                            <p>{institution}</p>
-                          </div>
-                          <div class="back">
-                            <p>{title}</p>
-                        <span>{startDate} - {endDate}</span>
-                            <a href=`${url}`>{url}</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="cardBox">
-                        <div class="card">
-                          <div class="front">
-                            <p>Proyecto de título</p>
-                          </div>
-                          <div class="back">
-                            <p>Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas</p>
-                            <span>Marzo de 2024 - Julio de 2024</span>
-                            <a href="#">Más información</a>
-                          </div>
-                        </div>
-                    </div>
+                  {educationdos.map((card) => (
+                    <Card card={card} />
+                  ))}
                 </div>
             </div>
         </div>
@@ -105,129 +83,12 @@ section a{
     color: black;
 }
 
-section p{
-    width: 80%;
-    font-size: 1rem;
-    text-align: center;
-    -webkit-animation: giro 1s 1;
-    animation: giro 1s 1;
-    transform-style: preserve-3d;
-    transition: transform 0.4s ease 0s;
+
+@media screen and (max-width: 1024px) {
+    .container{
+      padding-top: 30px;
+      padding-bottom: 50px;
 }
-
-section span{
-    font-size: 0.9rem;
-}
-
-.cardBox {
-  font-size: 1em;
-  margin: 1%;
-  perspective: 800px;
-  transition: all 0.3s ease 0s;
-  width: 340px;
-}
-
-.cardBox:hover .card {
-  transform: rotateY( 180deg);
-}
-
-.card {
-  display: flex;
-  background: #697565;
-  cursor: default;
-  height: 300px;
-  border-radius: 4%;
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease 0s;
-  font-size: 1.4rem;
-  width: 100%;
-  -webkit-animation: giro 1s 1;
-  animation: giro 1s 1;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-
-.card p {
-  margin-bottom: 1.8em;
-}
-
-.card .front,
-.card .back {
-  backface-visibility: hidden;
-  box-sizing: border-box;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1em;
-  height: 100%;
-  padding: 0.8em;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.card .front strong {
-  background: #fff;
-  border-radius: 100%;
-  color: #222;
-  font-size: 1.5em;
-  line-height: 30px;
-  padding: 0 7px 4px 6px;
-}
-
-.card .back {
-  transform: rotateY( 180deg);
-  font-size: 0.8em;
-}
-
-.card .back p{
-  height: 90px;
-  align-items: center;
-}
-
-.card .back a {
-  padding: 0.3em 0.5em;
-  background: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 1px;
-  font-size: 0.9em;
-  transition: all 0.2s ease 0s;
-  margin-top: 40px;
-}
-
-.cardBox:nth-child(2) .card {
-  -webkit-animation: giro 1.5s 1;
-  animation: giro 1.5s 1;
-}
-
-
-@-webkit-keyframes giro {
-  from {
-    transform: rotateY( 180deg);
-  }
-  to {
-    transform: rotateY( 0deg);
-  }
-}
-
-@keyframes giro {
-  from {
-    transform: rotateY( 180deg);
-  }
-  to {
-    transform: rotateY( 0deg);
-  }
-}
-
-
-  @media screen and (max-width: 1024px) {
-
-     .container{
-        padding-top: 30px;
-        padding-bottom: 50px;
-    }
 
     .aboutme{
         margin-top: 20px;
@@ -293,6 +154,5 @@ section span{
         width: 70%;
     }
 }  
-
 
 </style>
