@@ -21,15 +21,15 @@ const { network, url } = profiles
                 <footer>
                     {
                         email && ( <a href={`mailto:${email}`} 
-                        title={`Enviar un correo electrónico a ${name} al correo ${email}`}><Mail/></a> )
+                        title={`Enviar un correo electrónico a ${name} al correo ${email}`}><Mail height='20px' width='20px'/></a> )
                     }
                     { 
                         phone && ( <a href={`tel:${phone}`} 
-                        title={`Llamar a ${name} al número ${phone}`}><Phone/></a> ) 
+                        title={`Llamar a ${name} al número ${phone}`}><Phone height='20px' width='20px'/></a> ) 
                     }
                     { 
                         network && ( <a href={`${url}`} 
-                        title={`Linkedin ${name}`}><Linkedin/></a> ) 
+                        title={`Linkedin ${name}`}><Linkedin height='20px' width='20px'/></a> ) 
                     }
                     <a class="opentowork" title={`Linkedin ${name}`}>Open to Work</a>
                 </footer>

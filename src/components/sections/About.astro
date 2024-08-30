@@ -2,19 +2,20 @@
 import Section from '@/components/Section.astro'
 import { basics, educationdos } from '@cv'
 import Card from '@/components/Cards/Card.astro'
+import Skills from './Skills.astro'
 
 const { summary } = basics
 ---
 
-<Section title="About" id="about">
-    <div class="container">
+<Section title="About">
+    <div class="container" id="about">
         <h1 >Acerca de mí</h1>
         <div class="containerinfo">
             <div class="aboutme">
                 {summary}
             </div>
             <div class="study">
-                <h1>Estudios</h1>
+                <h2>Estudios</h2>
                 <div class="sections">
                   {educationdos.map((card) => (
                     <Card card={card} />
@@ -22,6 +23,7 @@ const { summary } = basics
                 </div>
             </div>
         </div>
+		<Skills/> 
     </div>
 </Section>
 
@@ -35,14 +37,18 @@ const { summary } = basics
     justify-content: center;
     text-align: justify;
     padding-top: 20px;
-    padding-bottom: 20px;
-    
 }
 
 h1{
     font-size: 2rem;
     text-align: center;
 }
+
+h2{
+    text-align: center;
+}
+
+
 
 .containerinfo{
     display: flex;
@@ -79,7 +85,6 @@ h1{
 
     .container{
       padding-top: 30px;
-      padding-bottom: 50px;
     }
 
     .aboutme{

@@ -1,5 +1,15 @@
 ---
 // src/components/Card.astro
+import Node from '@/icons/node.astro'
+import Javascript from '@/icons/javascript.astro'
+import Next from '@/icons/next.astro'
+import Sql from '@/icons/sql.astro'
+import Linux from '@/icons/linux.astro'
+import Tailwind from '@/icons/tailwind.astro'
+import Dotnet from '@/icons/dotnet.astro'
+import Soa from '@/icons/soa.astro'
+import Nginx from '@/icons/nginx.astro'
+
 interface Props {
     card: {
         title: string;
@@ -7,6 +17,7 @@ interface Props {
         url: string;
         startDate: string;
         endDate: string;
+        skills?: string[];
     };
 }
 
@@ -17,17 +28,47 @@ const { card } = Astro.props;
     <div class="card">
       <div class="front">
         <p>{card.institution}</p>
+          <div class="skills-container">
+            {card.skills && card.skills.length > 0 ? ( 
+              <div class="skill"><Nginx height='30px' width='30px'/></div>
+              <div class="skill"><Node height='30px' width='30px'/></div>
+              <div class="skill"><Tailwind height='30px' width='30px'/></div>
+              <div class="skill"><Next height='30px' width='30px'/></div>
+              <div class="skill"><Linux height='30px' width='30px'/></div>
+              <div class="skill"><Javascript height='30px' width='30px'/></div>
+              <div class="skill"><Dotnet height='30px' width='30px'/></div>
+              <div class="skill"><Sql height='30px' width='30px'/></div>
+              <div class="skill"><Soa height='30px' width='30px'/></div>
+
+              ): (null)}
+          </div>
       </div>
       <div class="back">
         <p>{card.title}</p>
         <span>{card.startDate} - {card.endDate}</span>
         <a href=`${card.url}`>{card.url}</a>
+    </div>
       </div>
     </div>
 </div>
 
 
 <style>
+
+.skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Centra los elementos horizontalmente */
+      width: 100%;
+}
+
+.skill {
+      background-color: transparent;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      text-align: center;
+    }  
 
 .cardBox {
   margin: 1%;

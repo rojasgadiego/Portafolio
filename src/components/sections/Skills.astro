@@ -8,22 +8,29 @@ import Css from '@/icons/css.astro'
 import Next from '@/icons/next.astro'
 import Sql from '@/icons/sql.astro'
 import Spring from '@/icons/spring.astro'
-
+import Flutter from '@/icons/flutter.astro'
+import Typescript from '@/icons/typescript.astro'
+import Graphql from '@/icons/graphql.astro'
+import Soa from '@/icons/soa.astro'
+import Linux from '@/icons/linux.astro'
 ---
 
 <Section title="Skills">
     <div class="container">
-        <h1>Competencias</h1>
+        <h2>Competencias</h2>
         <div class="skills-container">
-            <div class="skill"><Html/>Html</div>
-            <div class="skill"><Css/>Css</div>
-            <div class="skill"><Javascript/>Js</div>
-            <div class="skill"><React/>React</div>
-            <div class="skill"><Node/>Node</div>
-            <div class="skill"><Next/>Next</div>
-            <div class="skill"><Sql/>Sql</div>
-            <div class="skill"><Spring/>Spring</div>
-            <!-- <div class="skill"><Sql/>Sql</div> -->
+            <div class="skill"><Html height='46px' width='46px'/>Html</div>
+            <div class="skill"><Css height='46px' width='46px'/>Css</div>
+            <div class="skill"><Javascript height='46px' width='46px'/>Js</div>
+            <div class="skill"><React height='46px' width='46px'/>React</div>
+            <div class="skill"><Node height='46px' width='46px'/>Node</div>
+            <div class="skill"><Next height='46px' width='46px'/>Next</div>
+            <div class="skill"><Sql height='46px' width='46px'/>Sql</div>
+            <div class="skill"><Spring height='46px' width='46px'/>Spring</div>
+            <div class="skill"><Linux height='46px' width='46px'/>Linux</div>
+            <div class="skill"><Typescript height='46px' width='46px'/>Typescript</div>
+            <div class="skill"><Graphql height='46px' width='46px'/>Graphql</div>
+            <div class="skill"><Soa height='46px' width='46px'/>Soa</div>
         </div>
     </div>
 </Section>
@@ -40,8 +47,14 @@ import Spring from '@/icons/spring.astro'
     /* margin-top: -120px; */
 }
 
+h2{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 h1{
-    padding-top: 20px;
+    padding-top: 40px;
     padding-bottom: 40px;
     font-size: 2rem;
     text-align: center;
@@ -56,11 +69,10 @@ h1{
     }
 
     .skill {
-      height: 100px; /* Altura del círculo */
+      height: 50px; /* Altura del círculo */
       width: 100px; /* Ancho del círculo */
       border-radius: 50%; /* Hace que el elemento sea un círculo */
-      background-color: #ECDFCC;
-      background: #697565;
+      background-color: transparent;
       color: #000;
       display: flex;
       align-items: center;

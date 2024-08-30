@@ -6,7 +6,7 @@
     "email": "rojasgadiego@gmail.com",
     "phone": "(569) 61355579",
     "url": "",
-    "summary": "Ingeniero Civil en Computación e Informática con experiencia en mantenimiento de sistemas, análisis de requerimientos y resolución de incidentes. Tengo conocimientos en desarrollo de software, diseño de arquitecturas, bases de datos, programación y metodologías ágiles. Me apasiona el minimalismo, el deporte, las mascotas y disfruto de espacios libres.",
+    "summary": "Ingeniero Civil en Computación e Informática con 2 años de experiencia en mantenimiento de sistemas, análisis de requerimientos y resolución de incidentes. Me gusta el desarrollo web, más no el diseño. Me gusta el deporte, lo minimalista, las hamburguesas, las mascotas y las montañas rusas. Actualmente con intereses en convertirme en un desarrollador full stack, pero más de BACKEND",
     "location": {
       "address": "Av ossandon Psje guayacan #178, Coquimbo",
       "addresst": "Av Bernado O'higgins #345, Quilicura Santiago",
@@ -29,7 +29,7 @@
       "url": "https://sociuscorp.com/",
       "startDate": "Agosto de 2021",
       "endDate": "Abril de 2023",
-      "summary": "Mantenimiento preventivo a los servidores del Banco Santander Santiago, participación activa en reuniones para la resolución de incidencias, manipulación de bases de datos, ejecución de servicios SOAP/REST y comunicación con diversas áreas para la resolución y continuidad del sistema."
+      "summary": "Mantenimiento preventivo de los servidores de producción en una entidad financiera, participación activa en reuniones para resolver incidencias, gestión de bases de datos, ejecución de servicios SOAP/REST y coordinación con diversas áreas para garantizar la resolución de problemas y la continuidad del sistema."
     },
     {
       "name": "Socius arquitectura y plataformas tecnológicas",
@@ -57,7 +57,8 @@
       "title": "Ingeniería Civil Computación e Informática",
       "startDate": "Junio de 2017",
       "endDate": "Diciembre de 2023",
-      "score": "5.6"
+      "score": "5.6",
+      "skills": []
     },
     {
       "institution": "Proyecto de título",
@@ -66,7 +67,20 @@
       "title": "Líder en el desarrollo e implementación de un sistema de monitoreo en tiempo real de actividades académicas",
       "startDate": "Marzo de 2024",
       "endDate": "Julio de 2024",
-      "score": ""
+      "score": "",
+      "skills": [
+        "Html",
+        "Css",
+        "Tailwind",
+        "NextJs",
+        "NestJs",
+        "Nginx",
+        "Postgresql",
+        "Linux",
+        "Windows",
+        ".Net",
+        "C#"
+      ]
     }
   ],
   "certificates": [
