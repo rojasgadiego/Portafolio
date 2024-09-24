@@ -14,7 +14,7 @@ import Soa from '@/icons/soa.astro'
 import Linux from '@/icons/linux.astro'
 ---
 
-<Section title="Skills">
+<div title="Skills">
     <div class="container">
         <h2>Competencias</h2>
         <div class="skills-container">
@@ -32,7 +32,7 @@ import Linux from '@/icons/linux.astro'
             <div class="skill"><Soa height='46px' width='46px'/>Soa</div>
         </div>
     </div>
-</Section>
+</div>
 
 <style>
 
@@ -42,8 +42,8 @@ import Linux from '@/icons/linux.astro'
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 20px;
-    /* margin-top: -120px; */
+    transform: translateY(400px);
+    animation: slide-up 1.5s forwards ease;
 }
 
 h2{
@@ -62,9 +62,9 @@ h1{
 .skills-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px; /* Espacio entre elementos */
+      gap: 30px; /* Espacio entre elementos */
       justify-content: space-between; /* Centra los elementos horizontalmente */
-      width: 80%;
+      width: 100%;
     }
 
     .skill {

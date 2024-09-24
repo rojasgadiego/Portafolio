@@ -36,7 +36,8 @@ const { summary } = basics
     align-items: center;
     justify-content: center;
     text-align: justify;
-    padding-top: 20px;
+    background-color: #5555550e;
+    padding-block: 20px;
 }
 
 h1{
@@ -49,14 +50,15 @@ h2{
 }
 
 
-
 .containerinfo{
     display: flex;
     width: 80%;
+    transform: translateY(400px);
+    animation: slide-up 1.5s forwards ease;
 }
 
 .aboutme{
-    width: 50%;
+    width: 57%;
     font-size: 1.5rem;
     line-height: 2.5rem;
     display: flex;
@@ -64,6 +66,7 @@ h2{
     margin-top: 50px;
     max-height: 350px;
     margin-right: 20px;
+   
 }
 
 .study{
