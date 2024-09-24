@@ -1,28 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
+
 import About from '@/components/sections/About.astro';
 import Experience from '@/components/sections/Experience.astro';
 import Navbar from '@/components/NavBar.astro'
 import Gero from '@/components/sections/Hero.astro';
 import Projects from '@/components/sections/Projects.astro';
+import NavBar from '@/components/NavBar.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout title="Diego Rojas">
 	<main >
-		<Navbar/>
+		<NavBar/>
 		<Gero/>
 		<About/>
 		<Experience/>
 		<Projects/>
 	</main>
 </Layout>
-
-<style>
-
-	main{
-		margin: auto;
-		width: 100%;
-	}
-
-</style>
-
