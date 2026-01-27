@@ -41,14 +41,13 @@ sector financiero y migración de aplicaciones.
         <div class="floating-card">
           <div class="card-content">
             <div class="tech-stack">
-              <span class="tech-badge">.NET Core C#</span>
-              <span class="tech-badge">NESTJS</span>
-              <span class="tech-badge">NEXTJS</span>
-              <span class="tech-badge">ANGULAR</span>
-              <span class="tech-badge">Microservices</span>
-              <span class="tech-badge">Azure</span>
-              <span class="tech-badge">SQL Server</span>
+              <span class="tech-badge">.NET CORE / NESTJS / PYTHON</span>
+              <span class="tech-badge">NEXTJS / VUEJS / ANGULAR</span>
+              <span class="tech-badge">JAVASCRIPT / TYPESCRIPT</span>
+              <span class="tech-badge">MONOLITOS / MICROSERVICIOS</span>
               <span class="tech-badge">REST / SOAP / GRPC / GRAPHQL</span>
+              <span class="tech-badge">SQL SERVER / POSTGRESQL / PLSQL</span>
+              <span class="tech-badge">AZURE / AWS</span>
             </div>
           </div>
         </div>
