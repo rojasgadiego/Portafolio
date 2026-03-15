@@ -248,7 +248,93 @@ export const projects = [
   developmentContext: 'Proyecto desarrollado como prueba técnica para consultora, utilizado como oportunidad de experimentación y aprendizaje profundo de Vue.js',
   liveUrl: null,
   githubUrl: 'https://github.com/tu-usuario/masanalytics-frontend'
-}
+},
+{
+  id: 4,
+  cardTitle: 'Proyecto Freelance',
+  mainTechnologies: ['.NET Core', 'Vue.js', 'SQL Server'],
+  title: "Plataforma Web de Gestión para Club de Canotaje Polinesio Va'a",
+  subtitle: 'Sistema integral para administración de socios, reservas de equipos, control de pagos y seguimiento de entrenamientos',
+  category: 'Full Stack Development',
+  client: "Club de Canotaje Polinesio Va'a",
+  date: 'Junio 2024',
+  role: 'Full Stack Developer',
+  image: "/images/proyectos/vaa/imgproject1.png",
+  heroImage: "/images/proyectos/vaa/imgproject1.png",
+  description: "Desarrollo de una plataforma web completa para la gestión integral del club de canotaje polinesio Va'a. El sistema centraliza la administración de socios, permite la reserva de canoas y equipos, gestiona el cobro y seguimiento de cuotas, y registra el historial de entrenamientos de cada atleta. La solución reemplaza procesos manuales y en papel por una interfaz moderna, accesible desde cualquier dispositivo, facilitando tanto la labor administrativa del club como el seguimiento personal de cada deportista.",
+  challenge: "El principal desafío fue diseñar un sistema que se adaptara a la realidad operativa de un club deportivo con recursos limitados: (1) Modelar correctamente las relaciones entre socios, disciplinas, equipos y sesiones de entrenamiento dentro de un esquema de base de datos relacional en SQL Server, (2) Implementar un módulo de reservas que evite conflictos de disponibilidad en canoas y equipos compartidos entre múltiples atletas, (3) Gestionar el ciclo de vida de pagos y cuotas con alertas de mora y registro de historial, (4) Desarrollar una API RESTful robusta con .NET Core Web API que exponga de forma segura toda la lógica de negocio del club, (5) Construir una interfaz amigable con Vue.js que pueda ser usada sin capacitación técnica por los administradores del club. La autenticación por roles (administrador vs. socio), la consistencia de datos en las reservas simultáneas y la trazabilidad de pagos fueron aspectos críticos del proyecto.",
+  technologies: [
+    '.NET Core Web API',
+    'Vue.js',
+    'SQL Server',
+    'Entity Framework Core',
+    'TypeScript',
+    'JWT Authentication',
+    'REST API',
+    'Vuex / Pinia',
+    'Vue Router',
+    'Axios',
+    'IIS / Windows Server'
+  ],
+  gallery: [
+    "/images/proyectos/vaa/imgproject1.png",
+    "/images/proyectos/vaa/imgproject2.png",
+    "/images/proyectos/vaa/imgproject3.png"
+  ],
+  features: [
+    'Gestión completa de socios con perfiles, categorías y estado de membresía',
+    'Reserva de canoas y equipos con validación de disponibilidad en tiempo real',
+    'Control de pagos y cuotas con historial y alertas de mora',
+    'Registro de sesiones de entrenamiento por socio y disciplina',
+    'Panel administrativo con estadísticas del club',
+    'Sistema de autenticación con roles (administrador y socio)',
+    'Historial de entrenamientos y progreso individual de cada atleta',
+    'Gestión de inventario de equipos y estado de cada canoa',
+    'Notificaciones internas por vencimiento de cuotas',
+    'Reportes exportables de asistencia y pagos',
+    'Interfaz responsive y de uso intuitivo sin capacitación técnica',
+    'API RESTful documentada para integraciones futuras'
+  ],
+  architecture: {
+    backend: '.NET Core Web API',
+    frontend: 'Vue.js (SPA)',
+    database: 'SQL Server',
+    orm: 'Entity Framework Core',
+    authentication: 'JWT Token',
+    stateManagement: 'Pinia',
+    routing: 'Vue Router',
+    httpClient: 'Axios',
+    webServer: 'IIS / Windows Server',
+    apiStyle: 'RESTful API'
+  },
+  technicalHighlights: [
+    {
+      title: 'API RESTful con .NET Core',
+      description: 'Backend desarrollado con .NET Core Web API siguiendo principios REST y arquitectura en capas, con Entity Framework Core para el acceso a datos y migraciones controladas sobre SQL Server.'
+    },
+    {
+      title: 'Gestión de Reservas sin Conflictos',
+      description: 'Lógica de negocio que valida disponibilidad de canoas y equipos en tiempo real, previniendo reservas duplicadas o solapadas mediante control de concurrencia en la base de datos.'
+    },
+    {
+      title: 'Módulo de Pagos y Cuotas',
+      description: 'Sistema de seguimiento del ciclo de vida de pagos por socio, con registro histórico, cálculo automático de deudas pendientes y alertas por vencimiento de cuota mensual.'
+    },
+    {
+      title: 'SPA con Vue.js',
+      description: 'Interfaz de usuario moderna desarrollada como Single Page Application con Vue.js, Pinia para manejo de estado global y Vue Router para navegación fluida entre módulos.'
+    }
+  ],
+  results: [
+    { value: '100%', metric: 'Procesos Digitalizados' },
+    { value: '4', metric: 'Módulos Principales' },
+    { value: '0', metric: 'Conflictos de Reserva' },
+    { value: '1', metric: 'Club Gestionado Integralmente' }
+  ],
+  projectType: 'Proyecto Freelance',
+  liveUrl: null,
+  githubUrl: null
+},
 ]
 
 // Función helper para obtener un proyecto por ID

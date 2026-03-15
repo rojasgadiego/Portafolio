@@ -7,18 +7,6 @@
         <div class="timeline">
 
           <div class="timeline-item">
-            <div class="timeline-date">Enero 2026 - Actualidad</div>
-            <h3>Desarrollador Fullstack</h3>
-            <p class="company">Imagenmaker - Metlife | Santiago, Chile</p>
-            <ul class="responsibilities">
-              <li>Desarrollo y mantenimiento de aplicaciones backend utilizando .NET Core 6/8</li>
-              <li>Migración de aplicaciones python a .NET Core 8</li>
-              <li>Diseño y optimización de procedimientos almacenados en SQL Server</li>
-              <li>Construcción de aplicaciones frontend con Nextjs</li>
-            </ul>
-          </div>
-
-          <div class="timeline-item">
             <div class="timeline-date">Jul 2025 - Enero 2026</div>
             <h3>.NET Developer C#</h3>
             <p class="company">XMS - Larrainvial | Santiago, Chile</p>
