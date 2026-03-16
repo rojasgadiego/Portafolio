@@ -9,7 +9,7 @@
           <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
             <h3>Dirección</h3>
-            <p><br>Quilicura - Santiago</p>
+            <p>Quilicura - Santiago</p>
           </div>
           <div class="info-card">
             <i class="fas fa-envelope"></i>
