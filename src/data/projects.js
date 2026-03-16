@@ -89,7 +89,7 @@ export const projects = [
   ],
   projectType: 'Proyecto de Título',
   liveUrl: null,
-  githubUrl: 'https://github.com/tu-usuario/masanalytics-frontend'
+  githubUrl: ''
 },
 {
   id: 2,
@@ -155,7 +155,8 @@ export const projects = [
     apiStyle: 'RESTful API'
   },
   liveUrl: null,
-  githubUrl: 'https://github.com/tu-usuario/masanalytics-frontend'
+  githubFrontUrl: 'https://github.com/rojasgadiego/colibri-app-frontend',
+  githubBackUrl: 'https://github.com/rojasgadiego/colibri-app-backend'
 },
 {
   id: 3,
@@ -247,7 +248,7 @@ export const projects = [
   projectType: 'Prueba Técnica',
   developmentContext: 'Proyecto desarrollado como prueba técnica para consultora, utilizado como oportunidad de experimentación y aprendizaje profundo de Vue.js',
   liveUrl: null,
-  githubUrl: 'https://github.com/tu-usuario/masanalytics-frontend'
+  githubUrl: 'https://github.com/rojasgadiego/desafioMASAnalytics'
 },
 {
   id: 4,
@@ -338,7 +339,8 @@ export const projects = [
   ],
   projectType: 'Proyecto Freelance',
   liveUrl: null,
-  githubUrl: null
+  githubFrontUrl: 'https://github.com/rojasgadiego/manuva---frontend',
+  githubBackUrl: 'https://github.com/rojasgadiego/ClubCanotaje'
 },
 {
   id: 5,

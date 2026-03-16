@@ -4,12 +4,14 @@
 
       <!-- Header del Proyecto -->
       <div class="project-header">
-        <button @click="goBack" class="back-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Volver
-        </button>
+        <div class="back-btn-wrapper">
+          <button @click="goBack" class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Volver
+          </button>
+        </div>
         
         <div class="project-title-section">
           <div class="project-category-wrapper">
@@ -202,8 +204,24 @@
 
       <!-- Navegación entre proyectos -->
       <div class="project-navigation">
-        <button class="nav-btn prev-btn">← Proyecto Anterior</button>
-        <button class="nav-btn next-btn">Siguiente Proyecto →</button>
+        <button
+          class="nav-btn prev-btn"
+          :class="{ 'nav-btn--disabled': !prevProject }"
+          :disabled="!prevProject"
+          @click="goToPrev"
+        >
+          <span class="nav-btn-direction">← Anterior</span>
+          <span class="nav-btn-title">{{ prevProject ? prevProject.title : 'No hay proyecto anterior' }}</span>
+        </button>
+        <button
+          class="nav-btn next-btn"
+          :class="{ 'nav-btn--disabled': !nextProject }"
+          :disabled="!nextProject"
+          @click="goToNext"
+        >
+          <span class="nav-btn-direction">Siguiente →</span>
+          <span class="nav-btn-title">{{ nextProject ? nextProject.title : 'No hay proyecto siguiente' }}</span>
+        </button>
       </div>
     </div>
 
@@ -243,7 +261,7 @@
 </template>
 
 <script>
-import { getProjectById } from '../data/projects'
+import { getProjectById, projects } from '../data/projects'
 
 export default {
   name: 'ProjectDetail',
@@ -268,13 +286,29 @@ export default {
   watch: {
     '$route.params.id'(newId) {
       this.project = getProjectById(newId)
+      this.lightboxOpen = false
+      this.currentImageIndex = 0
+      window.scrollTo(0, 0)
     },
     lightboxOpen(isOpen) {
       document.body.style.overflow = isOpen ? 'hidden' : ''
     }
   },
+  computed: {
+    currentIndex() {
+      return projects.findIndex(p => p.id === this.project?.id)
+    },
+    prevProject() {
+      return this.currentIndex > 0 ? projects[this.currentIndex - 1] : null
+    },
+    nextProject() {
+      return this.currentIndex < projects.length - 1 ? projects[this.currentIndex + 1] : null
+    }
+  },
   methods: {
     goBack() { this.$router.push('/proyectos') },
+    goToPrev() { if (this.prevProject) this.$router.push(`/proyectos/${this.prevProject.id}`) },
+    goToNext() { if (this.nextProject) this.$router.push(`/proyectos/${this.nextProject.id}`) },
     openLightbox(index) { this.currentImageIndex = index; this.lightboxOpen = true },
     closeLightbox() { this.lightboxOpen = false },
     nextImage() { if (this.currentImageIndex < this.project.gallery.length - 1) this.currentImageIndex++ },
@@ -317,6 +351,12 @@ export default {
 }
 
 /* ─── BACK BTN ─────────────────────────────────────── */
+.back-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
 .back-btn {
   display: inline-flex;
   align-items: center;
@@ -330,7 +370,6 @@ export default {
   font-size: 0.875rem;
   font-family: inherit;
   transition: all 0.25s ease;
-  margin-bottom: 2rem;
 }
 
 .back-btn:hover {
@@ -691,17 +730,48 @@ export default {
   padding: 1.25rem;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 0.9rem;
   font-family: inherit;
-  font-weight: 500;
   transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
 }
 
-.nav-btn:hover {
+.next-btn { text-align: right; }
+
+.nav-btn-direction {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  display: block;
+}
+
+.nav-btn-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-btn:hover:not(.nav-btn--disabled) {
   border-color: rgba(59, 130, 246, 0.4);
-  color: #fff;
   background: rgba(59, 130, 246, 0.06);
   transform: translateY(-2px);
+}
+
+.nav-btn:hover:not(.nav-btn--disabled) .nav-btn-title {
+  color: #fff;
+}
+
+.nav-btn--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* ─── LIGHTBOX ─────────────────────────────────────── */
@@ -840,6 +910,13 @@ export default {
 @media (max-width: 768px) {
   .project-detail { padding: 7.5rem 1.25rem 3rem; }
 
+  .back-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+    margin-top: -5.8rem;
+  }
+
   .project-title { font-size: 2.2rem; }
   .project-subtitle { font-size: 0.95rem; }
 
@@ -865,6 +942,7 @@ export default {
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
   .project-detail { padding: 7rem 1rem 2.5rem; }
+  .back-btn-wrapper { margin-top: -5.8rem; }
   .project-title { font-size: 1.65rem; }
   .section-title { font-size: 1.15rem; }
 }

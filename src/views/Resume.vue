@@ -14,7 +14,8 @@
             <div class="timeline-header">
               <div class="timeline-date">Jul 2025 – Ene 2026</div>
               <h3>.NET Developer C#</h3>
-              <p class="company">XMS – Larrainvial &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company">  <a href="https://www.xmslatam.com/" target="_blank" rel="noopener noreferrer">XMS</a>
+ – <a href="https://chile.larrainvial.com/" target="_blank" rel="noopener noreferrer">Larrainvial</a> &nbsp;·&nbsp; Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo y mantenimiento de aplicaciones backend utilizando .NET Core 6/8</li>
@@ -29,7 +30,8 @@
             <div class="timeline-header">
               <div class="timeline-date">Ago 2024 – Jun 2025</div>
               <h3>.NET Developer C#</h3>
-              <p class="company">Socius IARQ – MetLife &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
+ – <a href="https://w3.metlife.cl/" target="_blank" rel="noopener noreferrer">MetLife</a> &nbsp;·&nbsp; Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo de servicios RESTful utilizando .NET Core 8</li>
@@ -42,7 +44,9 @@
             <div class="timeline-header">
               <div class="timeline-date">Oct 2021 – Abr 2023</div>
               <h3>Analista de Sistemas de TI</h3>
-              <p class="company">Socius IARQ – Banco Santander &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
+ –   <a href="https://banco.santander.cl/" target="_blank" rel="noopener noreferrer">Banco Santander</a>
+ &nbsp;·&nbsp; Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Monitoreo y mantenimiento preventivo de servidores de producción</li>
@@ -56,7 +60,8 @@
             <div class="timeline-header">
               <div class="timeline-date">Ago 2021 – Oct 2021</div>
               <h3>TIBCO BW Developer</h3>
-              <p class="company">Socius IARQ &nbsp;·&nbsp; Coquimbo, Chile</p>
+              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
+ &nbsp;·&nbsp; Coquimbo, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo de aplicaciones y componentes de TIBCO BW en entorno SOA</li>
@@ -81,7 +86,8 @@
             <div class="timeline-header">
               <div class="timeline-date">Ene 2019 – Dic 2024</div>
               <h3>Ingeniería Civil en Computación e Informática</h3>
-              <p class="company">Universidad Católica del Norte &nbsp;·&nbsp; Coquimbo, Chile</p>
+              <p class="company">  <a href="https://www.ucn.cl/" target="_blank" rel="noopener noreferrer">Universidad Católica del Norte</a>
+ &nbsp;·&nbsp; Coquimbo, Chile</p>
             </div>
             <p class="timeline-desc">
               Formación integral en desarrollo de software, bases de datos, arquitectura de sistemas y gestión de proyectos tecnológicos.
