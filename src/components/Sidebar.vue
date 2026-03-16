@@ -16,21 +16,6 @@
         <p class="profile-title">Desarrollador de Software - fullstack</p>
       </div>
 
-      <div class="social-links">
-        <a href="https://github.com/rojasgadiego" target="_blank" class="social-link" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/diego-rojas-garcia" target="_blank" class="social-link" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:rojasgadiego@gmail.com" target="_blank" class="social-link" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/56961282075" target="_blank" class="social-link" aria-label="WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </div>
-
       <nav class="navigation">
         <router-link 
           to="/about" 
@@ -62,16 +47,6 @@
           <span>Proyectos</span>
         </router-link>
 
-        <!-- <router-link 
-          to="/services" 
-          class="nav-item" 
-          active-class="active"
-          @click="closeSidebar"
-        >
-          <i class="fas fa-cogs"></i>
-          <span>Services</span>
-        </router-link> -->
-
         <router-link 
           to="/contact" 
           class="nav-item" 
@@ -82,6 +57,22 @@
           <span>Contact</span>
         </router-link>
       </nav>
+
+      <!-- Redes sociales al fondo -->
+      <div class="social-links">
+        <a href="https://github.com/rojasgadiego" target="_blank" class="social-link" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/diego-rojas-garcia" target="_blank" class="social-link" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:rojasgadiego@gmail.com" target="_blank" class="social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/56961282075" target="_blank" class="social-link" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
 
       <!-- Botón cerrar dentro del sidebar (móvil) -->
       <button class="close-button" @click="closeSidebar">
@@ -114,7 +105,6 @@ export default {
       this.toggleBodyScroll()
     },
     toggleBodyScroll() {
-      // Prevenir scroll del body cuando el sidebar está abierto en móvil
       if (window.innerWidth <= 768) {
         if (this.isOpen) {
           document.body.style.overflow = 'hidden'
@@ -125,7 +115,6 @@ export default {
     }
   },
   mounted() {
-    // Cerrar sidebar al cambiar el tamaño de la ventana
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.isOpen = false
@@ -134,7 +123,6 @@ export default {
     })
   },
   beforeUnmount() {
-    // Limpiar el overflow del body al destruir el componente
     document.body.style.overflow = ''
   }
 }
@@ -147,13 +135,17 @@ export default {
   top: 0;
   width: 250px;
   height: 100vh;
-  background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
+  /* ← fondo unificado con el resto del sitio */
+  background: #0a0a0a;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
   color: #fff;
   padding: 2rem 0;
   overflow-y: auto;
   z-index: 1000;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  /* flex para empujar las redes al fondo */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-header {
@@ -192,36 +184,10 @@ export default {
   font-weight: 400;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-link {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.social-link:hover {
-  background: #3b82f6;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
-}
-
 .navigation {
   padding: 1rem 0;
+  /* crece para ocupar el espacio disponible y empujar redes al fondo */
+  flex: 1;
 }
 
 .nav-item {
@@ -257,14 +223,33 @@ export default {
   border-left: 3px solid #3b82f6;
 }
 
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 3px;
+/* Redes sociales — al fondo gracias al flex */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.social-link:hover {
   background: #3b82f6;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
 }
 
 /* Botón cerrar (solo visible en móvil) */
@@ -282,27 +267,23 @@ export default {
   display: none;
 }
 
-/* RESPONSIVE - TABLET Y MÓVIL */
+/* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 968px) {
-  .sidebar {
-    width: 280px;
-  }
+  .sidebar { width: 280px; }
 }
 
+/* ─── MÓVIL ────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Sidebar oculto por defecto en móvil */
   .sidebar {
     transform: translateX(-100%);
     width: 280px;
     z-index: 1001;
   }
 
-  /* Sidebar visible cuando está abierto */
   .sidebar.sidebar-open {
     transform: translateX(0);
   }
 
-  /* Overlay oscuro cuando el sidebar está abierto */
   .sidebar-overlay {
     display: block;
     position: fixed;
@@ -316,15 +297,10 @@ export default {
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
-  /* Botón cerrar dentro del sidebar */
   .close-button {
     display: flex;
     position: absolute;
@@ -348,7 +324,6 @@ export default {
     transform: rotate(90deg);
   }
 
-  /* Botón toggle hamburguesa */
   .mobile-toggle {
     display: flex;
     position: fixed;
@@ -368,22 +343,14 @@ export default {
     transition: all 0.3s ease;
   }
 
-  .mobile-toggle:hover {
-    background: #2563eb;
-    transform: scale(1.05);
-  }
+  .mobile-toggle:hover  { background: #2563eb; transform: scale(1.05); }
+  .mobile-toggle:active { transform: scale(0.95); }
 
-  .mobile-toggle:active {
-    transform: scale(0.95);
-  }
-
-  /* Ocultar el botón toggle cuando el sidebar está abierto */
   .mobile-toggle.hidden {
     opacity: 0;
     pointer-events: none;
   }
 
-  /* Ajustar el header en móvil */
   .sidebar-header {
     padding: 3rem 1.5rem 1.5rem;
   }
@@ -393,11 +360,10 @@ export default {
     height: 80px;
   }
 
-  .profile-name {
-    font-size: 1.3rem;
-  }
+  .profile-name { font-size: 1.3rem; }
 }
 
+/* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
   .sidebar {
     width: 85vw;
@@ -411,18 +377,10 @@ export default {
     left: 1rem;
   }
 
-  .profile-image {
-    width: 70px;
-    height: 70px;
-  }
+  .profile-image { width: 70px; height: 70px; }
+  .profile-name  { font-size: 1.2rem; }
 
-  .profile-name {
-    font-size: 1.2rem;
-  }
-
-  .social-links {
-    gap: 0.5rem;
-  }
+  .social-links  { gap: 0.5rem; }
 
   .social-link {
     width: 32px;
@@ -430,37 +388,13 @@ export default {
     font-size: 0.85rem;
   }
 
-  .nav-item {
-    padding: 0.75rem 1.25rem;
-  }
-
-  .nav-item span {
-    font-size: 0.9rem;
-  }
+  .nav-item { padding: 0.75rem 1.25rem; }
+  .nav-item span { font-size: 0.9rem; }
 }
 
-/* Scrollbar personalizado */
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.5);
-  border-radius: 3px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.7);
-}
-
-/* Transiciones suaves */
-.sidebar,
-.sidebar-overlay,
-.mobile-toggle {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* ─── SCROLLBAR ────────────────────────────────────── */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.5); border-radius: 3px; }
+.sidebar::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.7); }
 </style>
