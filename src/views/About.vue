@@ -8,7 +8,9 @@
         <h2 class="hero-role">Desarrollador Backend - Fullstack</h2>
 
         <p class="hero-description">
-          Ingeniero civil informático con base sólida en .NET Core y NestJS, especializado en sistemas empresariales del sector financiero. Actualmente expandiendo mi foco hacia el desarrollo de agentes de IA y aplicaciones end-to-end
+          Ingeniero civil informático con experiencia en desarrollo backend con .NET Core, Nestjs y 
+          conocimientos en frontend. Especializado en la construcción y optimización de sistemas empresariales del 
+          sector financiero y migración de aplicaciones. 
         </p>
         
         <div class="stats-grid">
@@ -393,19 +395,22 @@ export default {
 
   .hero-visual { height: auto; }
   .floating-card {
-    padding: 1.5rem;
+    padding: 2rem;
     animation: none;
     border-radius: 16px;
   }
 
-  .tech-groups { gap: 1.25rem; }
-  .tech-group-label { font-size: 0.6rem; }
-  .tech-stack { gap: 0.4rem; }
+  .tech-groups { gap: 1.5rem; }
+  .tech-group-label { font-size: 0.68rem; }
+  .tech-stack { gap: 0.5rem; }
   .tech-badge {
-    padding: 0.6rem 1rem;
-    font-size: 0.78rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
     border-radius: 10px;
     text-align: center;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .hero-buttons {
@@ -435,7 +440,7 @@ export default {
   .hero-description { font-size: 0.9rem; }
   .stats-grid { padding: 1rem 0; }
   .stat-number { font-size: 1.75rem; }
-  .floating-card { padding: 1.25rem; }
-  .tech-badge { font-size: 0.72rem; padding: 0.55rem 0.75rem; }
+  .floating-card { padding: 1.5rem; }
+  .tech-badge { font-size: 0.82rem; padding: 0.65rem 1rem; display: block; width: 100%; box-sizing: border-box; }
 }
 </style>
