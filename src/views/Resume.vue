@@ -1,248 +1,340 @@
 <template>
   <div class="resume">
     <div class="container">
-      
+
+      <!-- EXPERIENCIA -->
       <div class="resume-section">
-        <h2><i class="fas fa-briefcase"></i> Experiencia Laboral</h2>
+        <h2 class="section-title">
+          <span class="section-icon"><i class="fas fa-briefcase"></i></span>
+          Experiencia Laboral
+        </h2>
         <div class="timeline">
 
           <div class="timeline-item">
-            <div class="timeline-date">Jul 2025 - Enero 2026</div>
-            <h3>.NET Developer C#</h3>
-            <p class="company">XMS - Larrainvial | Santiago, Chile</p>
+            <div class="timeline-header">
+              <div class="timeline-date">Jul 2025 – Ene 2026</div>
+              <h3>.NET Developer C#</h3>
+              <p class="company">XMS – Larrainvial &nbsp;·&nbsp; Santiago, Chile</p>
+            </div>
             <ul class="responsibilities">
               <li>Desarrollo y mantenimiento de aplicaciones backend utilizando .NET Core 6/8</li>
               <li>Actualización y migración de frameworks desde .NET 6 a .NET 8</li>
               <li>Diseño y optimización de procedimientos almacenados en SQL Server</li>
               <li>Resolución de incidencias y análisis de requerimientos técnicos</li>
-              <li>Mantención y mejora de funcionalidades existentes en backend end como frontend</li>
+              <li>Mantención y mejora de funcionalidades existentes en backend y frontend</li>
             </ul>
           </div>
-          
+
           <div class="timeline-item">
-            <div class="timeline-date">Ago 2024 - Jun 2025</div>
-            <h3>.NET Developer C#</h3>
-            <p class="company">Socius IARQ - MetLife | Santiago, Chile</p>
+            <div class="timeline-header">
+              <div class="timeline-date">Ago 2024 – Jun 2025</div>
+              <h3>.NET Developer C#</h3>
+              <p class="company">Socius IARQ – MetLife &nbsp;·&nbsp; Santiago, Chile</p>
+            </div>
             <ul class="responsibilities">
               <li>Desarrollo de servicios RESTful utilizando .NET Core 8</li>
               <li>Optimización de consultas SQL y procedimientos almacenados para DB2 en IBM AS400</li>
               <li>Migración de aplicaciones Genexus v8/v9 a .NET Core 8</li>
             </ul>
           </div>
-          
+
           <div class="timeline-item">
-            <div class="timeline-date">Oct 2021 - Abr 2023</div>
-            <h3>Analista de Sistemas de TI</h3>
-            <p class="company">Socius IARQ - Banco Santander | Santiago, Chile</p>
+            <div class="timeline-header">
+              <div class="timeline-date">Oct 2021 – Abr 2023</div>
+              <h3>Analista de Sistemas de TI</h3>
+              <p class="company">Socius IARQ – Banco Santander &nbsp;·&nbsp; Santiago, Chile</p>
+            </div>
             <ul class="responsibilities">
               <li>Monitoreo y mantenimiento preventivo de servidores de producción</li>
               <li>Gestión de más de 700 incidencias a través de ServiceNow</li>
-              <li>Manipulación de bases de datos y ejecución de servicios REST/SOAP para la continuidad del sistema en ambiente producción</li>
+              <li>Manipulación de bases de datos y ejecución de servicios REST/SOAP para la continuidad del sistema en producción</li>
               <li>Participación en equipos multidisciplinarios para resolver incidentes críticos</li>
             </ul>
           </div>
-          
+
           <div class="timeline-item">
-            <div class="timeline-date">Ago 2021 - Oct 2021</div>
-            <h3>TIBCO BW Developer</h3>
-            <p class="company">Socius IARQ | Coquimbo, Chile</p>
+            <div class="timeline-header">
+              <div class="timeline-date">Ago 2021 – Oct 2021</div>
+              <h3>TIBCO BW Developer</h3>
+              <p class="company">Socius IARQ &nbsp;·&nbsp; Coquimbo, Chile</p>
+            </div>
             <ul class="responsibilities">
               <li>Desarrollo de aplicaciones y componentes de TIBCO BW en entorno SOA</li>
               <li>Confección de documentos técnicos detallados</li>
               <li>Integración de procedimientos almacenados, llamados REST/SOAP en flujos de trabajo del negocio</li>
             </ul>
           </div>
+
         </div>
       </div>
 
+      <div class="section-divider"></div>
+
+      <!-- EDUCACIÓN -->
       <div class="resume-section">
-        <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
+        <h2 class="section-title">
+          <span class="section-icon"><i class="fas fa-graduation-cap"></i></span>
+          Educación
+        </h2>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">Ene 2019 - Dic 2024</div>
-            <h3>Ingeniería Civil en Computación e Informática</h3>
-            <p class="company">Universidad Católica del Norte | Coquimbo, Chile</p>
-            <p>Formación integral en desarrollo de software, bases de datos, arquitectura de sistemas y gestión de proyectos tecnológicos.</p>
-          <ul class="responsibilities">
-              <li>Proyecto de título: Desarrollo de una plataforma web de monitoreo, con captura automática de 
-pantallas, procesamiento de video y dashboard de visualización en tiempo real.</li>
+            <div class="timeline-header">
+              <div class="timeline-date">Ene 2019 – Dic 2024</div>
+              <h3>Ingeniería Civil en Computación e Informática</h3>
+              <p class="company">Universidad Católica del Norte &nbsp;·&nbsp; Coquimbo, Chile</p>
+            </div>
+            <p class="timeline-desc">
+              Formación integral en desarrollo de software, bases de datos, arquitectura de sistemas y gestión de proyectos tecnológicos.
+            </p>
+            <ul class="responsibilities">
+              <li>Proyecto de título: Plataforma web de monitoreo con captura automática de pantallas, procesamiento de video y dashboard de visualización en tiempo real.</li>
             </ul>
           </div>
-          
         </div>
       </div>
 
+      <div class="section-divider"></div>
+
+      <!-- TECNOLOGÍAS -->
       <div class="resume-section">
-        <h2><i class="fas fa-tools"></i> Tecnologías y Herramientas</h2>
+        <h2 class="section-title">
+          <span class="section-icon"><i class="fas fa-tools"></i></span>
+          Tecnologías y Herramientas
+        </h2>
         <div class="tech-grid">
+
           <div class="tech-item">
-            <i class="fas fa-code"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="tech-icon" alt="C#" />
             <span>C# / .NET Core 6/8</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-code"></i>
-            <span>Nest JS</span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" class="tech-icon" alt="NestJS" />
+            <span>NestJS</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-code"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-icon" alt="Python" />
             <span>Python</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-database"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" class="tech-icon" alt="SQL Server" />
             <span>SQL Server / DB2</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-database"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="tech-icon" alt="PostgreSQL" />
             <span>PostgreSQL</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-network-wired"></i>
+            <i class="fas fa-network-wired tech-icon-fa"></i>
             <span>REST / SOAP APIs</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-cube"></i>
+            <i class="fas fa-cube tech-icon-fa"></i>
             <span>Microservicios</span>
           </div>
           <div class="tech-item">
-            <i class="fab fa-react"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tech-icon" alt="NextJS" />
             <span>Next JS</span>
           </div>
           <div class="tech-item">
-            <i class="fab fa-react"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tech-icon" alt="React" />
             <span>React JS</span>
           </div>
           <div class="tech-item">
-            <i class="fab fa-react"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" class="tech-icon" alt="Vue" />
             <span>Vue JS / Vite</span>
           </div>
           <div class="tech-item">
-            <i class="fab fa-node-js"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="tech-icon" alt="NodeJS" />
             <span>Node JS</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-code-branch"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tech-icon" alt="Git" />
             <span>Git</span>
           </div>
           <div class="tech-item">
-            <i class="fas fa-file-code"></i>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="tech-icon" alt="VS Code" />
             <span>Visual Studio / VS Code</span>
           </div>
+
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Resume'
+  name: 'Resume',
+  mounted() {
+    this.animateEntrance()
+  },
+  methods: {
+    animateEntrance() {
+      const sections = this.$el.querySelectorAll('.resume-section, .section-divider')
+      sections.forEach((el, i) => {
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(24px)'
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+        }, i * 150)
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
+/* ─── BASE ─────────────────────────────────────────── */
 .resume {
   min-height: 100vh;
-  padding: 4rem 2rem;
-  background: #1a1a1a;
+  padding: 5rem 2rem 4rem; /* desktop: sidebar lateral, no hay botón encima */
+  background: #0a0a0a;
+  position: relative;
+}
+
+.resume::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06) 0%, transparent 40%);
+  pointer-events: none;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1300px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.page-title {
-  font-size: 3rem;
-  color: #fff;
-  margin-bottom: 3rem;
-  text-align: center;
+/* ─── SEPARADOR DE SECCIÓN ─────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  margin: 3rem 0;
 }
 
+/* ─── TÍTULO DE SECCIÓN ────────────────────────────── */
 .resume-section {
-  margin-bottom: 4rem;
+  margin-bottom: 0;
 }
 
-.resume-section h2 {
+.section-title {
+  font-size: 1.75rem;
   color: #fff;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.875rem;
+  font-weight: 700;
 }
 
-.resume-section h2 i {
+.section-icon {
+  width: 38px;
+  height: 38px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.section-icon i {
   color: #3b82f6;
+  font-size: 0.95rem;
 }
 
+/* ─── TIMELINE ─────────────────────────────────────── */
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0;
+  top: 6px;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #3b82f6, rgba(59, 130, 246, 0.2));
+  background: linear-gradient(180deg, #3b82f6 0%, rgba(59, 130, 246, 0.1) 100%);
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 2.5rem;
-  padding-left: 2rem;
 }
 
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Punto en la línea */
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2.5rem;
-  top: 0;
-  width: 12px;
-  height: 12px;
+  left: -2.94rem;
+  top: 6px;
+  width: 10px;
+  height: 10px;
   background: #3b82f6;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.timeline-header {
+  margin-bottom: 0.75rem;
 }
 
 .timeline-date {
-  color: #3b82f6;
+  font-size: 0.78rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  color: #3b82f6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
 }
 
 .timeline-item h3 {
   color: #fff;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
 }
 
 .company {
-  color: rgba(255, 255, 255, 0.6);
-  font-style: italic;
-  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.875rem;
+  margin: 0;
 }
 
-.timeline-item p:last-child {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
+.timeline-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
 }
 
 .responsibilities {
   list-style: none;
   padding: 0;
-  margin-top: 0.75rem;
+  margin: 0;
 }
 
 .responsibilities li {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.4rem;
+  padding-left: 1.25rem;
   position: relative;
 }
 
@@ -251,62 +343,93 @@ export default {
   position: absolute;
   left: 0;
   color: #3b82f6;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
+/* ─── TECH GRID ────────────────────────────────────── */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.875rem;
 }
 
 .tech-item {
-  background: rgba(59, 130, 246, 0.1);
-  padding: 1rem;
+  background: rgba(59, 130, 246, 0.06);
+  padding: 1rem 1.125rem;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  gap: 0.875rem;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  transition: all 0.25s ease;
 }
 
 .tech-item:hover {
-  background: rgba(59, 130, 246, 0.15);
-  transform: translateX(5px);
-  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateX(4px);
 }
 
-.tech-item i {
+.tech-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Ícono de Font Awesome (fallback para REST, Microservicios) */
+.tech-icon-fa {
   color: #3b82f6;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .tech-item span {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
-@media (max-width: 640px) {
-  .page-title {
-    font-size: 2.5rem;
-  }
+/* ─── TABLET ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
+  .resume { padding: 7.5rem 1.25rem 3rem; }
 
-  .timeline {
-    padding-left: 1rem;
-  }
+  .section-title { font-size: 1.35rem; }
 
-  .timeline-item {
-    padding-left: 1.5rem;
-  }
+  .timeline { padding-left: 1.75rem; }
+  .timeline-item::before { left: -2.2rem; }
 
-  .timeline-item::before {
-    left: -2rem;
+  .timeline-item h3 { font-size: 1.05rem; }
+
+  .tech-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+
+  .tech-item {
+    padding: 0.75rem 0.875rem;
   }
-  
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
+}
+
+/* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
+@media (max-width: 480px) {
+  /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
+  .resume { padding: 7rem 1rem 2.5rem; }
+
+  .section-title { font-size: 1.2rem; gap: 0.65rem; }
+  .section-icon  { width: 32px; height: 32px; border-radius: 8px; }
+
+  .timeline { padding-left: 1.5rem; }
+  .timeline-item::before { left: -1.93rem; width: 8px; height: 8px; }
+  .timeline-item { margin-bottom: 2rem; }
+
+  .timeline-date { font-size: 0.72rem; }
+  .timeline-item h3 { font-size: 1rem; }
+  .company { font-size: 0.8rem; }
+
+  .responsibilities li { font-size: 0.85rem; }
+
+  .tech-item span { font-size: 0.85rem; }
 }
 </style>

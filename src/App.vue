@@ -16,13 +16,13 @@
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
 import Sidebar from './components/Sidebar.vue'
-import HomeButton from './components/HomeButton.vue'
+// import HomeButton from './components/HomeButton.vue'
 
 export default {
   name: 'App',
   components: {
     Sidebar,
-    HomeButton
+    //HomeButton
   },
   setup() {
     const isMobile = ref(window.innerWidth <= 768)

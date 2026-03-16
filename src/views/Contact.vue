@@ -17,8 +17,8 @@
             <p>rojasgadiego@gmail.com</p>
           </div>
           <div class="info-card">
-            <i class="fas fa-phone"></i>
-            <h3>Teléfono</h3>
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
             <p>+56 9 61282075</p>
           </div>
         </div>
@@ -67,8 +67,8 @@
             ></textarea>
           </div>
           <button type="submit" class="submit-btn">
-            <i class="fas fa-paper-plane"></i>
-            Enviar Mensaje
+            <i class="fab fa-whatsapp"></i>
+            Enviar por WhatsApp
           </button>
         </form>
       </div>
@@ -91,14 +91,23 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log('Form submitted:', this.form)
-      alert('¡Mensaje enviado! Te contactaré pronto.')
-      this.form = {
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      }
+      const { name, email, subject, message } = this.form
+
+      const text = [
+        `👋 Hola Diego, te escribo desde tu portafolio.`,
+        ``,
+        `*Nombre:* ${name}`,
+        `*Email:* ${email}`,
+        `*Asunto:* ${subject}`,
+        ``,
+        `*Mensaje:*`,
+        message
+      ].join('\n')
+
+      const encoded = encodeURIComponent(text)
+      window.open(`https://wa.me/56961282075?text=${encoded}`, '_blank')
+
+      this.form = { name: '', email: '', subject: '', message: '' }
     }
   }
 }
@@ -108,12 +117,26 @@ export default {
 .contact {
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #1a1a1a;
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06) 0%, transparent 45%);
+  pointer-events: none;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .page-title {
@@ -143,21 +166,24 @@ export default {
 }
 
 .info-card {
-  background: linear-gradient(135deg, #2d2d2d 0%, #1f1f1f 100%);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .info-card:hover {
   transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .info-card i {
   font-size: 2rem;
   color: #3b82f6;
   margin-bottom: 1rem;
+  display: block;
 }
 
 .info-card h3 {
@@ -169,10 +195,12 @@ export default {
 .info-card p {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
+  margin: 0;
 }
 
 .contact-form {
-  background: linear-gradient(135deg, #2d2d2d 0%, #1f1f1f 100%);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 3rem;
   border-radius: 15px;
 }
@@ -203,7 +231,14 @@ export default {
   border-radius: 8px;
   color: #fff;
   font-size: 1rem;
+  font-family: inherit;
   transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .form-group input:focus,
@@ -222,12 +257,13 @@ export default {
 .submit-btn {
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: #25d366;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -236,11 +272,21 @@ export default {
   gap: 0.75rem;
 }
 
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+.submit-btn i {
+  font-size: 1.2rem;
 }
 
+.submit-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 968px) {
   .contact-content {
     grid-template-columns: 1fr;
@@ -253,5 +299,36 @@ export default {
   .page-title {
     font-size: 2.5rem;
   }
+}
+
+/* ─── MÓVIL ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact {
+    padding: 7.5rem 1.5rem 2.5rem;
+  }
+
+  .page-subtitle {
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .contact-form {
+    padding: 2rem 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+}
+
+/* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
+@media (max-width: 480px) {
+  .contact {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .page-title { font-size: 2rem; }
+
+  .contact-form { padding: 1.5rem 1rem; }
 }
 </style>

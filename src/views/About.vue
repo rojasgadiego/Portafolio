@@ -18,39 +18,63 @@
             <span class="stat-number">3+</span>
             <span class="stat-label">Años de experiencia</span>
           </div>
+          <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-item">
             <span class="stat-number">4+</span>
             <span class="stat-label">Proyectos completados</span>
           </div>
         </div>
-
-        <div class="hero-buttons">
-          <router-link to="/proyectos" class="btn btn-primary">
-            <span>Ver Proyectos</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
-            </svg>
-          </router-link>
-          <router-link to="/contact" class="btn btn-secondary">
-            Hablemos
-          </router-link>
-        </div>
       </div>
 
       <div class="hero-visual">
         <div class="floating-card">
-          <div class="card-content">
-            <div class="tech-stack">
-              <span class="tech-badge">.NET CORE / NESTJS / PYTHON</span>
-              <span class="tech-badge">NEXTJS / VUEJS / ANGULAR</span>
-              <span class="tech-badge">JAVASCRIPT / TYPESCRIPT</span>
-              <span class="tech-badge">MONOLITOS / MICROSERVICIOS</span>
-              <span class="tech-badge">REST / SOAP / GRPC / GRAPHQL</span>
-              <span class="tech-badge">SQL SERVER / POSTGRESQL / PLSQL</span>
-              <span class="tech-badge">AZURE / AWS</span>
+          <div class="tech-groups">
+
+            <div class="tech-group">
+              <span class="tech-group-label">Backend</span>
+              <div class="tech-stack">
+                <span class="tech-badge">.NET CORE / NESTJS / PYTHON</span>
+                <span class="tech-badge">MONOLITOS / MICROSERVICIOS</span>
+              </div>
             </div>
+
+            <div class="tech-group">
+              <span class="tech-group-label">Frontend</span>
+              <div class="tech-stack">
+                <span class="tech-badge">NEXTJS / VUEJS / ANGULAR</span>
+                <span class="tech-badge">JAVASCRIPT / TYPESCRIPT</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <span class="tech-group-label">APIs & Datos</span>
+              <div class="tech-stack">
+                <span class="tech-badge">REST / SOAP / GRPC / GRAPHQL</span>
+                <span class="tech-badge">SQL SERVER / POSTGRESQL / PLSQL</span>
+              </div>
+            </div>
+
+            <div class="tech-group">
+              <span class="tech-group-label">Cloud</span>
+              <div class="tech-stack">
+                <span class="tech-badge">AZURE / AWS</span>
+              </div>
+            </div>
+
           </div>
         </div>
+      </div>
+
+      <div class="hero-buttons">
+        <router-link to="/proyectos" class="btn btn-primary">
+          <span>Ver Proyectos</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
+          </svg>
+        </router-link>
+        <router-link to="/contact" class="btn btn-secondary">
+          Hablemos
+        </router-link>
       </div>
 
     </div>
@@ -65,16 +89,38 @@ export default {
   },
   methods: {
     animateElements() {
-      const elements = document.querySelectorAll('.hero-content > *')
-      elements.forEach((el, index) => {
+      const contentEls = this.$el.querySelectorAll('.hero-content > *')
+      contentEls.forEach((el, i) => {
         el.style.opacity = '0'
         el.style.transform = 'translateY(20px)'
         setTimeout(() => {
-          el.style.transition = 'all 0.6s ease'
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
           el.style.opacity = '1'
           el.style.transform = 'translateY(0)'
-        }, index * 100)
+        }, i * 100)
       })
+
+      const card = this.$el.querySelector('.hero-visual')
+      if (card) {
+        card.style.opacity = '0'
+        card.style.transform = 'translateY(20px)'
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          card.style.opacity = '1'
+          card.style.transform = 'translateY(0)'
+        }, contentEls.length * 100 + 100)
+      }
+
+      const buttons = this.$el.querySelector('.hero-buttons')
+      if (buttons) {
+        buttons.style.opacity = '0'
+        buttons.style.transform = 'translateY(20px)'
+        setTimeout(() => {
+          buttons.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          buttons.style.opacity = '1'
+          buttons.style.transform = 'translateY(0)'
+        }, contentEls.length * 100 + 250)
+      }
     }
   }
 }
@@ -94,26 +140,31 @@ export default {
 .home::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: 
     radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
+/* ─── DESKTOP ──────────────────────────────────────── */
 .hero-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  grid-template-areas:
+    "content visual"
+    "buttons visual";
+  gap: 3rem 6rem;
   max-width: 1300px;
   margin: 0 auto;
-  align-items: center;
+  align-items: start;
   position: relative;
   z-index: 1;
 }
+
+.hero-content { grid-area: content; }
+.hero-visual  { grid-area: visual; align-self: center; }
+.hero-buttons { grid-area: buttons; }
 
 .hero-greeting {
   font-size: 1.1rem;
@@ -150,11 +201,11 @@ export default {
   max-width: 540px;
 }
 
+/* ─── STATS ────────────────────────────────────────── */
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
   gap: 2rem;
-  margin-bottom: 3rem;
   padding: 2rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -164,6 +215,14 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
 }
 
 .stat-number {
@@ -180,6 +239,7 @@ export default {
   letter-spacing: 0.05em;
 }
 
+/* ─── BOTONES ──────────────────────────────────────── */
 .hero-buttons {
   display: flex;
   gap: 1rem;
@@ -194,6 +254,7 @@ export default {
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
@@ -202,20 +263,13 @@ export default {
   color: #fff;
   box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
 }
-
 .btn-primary:hover {
   background: #2563eb;
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
 }
-
-.btn-primary svg {
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover svg {
-  transform: translateX(4px);
-}
+.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary:hover svg { transform: translateX(4px); }
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.05);
@@ -223,13 +277,13 @@ export default {
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
 }
-
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-3px);
 }
 
+/* ─── CARD Y GRUPOS ────────────────────────────────── */
 .hero-visual {
   position: relative;
   height: 500px;
@@ -240,191 +294,150 @@ export default {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2.5rem;
   backdrop-filter: blur(20px);
   animation: float 6s ease-in-out infinite;
   z-index: 2;
 }
 
+.tech-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tech-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tech-group-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 .tech-stack {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .tech-badge {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 50px;
   color: #3b82f6;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
-
 .tech-badge:hover {
   background: rgba(59, 130, 246, 0.2);
   transform: translateY(-2px);
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-20px); }
 }
 
-/* RESPONSIVE - TABLET */
+/* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 968px) {
-  .home {
-    padding: 2rem 1.5rem;
-  }
+  .home { padding: 2rem 1.5rem; }
 
   .hero-section {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .hero-title {
-    font-size: 3rem;
-  }
-
-  .hero-role {
-    font-size: 1.5rem;
-  }
-
-  .hero-visual {
-    height: 300px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
+  .hero-title  { font-size: 3rem; }
+  .hero-role   { font-size: 1.5rem; }
+  .hero-visual { height: auto; }
+  .stat-number { font-size: 2rem; }
 }
 
-/* RESPONSIVE - MÓVIL */
+/* ─── MÓVIL ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .home {
-    padding: 6rem 1.5rem 2rem; /* ⚠️ Padding top aumentado para el botón hamburguesa */
-    min-height: 100vh;
-    align-items: flex-start; /* Alinear arriba en móvil */
+    /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
+    padding: 7.5rem 1.25rem 2.5rem;
+    align-items: flex-start;
   }
 
-  .hero-section {
-    gap: 2.5rem;
-    margin-top: 0;
-  }
+  .hero-section { gap: 1.75rem; }
 
-  .hero-greeting {
-    font-size: 1rem;
-    margin-top: 1rem; /* ⚠️ Espacio extra desde arriba */
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-role {
-    font-size: 1.3rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1.5rem 0;
-    margin-bottom: 2rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    height: auto;
-    min-height: 250px;
-  }
-
-  .floating-card {
-    padding: 2rem;
-  }
-
-  .tech-badge {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* RESPONSIVE - MÓVIL PEQUEÑO */
-@media (max-width: 480px) {
-  .home {
-    padding: 5rem 1rem 2rem; /* ⚠️ Padding reducido pero suficiente */
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-
-  .hero-role {
-    font-size: 1.1rem;
-  }
-
+  .hero-greeting { font-size: 1rem; }
+  .hero-title    { font-size: 2.4rem; line-height: 1.15; }
+  .hero-role     { font-size: 1.25rem; margin-bottom: 1rem; }
   .hero-description {
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 0;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    text-align: center;
+  }
+  .stat-item   { align-items: center; flex: unset; }
+  .stat-number { font-size: 2rem; }
+  .stat-label  { font-size: 0.7rem; }
+  .stat-divider { height: 2.5rem; }
+
+  .hero-visual { height: auto; }
+  .floating-card {
+    padding: 1.5rem;
+    animation: none;
+    border-radius: 16px;
+  }
+
+  .tech-groups { gap: 1.25rem; }
+  .tech-group-label { font-size: 0.6rem; }
+  .tech-stack { gap: 0.4rem; }
+  .tech-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    border-radius: 10px;
     text-align: center;
   }
 
-  .stat-item {
-    align-items: center;
-  }
-
-  .btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .floating-card {
-    padding: 1.5rem;
-  }
-
-  .tech-stack {
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
     gap: 0.75rem;
-    justify-content: center;
+    width: 100%;
   }
+  .btn {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+}
 
-  .tech-badge {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+/* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
+@media (max-width: 480px) {
+  .home {
+    /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
+    padding: 7rem 1rem 2rem;
   }
+  .hero-title { font-size: 2rem; }
+  .hero-role  { font-size: 1.1rem; }
+  .hero-description { font-size: 0.9rem; }
+  .stats-grid { padding: 1rem 0; }
+  .stat-number { font-size: 1.75rem; }
+  .floating-card { padding: 1.25rem; }
+  .tech-badge { font-size: 0.72rem; padding: 0.55rem 0.75rem; }
 }
 </style>
