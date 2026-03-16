@@ -252,15 +252,15 @@ export const projects = [
 {
   id: 4,
   cardTitle: 'Proyecto Freelance',
-  mainTechnologies: ['.NET Core', 'Vue.js', 'SQL Server'],
+  mainTechnologies: ['.NET Core 8', 'Vue.js', 'SQL Server', 'Docker'],
   title: "Plataforma Web de Gestión para Club de Canotaje Polinesio Va'a",
   subtitle: 'Sistema integral para administración de socios, reservas de equipos, control de pagos y seguimiento de entrenamientos',
   category: 'Full Stack Development',
   client: "Club de Canotaje Polinesio Va'a",
   date: 'Junio 2024',
   role: 'Full Stack Developer',
-  image: "/images/proyectos/vaa/imgproject1.png",
-  heroImage: "/images/proyectos/vaa/imgproject1.png",
+  image: "/images/proyectos/clubcanotaje/appcanotaje1.png",
+  heroImage: "/images/proyectos/clubcanotaje/appcanotaje1.png",
   description: "Desarrollo de una plataforma web completa para la gestión integral del club de canotaje polinesio Va'a. El sistema centraliza la administración de socios, permite la reserva de canoas y equipos, gestiona el cobro y seguimiento de cuotas, y registra el historial de entrenamientos de cada atleta. La solución reemplaza procesos manuales y en papel por una interfaz moderna, accesible desde cualquier dispositivo, facilitando tanto la labor administrativa del club como el seguimiento personal de cada deportista.",
   challenge: "El principal desafío fue diseñar un sistema que se adaptara a la realidad operativa de un club deportivo con recursos limitados: (1) Modelar correctamente las relaciones entre socios, disciplinas, equipos y sesiones de entrenamiento dentro de un esquema de base de datos relacional en SQL Server, (2) Implementar un módulo de reservas que evite conflictos de disponibilidad en canoas y equipos compartidos entre múltiples atletas, (3) Gestionar el ciclo de vida de pagos y cuotas con alertas de mora y registro de historial, (4) Desarrollar una API RESTful robusta con .NET Core Web API que exponga de forma segura toda la lógica de negocio del club, (5) Construir una interfaz amigable con Vue.js que pueda ser usada sin capacitación técnica por los administradores del club. La autenticación por roles (administrador vs. socio), la consistencia de datos en las reservas simultáneas y la trazabilidad de pagos fueron aspectos críticos del proyecto.",
   technologies: [
@@ -277,9 +277,14 @@ export const projects = [
     'IIS / Windows Server'
   ],
   gallery: [
-    "/images/proyectos/vaa/imgproject1.png",
-    "/images/proyectos/vaa/imgproject2.png",
-    "/images/proyectos/vaa/imgproject3.png"
+    "/images/proyectos/clubcanotaje/appcanotaje1.png",
+    "/images/proyectos/clubcanotaje/appcanotaje2.png",
+    "/images/proyectos/clubcanotaje/appcanotaje3.png",
+    "/images/proyectos/clubcanotaje/appcanotaje4.png",
+    "/images/proyectos/clubcanotaje/appcanotaje5.png",
+    "/images/proyectos/clubcanotaje/appcanotaje6.png",
+    "/images/proyectos/clubcanotaje/appcanotaje7.png",
+    "/images/proyectos/clubcanotaje/appcanotaje8.png",
   ],
   features: [
     'Gestión completa de socios con perfiles, categorías y estado de membresía',
@@ -335,6 +340,112 @@ export const projects = [
   liveUrl: null,
   githubUrl: null
 },
+{
+  id: 5,
+  cardTitle: 'Proyecto Freelance',
+  mainTechnologies: ['.NET Core 8', 'Angular', 'SQL Server', 'Docker'],
+  title: "Plataforma Web de Gestión para Nutricionistas",
+  subtitle: 'Sistema integral para gestión de pacientes, agenda de consultas, evaluaciones nutricionales y generación de informes',
+  category: 'Full Stack Development',
+  client: "Proyecto Independiente",
+  date: '2025 - En Desarrollo',
+  role: 'Full Stack Developer',
+  image: "/images/proyectos/nutricion/appnutricion1.png",
+  heroImage: "/images/proyectos/nutricion/appnutricion1.png",
+
+  description:
+    "Desarrollo de una plataforma web orientada a nutricionistas para la gestión integral de pacientes, agenda de consultas y seguimiento nutricional. El sistema permitirá registrar evaluaciones antropométricas, generar planes alimentarios personalizados, utilizar calculadoras nutricionales avanzadas y emitir informes clínicos. La solución busca digitalizar el flujo de trabajo del profesional de nutrición, centralizando toda la información clínica y administrativa en una interfaz moderna accesible desde cualquier dispositivo.",
+
+  challenge:
+    "El principal desafío del proyecto consiste en diseñar una plataforma que combine funcionalidades clínicas, administrativas y analíticas en un único sistema escalable. Esto incluye: (1) Modelar correctamente la información de pacientes, consultas, evaluaciones nutricionales y planes alimentarios dentro de una base de datos relacional en SQL Server, (2) Implementar un sistema de agenda que permita gestionar horas médicas evitando conflictos de disponibilidad, (3) Integrar calculadoras nutricionales como IMC, gasto energético basal, requerimientos calóricos y composición corporal, (4) Generar informes clínicos automatizados a partir de los datos registrados durante cada consulta, (5) Diseñar una arquitectura backend robusta con .NET Core Web API y una interfaz moderna con Angular que facilite el trabajo del profesional durante la consulta clínica.",
+
+  technologies: [
+    '.NET Core Web API',
+    'Angular',
+    'TypeScript',
+    'SQL Server',
+    'Entity Framework Core',
+    'Docker',
+    'JWT Authentication',
+    'REST API',
+    'RxJS',
+    'Angular Router',
+    'Nginx / Docker',
+  ],
+
+  gallery: [
+    "/images/proyectos/nutricion/appnutricion1.png",
+    "/images/proyectos/nutricion/appnutricion2.png",
+    "/images/proyectos/nutricion/appnutricion3.png",
+  ],
+
+  features: [
+    'Gestión completa de pacientes con historial clínico nutricional',
+    'Agenda de consultas con control de disponibilidad y recordatorios',
+    'Registro de evaluaciones antropométricas (peso, talla, IMC, pliegues, etc.)',
+    'Calculadoras nutricionales integradas (IMC, TMB, requerimientos calóricos)',
+    'Creación de planes alimentarios personalizados por paciente',
+    'Historial de consultas y evolución nutricional',
+    'Generación automática de informes clínicos',
+    'Panel de control para seguimiento de pacientes',
+    'Sistema de autenticación segura con roles',
+    'Interfaz responsive optimizada para uso en consulta',
+    'Exportación de informes en PDF',
+    'Arquitectura preparada para futuras integraciones'
+  ],
+
+  architecture: {
+    backend: '.NET Core Web API',
+    frontend: 'Angular (SPA)',
+    database: 'SQL Server',
+    orm: 'Entity Framework Core',
+    authentication: 'JWT Token',
+    containerization: 'Docker',
+    routing: 'Angular Router',
+    reactiveProgramming: 'RxJS',
+    apiStyle: 'RESTful API',
+    deployment: 'Docker Containers'
+  },
+
+  technicalHighlights: [
+    {
+      title: 'Arquitectura Backend con .NET Core',
+      description:
+        'API RESTful desarrollada con .NET Core siguiendo principios de arquitectura en capas y separación de responsabilidades, utilizando Entity Framework Core para el acceso a datos y control de migraciones.'
+    },
+    {
+      title: 'Gestión Inteligente de Agenda',
+      description:
+        'Sistema de reservas de horas médicas que permite a los nutricionistas gestionar su agenda de consultas evitando conflictos de horario y manteniendo un registro histórico de atenciones.'
+    },
+    {
+      title: 'Calculadoras Nutricionales Integradas',
+      description:
+        'Implementación de herramientas de cálculo clínico como IMC, metabolismo basal, requerimientos energéticos y otras métricas utilizadas en evaluación nutricional.'
+    },
+    {
+      title: 'Arquitectura SPA con Angular',
+      description:
+        'Frontend desarrollado como Single Page Application con Angular y TypeScript, utilizando RxJS para manejo reactivo de datos y Angular Router para navegación fluida entre módulos.'
+    },
+    {
+      title: 'Infraestructura Dockerizada',
+      description:
+        'Toda la plataforma se ejecuta en contenedores Docker para facilitar el despliegue, la portabilidad del sistema y la futura escalabilidad en entornos cloud.'
+    }
+  ],
+
+  results: [
+    { value: '3+', metric: 'Módulos en Desarrollo' },
+    { value: '100%', metric: 'Arquitectura Containerizada' },
+    { value: 'SPA', metric: 'Aplicación Frontend' },
+    { value: 'REST', metric: 'Arquitectura de API' }
+  ],
+
+  projectType: 'Proyecto Freelance',
+  liveUrl: null,
+  githubUrl: null
+}
 ]
 
 // Función helper para obtener un proyecto por ID

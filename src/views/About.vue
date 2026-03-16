@@ -399,18 +399,27 @@ export default {
     animation: none;
     border-radius: 16px;
   }
+  .tech-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
   .tech-groups { gap: 1.5rem; }
   .tech-group-label { font-size: 0.68rem; }
-  .tech-stack { gap: 0.5rem; }
+  .tech-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
   .tech-badge {
     padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
     border-radius: 10px;
     text-align: center;
-    display: block;
     width: 100%;
     box-sizing: border-box;
+    display: block;
   }
 
   .hero-buttons {
