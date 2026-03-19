@@ -17,45 +17,45 @@
       </div>
 
       <nav class="navigation">
-        <router-link 
-          to="/about" 
-          class="nav-item" 
-          active-class="active"
-          @click="closeSidebar"
-        >
-          <i class="fas fa-user"></i>
-          <span>About</span>
-        </router-link>
+       <router-link 
+        to="/about" 
+        class="nav-item" 
+        active-class="active"
+        @click="closeSidebar"
+      >
+        <i class="fas fa-user"></i>
+        <span>Sobre mí</span>
+      </router-link>
 
-        <router-link 
-          to="/resume" 
-          class="nav-item" 
-          active-class="active"
-          @click="closeSidebar"
-        >
-          <i class="fas fa-file-alt"></i>
-          <span>Resume</span>
-        </router-link>
+      <router-link 
+        to="/resume" 
+        class="nav-item" 
+        active-class="active"
+        @click="closeSidebar"
+      >
+        <i class="fas fa-file-alt"></i>
+        <span>Currículum</span>
+      </router-link>
 
-        <router-link 
-          to="/proyectos" 
-          class="nav-item" 
-          active-class="active"
-          @click="closeSidebar"
-        >
-          <i class="fas fa-briefcase"></i>
-          <span>Proyectos</span>
-        </router-link>
+      <router-link 
+        to="/proyectos" 
+        class="nav-item" 
+        active-class="active"
+        @click="closeSidebar"
+      >
+        <i class="fas fa-briefcase"></i>
+        <span>Proyectos</span>
+      </router-link>
 
-        <router-link 
-          to="/contact" 
-          class="nav-item" 
-          active-class="active"
-          @click="closeSidebar"
-        >
-          <i class="fas fa-envelope"></i>
-          <span>Contact</span>
-        </router-link>
+      <router-link 
+        to="/contact" 
+        class="nav-item" 
+        active-class="active"
+        @click="closeSidebar"
+      >
+        <i class="fas fa-envelope"></i>
+        <span>Contacto</span>
+      </router-link>
       </nav>
 
       <!-- Redes sociales al fondo -->

@@ -8,9 +8,7 @@
         <h2 class="hero-role">Desarrollador Backend - Fullstack</h2>
 
         <p class="hero-description">
-          Ingeniero civil informático con experiencia en desarrollo backend con .NET Core, Nestjs y 
-          conocimientos en frontend. Especializado en la construcción y optimización de sistemas empresariales del 
-          sector financiero y migración de aplicaciones. 
+          Ingeniero Civil Informático con 3 años de experiencia en desarrollo de software, especializado en backend con .NET Core y Angular. He trabajado en sistemas empresariales del sector financiero, migración de aplicaciones y optimización de arquitecturas. Hoy me desempeño como desarrollador fullstack, explorando tecnologías modernas como agentes de IA y nuevos frameworks para seguir construyendo soluciones de mayor impacto.
         </p>
         
         <div class="stats-grid">
