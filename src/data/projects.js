@@ -248,7 +248,7 @@ export const projects = [
   projectType: 'Prueba Técnica',
   developmentContext: 'Proyecto desarrollado como prueba técnica para consultora, utilizado como oportunidad de experimentación y aprendizaje profundo de Vue.js',
   liveUrl: null,
-  githubUrl: 'https://github.com/rojasgadiego/desafioMASAnalytics'
+  githubFrontUrl: 'https://github.com/rojasgadiego/desafioMASAnalytics'
 },
 {
   id: 4,
