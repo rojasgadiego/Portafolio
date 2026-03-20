@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <canvas ref="bgCanvas" class="bg-canvas"></canvas>
+
     <div class="hero-section">
 
       <div class="hero-content">
@@ -10,7 +12,7 @@
         <p class="hero-description">
           Ingeniero Civil Informático con 3 años de experiencia en desarrollo de software, especializado en backend con .NET Core y Angular. He trabajado en sistemas empresariales del sector financiero, migración de aplicaciones y optimización de arquitecturas. Hoy me desempeño como desarrollador fullstack, explorando tecnologías modernas como agentes de IA y nuevos frameworks para seguir construyendo soluciones de mayor impacto.
         </p>
-        
+
         <div class="stats-grid">
           <div class="stat-item">
             <span class="stat-number">3+</span>
@@ -82,10 +84,22 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      animFrameId: null,
+      resizeObserver: null
+    }
+  },
   mounted() {
     this.animateElements()
+    this.initCanvas()
+  },
+  beforeUnmount() {
+    if (this.animFrameId) cancelAnimationFrame(this.animFrameId)
+    if (this.resizeObserver) this.resizeObserver.disconnect()
   },
   methods: {
+    // ── Animación de entrada ──────────────────────────
     animateElements() {
       const contentEls = this.$el.querySelectorAll('.hero-content > *')
       contentEls.forEach((el, i) => {
@@ -97,7 +111,6 @@ export default {
           el.style.transform = 'translateY(0)'
         }, i * 100)
       })
-
       const card = this.$el.querySelector('.hero-visual')
       if (card) {
         card.style.opacity = '0'
@@ -108,7 +121,6 @@ export default {
           card.style.transform = 'translateY(0)'
         }, contentEls.length * 100 + 100)
       }
-
       const buttons = this.$el.querySelector('.hero-buttons')
       if (buttons) {
         buttons.style.opacity = '0'
@@ -119,30 +131,113 @@ export default {
           buttons.style.transform = 'translateY(0)'
         }, contentEls.length * 100 + 250)
       }
+    },
+
+    // ── Canvas: diagonal sweep + particles ───────────
+    initCanvas() {
+      const canvas = this.$refs.bgCanvas
+      const ctx    = canvas.getContext('2d')
+      let W, H, puffs
+
+      const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light'
+
+      const smokeColor = () => isDark() ? '180,178,172' : '180,178,172'
+
+      const makePuff = (initialSpread = false) => ({
+        x:          Math.random() * W,
+        y:          initialSpread ? Math.random() * H : H + Math.random() * 30,
+        vx:         (Math.random() - 0.5) * 0.18,
+        vy:         -(0.06 + Math.random() * 0.12),
+        radius:     40 + Math.random() * 60,
+        alpha:      initialSpread ? Math.random() * 0.05 : 0,
+        targetAlpha: 0.04 + Math.random() * 0.05,
+        growing:    true,
+        scale:      1,
+        scaleSpeed: 0.0012 + Math.random() * 0.001
+      })
+
+      const setup = () => {
+        W = this.$el.offsetWidth
+        H = this.$el.offsetHeight
+        canvas.width  = W
+        canvas.height = H
+        puffs = Array.from({ length: 14 }, () => makePuff(true))
+      }
+
+      const draw = () => {
+        ctx.clearRect(0, 0, W, H)
+
+        const col = smokeColor()
+        puffs.forEach(p => {
+          p.x     += p.vx
+          p.y     += p.vy
+          p.scale += p.scaleSpeed
+
+          if (p.growing) {
+            p.alpha += 0.0007
+            if (p.alpha >= p.targetAlpha) p.growing = false
+          } else {
+            p.alpha -= 0.00035
+          }
+
+          if (p.alpha <= 0 || p.y < -(p.radius * p.scale)) {
+            Object.assign(p, makePuff(false))
+          }
+
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * p.scale)
+          grad.addColorStop(0,   `rgba(${col},${p.alpha})`)
+          grad.addColorStop(1,   `rgba(${col},0)`)
+          ctx.fillStyle = grad
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.radius * p.scale, 0, Math.PI * 2)
+          ctx.fill()
+        })
+
+        this.animFrameId = requestAnimationFrame(draw)
+      }
+
+      setup()
+      draw()
+
+      this.resizeObserver = new ResizeObserver(() => { setup() })
+      this.resizeObserver.observe(this.$el)
     }
   }
 }
 </script>
 
 <style scoped>
+/* ─── BASE ─────────────────────────────────────────── */
 .home {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 2rem;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
 
+/* ─── CANVAS FONDO ─────────────────────────────────── */
+.bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* El aura radial encima del canvas, debajo del contenido */
 .home::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, var(--aura-a) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--aura-b) 0%, transparent 50%);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* ─── DESKTOP ──────────────────────────────────────── */
@@ -157,7 +252,7 @@ export default {
   margin: 0 auto;
   align-items: start;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-content { grid-area: content; }
@@ -166,7 +261,7 @@ export default {
 
 .hero-greeting {
   font-size: 1.1rem;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-weight: 500;
   display: block;
   margin-bottom: 1rem;
@@ -175,7 +270,7 @@ export default {
 .hero-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -184,7 +279,7 @@ export default {
 .hero-role {
   font-size: 1.75rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -193,7 +288,7 @@ export default {
 
 .hero-description {
   font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 3rem;
   max-width: 540px;
@@ -205,8 +300,8 @@ export default {
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .stat-item {
@@ -219,20 +314,20 @@ export default {
 .stat-divider {
   width: 1px;
   height: 3rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--border-default);
   flex-shrink: 0;
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: var(--stat-number);
   line-height: 1;
 }
 
 .stat-label {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--stat-label);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -257,27 +352,27 @@ export default {
 }
 
 .btn-primary {
-  background: #3b82f6;
+  background: var(--accent-primary);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 20px var(--accent-primary-glow);
 }
 .btn-primary:hover {
-  background: #2563eb;
+  background: var(--accent-primary-hover);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 8px 30px var(--accent-primary-glow);
 }
 .btn-primary svg { transition: transform 0.3s ease; }
 .btn-primary:hover svg { transform: translateX(4px); }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: var(--btn-ghost-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--btn-ghost-border);
   backdrop-filter: blur(10px);
 }
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-bg-hover);
+  border-color: var(--btn-ghost-border-hover);
   transform: translateY(-3px);
 }
 
@@ -289,8 +384,8 @@ export default {
 
 .floating-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
   border-radius: 24px;
   padding: 2.5rem;
   backdrop-filter: blur(20px);
@@ -314,9 +409,9 @@ export default {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .tech-stack {
@@ -327,16 +422,16 @@ export default {
 
 .tech-badge {
   padding: 0.6rem 1.25rem;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
   border-radius: 50px;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 .tech-badge:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: var(--badge-bg-hover);
   transform: translateY(-2px);
 }
 
@@ -364,7 +459,6 @@ export default {
 /* ─── MÓVIL ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .home {
-    /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
     padding: 7.5rem 1.25rem 2.5rem;
     align-items: flex-start;
   }
@@ -386,9 +480,9 @@ export default {
     padding: 1.25rem 0;
     text-align: center;
   }
-  .stat-item   { align-items: center; flex: unset; }
-  .stat-number { font-size: 2rem; }
-  .stat-label  { font-size: 0.7rem; }
+  .stat-item    { align-items: center; flex: unset; }
+  .stat-number  { font-size: 2rem; }
+  .stat-label   { font-size: 0.7rem; }
   .stat-divider { height: 2.5rem; }
 
   .hero-visual { height: auto; }
@@ -397,19 +491,10 @@ export default {
     animation: none;
     border-radius: 16px;
   }
-  .tech-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
+  .tech-group { display: flex; flex-direction: column; width: 100%; }
   .tech-groups { gap: 1.5rem; }
   .tech-group-label { font-size: 0.68rem; }
-  .tech-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .tech-stack { display: flex; flex-direction: column; gap: 0.5rem; }
   .tech-badge {
     padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
@@ -438,10 +523,7 @@ export default {
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
-  .home {
-    /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
-    padding: 7rem 1rem 2rem;
-  }
+  .home { padding: 7rem 1rem 2rem; }
   .hero-title { font-size: 2rem; }
   .hero-role  { font-size: 1.1rem; }
   .hero-description { font-size: 0.9rem; }

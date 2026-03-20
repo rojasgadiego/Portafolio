@@ -18,7 +18,6 @@
 
             <div class="portfolio-image">
               <img :src="project.image" :alt="project.title" />
-              <!-- Overlay: siempre visible en móvil, solo en hover en desktop -->
               <div class="portfolio-overlay">
                 <h3>{{ project.title }}</h3>
                 <p>{{ project.category }}</p>
@@ -45,7 +44,6 @@
           </div>
         </div>
 
-        <!-- Estado vacío -->
         <div v-if="!projects || projects.length === 0" class="empty-state">
           <i class="fas fa-folder-open"></i>
           <p>No hay proyectos disponibles aún.</p>
@@ -92,7 +90,7 @@ export default {
 .portfolio {
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -102,8 +100,8 @@ export default {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background:
-    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(147, 51, 234, 0.07) 0%, transparent 45%);
+    radial-gradient(circle at 15% 20%, var(--aura-a) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, var(--aura-b) 0%, transparent 45%);
   pointer-events: none;
 }
 
@@ -117,7 +115,7 @@ export default {
 /* ─── TÍTULO ───────────────────────────────────────── */
 .section-title {
   font-size: 1.6rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
@@ -128,8 +126,8 @@ export default {
 .section-icon {
   width: 38px;
   height: 38px;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -138,7 +136,7 @@ export default {
 }
 
 .section-icon i {
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.95rem;
 }
 
@@ -153,16 +151,16 @@ export default {
 .portfolio-item {
   border-radius: 16px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .portfolio-item:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: var(--badge-border);
 }
 
 .portfolio-card {
@@ -177,7 +175,7 @@ export default {
   width: 100%;
   height: 280px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
 }
 
 .portfolio-image img {
@@ -200,7 +198,6 @@ export default {
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.5rem;
-  /* Desktop: solo visible en hover */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -209,6 +206,7 @@ export default {
   opacity: 1;
 }
 
+/* El overlay siempre usa blanco — va sobre imagen oscura, no cambia con el tema */
 .portfolio-overlay h3 {
   color: #fff;
   font-size: 1.2rem;
@@ -218,7 +216,7 @@ export default {
 }
 
 .portfolio-overlay p {
-  color: #3b82f6;
+  color: #60a5fa;
   font-size: 0.82rem;
   margin: 0;
   text-transform: uppercase;
@@ -229,7 +227,7 @@ export default {
 /* ─── CARD INFO ────────────────────────────────────── */
 .project-card-info {
   padding: 1.25rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .project-card-header {
@@ -239,7 +237,7 @@ export default {
 }
 
 .project-card-label {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -253,19 +251,19 @@ export default {
 }
 
 .tech-badge {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  background: var(--badge-bg);
+  color: var(--accent-primary);
   padding: 0.3rem 0.7rem;
   border-radius: 8px;
   font-size: 0.72rem;
   font-weight: 600;
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  transition: all 0.25s ease;
+  border: 1px solid var(--badge-border);
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .tech-badge:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
+  background: var(--badge-bg-hover);
+  border-color: var(--accent-primary);
 }
 
 /* ─── ESTADO VACÍO ─────────────────────────────────── */
@@ -273,7 +271,7 @@ export default {
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--text-muted);
 }
 
 .empty-state i {
@@ -294,20 +292,12 @@ export default {
 
 /* ─── MÓVIL ────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .portfolio {
-    /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
-    padding: 7.5rem 1.25rem 2.5rem;
-  }
+  .portfolio { padding: 7.5rem 1.25rem 2.5rem; }
 
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+  .portfolio-grid { grid-template-columns: 1fr; gap: 1rem; }
 
-  /* Imagen más compacta en móvil */
   .portfolio-image { height: 180px; }
 
-  /* Overlay siempre visible en móvil (no hay hover) */
   .portfolio-overlay { opacity: 1; }
 
   .portfolio-overlay h3 { font-size: 1.05rem; }
@@ -317,17 +307,12 @@ export default {
 
   .tech-badge { font-size: 0.68rem; padding: 0.25rem 0.6rem; }
 
-  /* Sin efecto hover lift en móvil */
   .portfolio-item:hover { transform: none; box-shadow: none; }
 }
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
-  .portfolio {
-    /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
-    padding: 7rem 1rem 2rem;
-  }
-
+  .portfolio { padding: 7rem 1rem 2rem; }
   .portfolio-image { height: 160px; }
 }
 </style>

@@ -209,28 +209,18 @@
 
       <!-- Navegación entre proyectos -->
       <div class="project-navigation">
-        <button
-          class="nav-btn prev-btn"
-          :class="{ 'nav-btn--disabled': !prevProject }"
-          :disabled="!prevProject"
-          @click="goToPrev"
-        >
+        <button class="nav-btn prev-btn" :class="{ 'nav-btn--disabled': !prevProject }" :disabled="!prevProject" @click="goToPrev">
           <span class="nav-btn-direction">← Anterior</span>
           <span class="nav-btn-title">{{ prevProject ? prevProject.title : 'No hay proyecto anterior' }}</span>
         </button>
-        <button
-          class="nav-btn next-btn"
-          :class="{ 'nav-btn--disabled': !nextProject }"
-          :disabled="!nextProject"
-          @click="goToNext"
-        >
+        <button class="nav-btn next-btn" :class="{ 'nav-btn--disabled': !nextProject }" :disabled="!nextProject" @click="goToNext">
           <span class="nav-btn-direction">Siguiente →</span>
           <span class="nav-btn-title">{{ nextProject ? nextProject.title : 'No hay proyecto siguiente' }}</span>
         </button>
       </div>
     </div>
 
-    <!-- Lightbox -->
+    <!-- Lightbox — fondo siempre negro, no cambia con el tema -->
     <transition name="lightbox">
       <div v-if="lightboxOpen" class="lightbox-overlay" @click.self="closeLightbox">
         <div class="lightbox-container">
@@ -333,7 +323,7 @@ export default {
 .project-detail {
   min-height: 100vh;
   padding: 2rem 2rem 4rem;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -343,8 +333,8 @@ export default {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background:
-    radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(147, 51, 234, 0.06) 0%, transparent 40%);
+    radial-gradient(circle at 10% 10%, var(--aura-a) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, var(--aura-b) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -367,8 +357,8 @@ export default {
   align-items: center;
   gap: 0.5rem;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
   padding: 0.6rem 1.25rem;
   border-radius: 8px;
   cursor: pointer;
@@ -378,15 +368,14 @@ export default {
 }
 
 .back-btn:hover {
-  color: #fff;
-  border-color: rgba(59, 130, 246, 0.5);
-  background: rgba(59, 130, 246, 0.08);
+  color: var(--text-primary);
+  border-color: var(--badge-border);
+  background: var(--badge-bg);
   transform: translateX(-4px);
 }
 
 /* ─── HEADER ───────────────────────────────────────── */
 .project-header { margin-bottom: 2.5rem; }
-
 .project-title-section { margin-bottom: 2rem; }
 
 .project-category-wrapper {
@@ -399,7 +388,7 @@ export default {
 .project-category {
   font-size: 0.72rem;
   font-weight: 600;
-  color: #3b82f6;
+  color: var(--accent-primary);
   text-transform: uppercase;
   letter-spacing: 0.15em;
 }
@@ -410,24 +399,24 @@ export default {
   justify-content: center;
   width: 32px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--border-default);
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.25s ease;
 }
 
 .github-icon-link:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+  background: var(--btn-ghost-bg-hover);
   transform: translateY(-2px);
 }
 
 .project-title {
   font-size: 3rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
   line-height: 1.2;
   font-weight: 800;
@@ -436,7 +425,7 @@ export default {
 
 .project-subtitle {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
   line-height: 1.65;
 }
 
@@ -445,21 +434,21 @@ export default {
   display: flex;
   gap: 3rem;
   padding: 1.75rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .meta-item { display: flex; flex-direction: column; gap: 0.35rem; }
 
 .meta-label {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
 .meta-value {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -470,7 +459,7 @@ export default {
   margin: 2.5rem 0;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -478,17 +467,13 @@ export default {
 .project-hero:hover { transform: scale(1.005); }
 .project-hero:hover .zoom-indicator { opacity: 1; }
 
-.project-hero img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+.project-hero img { width: 100%; height: auto; display: block; }
 
 .zoom-indicator {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(59, 130, 246, 0.9);
+  background: var(--accent-primary);
   color: #fff;
   width: 44px;
   height: 44px;
@@ -503,20 +488,19 @@ export default {
 
 /* ─── CONTENT SECTIONS ─────────────────────────────── */
 .project-content { margin-top: 0.5rem; }
-
 .content-section { margin-bottom: 3rem; }
 
 .section-title {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 1.25rem;
   font-weight: 700;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-text {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -525,19 +509,19 @@ export default {
 .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
 .tech-tag {
-  background: rgba(59, 130, 246, 0.08);
-  color: #3b82f6;
+  background: var(--badge-bg);
+  color: var(--accent-primary);
   padding: 0.5rem 1.1rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  transition: all 0.25s ease;
+  border: 1px solid var(--badge-border);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .tech-tag:hover {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--badge-bg-hover);
+  border-color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
@@ -552,22 +536,22 @@ export default {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   padding: 1.25rem;
   border-radius: 12px;
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .architecture-item:hover {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: var(--badge-border);
   transform: translateY(-3px);
-  background: rgba(59, 130, 246, 0.05);
+  background: var(--badge-bg);
 }
 
 .architecture-icon {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  background: var(--badge-bg);
+  color: var(--accent-primary);
   width: 42px;
   height: 42px;
   border-radius: 10px;
@@ -580,14 +564,14 @@ export default {
 .architecture-content { display: flex; flex-direction: column; gap: 0.2rem; }
 
 .architecture-label {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--text-muted);
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .architecture-value {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -603,21 +587,21 @@ export default {
   display: flex;
   align-items: flex-start;
   gap: 0.875rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   padding: 1rem 1.25rem;
   border-radius: 10px;
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease;
 }
 
 .feature-item:hover {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: var(--badge-border);
   transform: translateX(4px);
 }
 
 .feature-icon {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  background: var(--badge-bg);
+  color: var(--accent-primary);
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -629,7 +613,7 @@ export default {
 }
 
 .feature-text {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.6;
 }
@@ -645,25 +629,21 @@ export default {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .gallery-item:hover {
   transform: scale(1.02);
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: var(--badge-border);
 }
 
 .gallery-item:hover .gallery-overlay { opacity: 1; }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* Overlay va sobre imagen — siempre oscuro */
 .gallery-overlay {
   position: absolute;
   inset: 0;
@@ -693,27 +673,27 @@ export default {
 }
 
 .live-link {
-  background: #3b82f6;
+  background: var(--accent-primary);
   color: #fff;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px var(--accent-primary-glow);
 }
 
 .live-link:hover {
-  background: #2563eb;
+  background: var(--accent-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 25px var(--accent-primary-glow);
 }
 
 .github-link {
   background: transparent;
-  color: rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+  border-color: var(--border-default);
 }
 
 .github-link:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  background: var(--btn-ghost-bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
@@ -724,14 +704,14 @@ export default {
   gap: 1.5rem;
   margin-top: 4rem;
   padding-top: 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .nav-btn {
   flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.7);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
   padding: 1.25rem;
   border-radius: 12px;
   cursor: pointer;
@@ -750,14 +730,14 @@ export default {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #3b82f6;
+  color: var(--accent-primary);
   display: block;
 }
 
 .nav-btn-title {
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -765,13 +745,13 @@ export default {
 }
 
 .nav-btn:hover:not(.nav-btn--disabled) {
-  border-color: rgba(59, 130, 246, 0.4);
-  background: rgba(59, 130, 246, 0.06);
+  border-color: var(--badge-border);
+  background: var(--badge-bg);
   transform: translateY(-2px);
 }
 
 .nav-btn:hover:not(.nav-btn--disabled) .nav-btn-title {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .nav-btn--disabled {
@@ -779,7 +759,7 @@ export default {
   cursor: not-allowed;
 }
 
-/* ─── LIGHTBOX ─────────────────────────────────────── */
+/* ─── LIGHTBOX — siempre oscuro, independiente del tema */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -905,7 +885,6 @@ export default {
 
 .thumbnail:hover { opacity: 0.8; }
 .thumbnail.active { opacity: 1; border-color: #3b82f6; }
-
 .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
 .lightbox-enter-active, .lightbox-leave-active { transition: opacity 0.3s ease; }
@@ -916,7 +895,6 @@ export default {
   .project-detail { padding: 7.5rem 1.25rem 3rem; }
 
   .back-btn-wrapper {
-    display: flex;
     justify-content: flex-end;
     margin-bottom: 2rem;
     margin-top: -5.8rem;
@@ -924,15 +902,11 @@ export default {
 
   .project-title { font-size: 2.2rem; }
   .project-subtitle { font-size: 0.95rem; }
-
   .project-meta { flex-direction: column; gap: 1.25rem; }
-
   .architecture-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
-
   .project-navigation { flex-direction: column; }
-
   .project-links { flex-direction: column; }
   .project-link { justify-content: center; }
 
