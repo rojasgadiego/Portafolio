@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <canvas ref="bgCanvas" class="bg-canvas"></canvas>
-
     <div class="hero-section">
 
       <div class="hero-content">
@@ -84,123 +82,46 @@
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {
-      animFrameId: null,
-      resizeObserver: null
-    }
-  },
   mounted() {
     this.animateElements()
-    this.initCanvas()
-  },
-  beforeUnmount() {
-    if (this.animFrameId) cancelAnimationFrame(this.animFrameId)
-    if (this.resizeObserver) this.resizeObserver.disconnect()
   },
   methods: {
-    // ── Animación de entrada ──────────────────────────
     animateElements() {
+      // Saludo, título, rol, descripción, stats — cada uno con delay escalonado
       const contentEls = this.$el.querySelectorAll('.hero-content > *')
       contentEls.forEach((el, i) => {
         el.style.opacity = '0'
-        el.style.transform = 'translateY(20px)'
+        el.style.transform = 'translateY(28px)'
         setTimeout(() => {
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          el.style.transition = 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)'
           el.style.opacity = '1'
           el.style.transform = 'translateY(0)'
-        }, i * 100)
+        }, 120 + i * 110)
       })
+
+      // Card — entra desde la derecha con un pequeño desplazamiento
       const card = this.$el.querySelector('.hero-visual')
       if (card) {
         card.style.opacity = '0'
-        card.style.transform = 'translateY(20px)'
+        card.style.transform = 'translateX(32px) translateY(16px)'
         setTimeout(() => {
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          card.style.transition = 'opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)'
           card.style.opacity = '1'
-          card.style.transform = 'translateY(0)'
-        }, contentEls.length * 100 + 100)
+          card.style.transform = 'translateX(0) translateY(0)'
+        }, 180 + contentEls.length * 80)
       }
+
+      // Botones — entran juntos al final con un ligero retraso extra
       const buttons = this.$el.querySelector('.hero-buttons')
       if (buttons) {
         buttons.style.opacity = '0'
         buttons.style.transform = 'translateY(20px)'
         setTimeout(() => {
-          buttons.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          buttons.style.transition = 'opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)'
           buttons.style.opacity = '1'
           buttons.style.transform = 'translateY(0)'
-        }, contentEls.length * 100 + 250)
+        }, 300 + contentEls.length * 110)
       }
-    },
-
-    // ── Canvas: diagonal sweep + particles ───────────
-    initCanvas() {
-      const canvas = this.$refs.bgCanvas
-      const ctx    = canvas.getContext('2d')
-      let W, H, puffs
-
-      const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light'
-
-      const smokeColor = () => isDark() ? '180,178,172' : '180,178,172'
-
-      const makePuff = (initialSpread = false) => ({
-        x:          Math.random() * W,
-        y:          initialSpread ? Math.random() * H : H + Math.random() * 30,
-        vx:         (Math.random() - 0.5) * 0.18,
-        vy:         -(0.06 + Math.random() * 0.12),
-        radius:     40 + Math.random() * 60,
-        alpha:      initialSpread ? Math.random() * 0.05 : 0,
-        targetAlpha: 0.04 + Math.random() * 0.05,
-        growing:    true,
-        scale:      1,
-        scaleSpeed: 0.0012 + Math.random() * 0.001
-      })
-
-      const setup = () => {
-        W = this.$el.offsetWidth
-        H = this.$el.offsetHeight
-        canvas.width  = W
-        canvas.height = H
-        puffs = Array.from({ length: 14 }, () => makePuff(true))
-      }
-
-      const draw = () => {
-        ctx.clearRect(0, 0, W, H)
-
-        const col = smokeColor()
-        puffs.forEach(p => {
-          p.x     += p.vx
-          p.y     += p.vy
-          p.scale += p.scaleSpeed
-
-          if (p.growing) {
-            p.alpha += 0.0007
-            if (p.alpha >= p.targetAlpha) p.growing = false
-          } else {
-            p.alpha -= 0.00035
-          }
-
-          if (p.alpha <= 0 || p.y < -(p.radius * p.scale)) {
-            Object.assign(p, makePuff(false))
-          }
-
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * p.scale)
-          grad.addColorStop(0,   `rgba(${col},${p.alpha})`)
-          grad.addColorStop(1,   `rgba(${col},0)`)
-          ctx.fillStyle = grad
-          ctx.beginPath()
-          ctx.arc(p.x, p.y, p.radius * p.scale, 0, Math.PI * 2)
-          ctx.fill()
-        })
-
-        this.animFrameId = requestAnimationFrame(draw)
-      }
-
-      setup()
-      draw()
-
-      this.resizeObserver = new ResizeObserver(() => { setup() })
-      this.resizeObserver.observe(this.$el)
     }
   }
 }
@@ -218,17 +139,6 @@ export default {
   overflow: hidden;
 }
 
-/* ─── CANVAS FONDO ─────────────────────────────────── */
-.bg-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* El aura radial encima del canvas, debajo del contenido */
 .home::before {
   content: '';
   position: absolute;
@@ -237,7 +147,6 @@ export default {
     radial-gradient(circle at 20% 30%, var(--aura-a) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, var(--aura-b) 0%, transparent 50%);
   pointer-events: none;
-  z-index: 1;
 }
 
 /* ─── DESKTOP ──────────────────────────────────────── */
@@ -252,7 +161,7 @@ export default {
   margin: 0 auto;
   align-items: start;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero-content { grid-area: content; }
@@ -333,10 +242,7 @@ export default {
 }
 
 /* ─── BOTONES ──────────────────────────────────────── */
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-}
+.hero-buttons { display: flex; gap: 1rem; }
 
 .btn {
   padding: 1rem 2rem;
@@ -344,7 +250,7 @@ export default {
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -361,7 +267,7 @@ export default {
   transform: translateY(-3px);
   box-shadow: 0 8px 30px var(--accent-primary-glow);
 }
-.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary svg { transition: transform 0.25s ease; }
 .btn-primary:hover svg { transform: translateX(4px); }
 
 .btn-secondary {
@@ -376,7 +282,7 @@ export default {
   transform: translateY(-3px);
 }
 
-/* ─── CARD Y GRUPOS ────────────────────────────────── */
+/* ─── CARD ─────────────────────────────────────────── */
 .hero-visual {
   position: relative;
   height: 500px;
@@ -393,17 +299,9 @@ export default {
   z-index: 2;
 }
 
-.tech-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.tech-groups { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.tech-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.tech-group { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tech-group-label {
   font-size: 0.65rem;
@@ -414,11 +312,7 @@ export default {
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.tech-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.tech-stack { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tech-badge {
   padding: 0.6rem 1.25rem;
@@ -428,7 +322,7 @@ export default {
   color: var(--accent-primary);
   font-size: 0.85rem;
   font-weight: 600;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 .tech-badge:hover {
   background: var(--badge-bg-hover);
@@ -437,7 +331,7 @@ export default {
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-20px); }
+  50%       { transform: translateY(-18px); }
 }
 
 /* ─── TABLET ───────────────────────────────────────── */
@@ -468,11 +362,7 @@ export default {
   .hero-greeting { font-size: 1rem; }
   .hero-title    { font-size: 2.4rem; line-height: 1.15; }
   .hero-role     { font-size: 1.25rem; margin-bottom: 1rem; }
-  .hero-description {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 0;
-  }
+  .hero-description { font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
 
   .stats-grid {
     justify-content: center;
@@ -486,15 +376,11 @@ export default {
   .stat-divider { height: 2.5rem; }
 
   .hero-visual { height: auto; }
-  .floating-card {
-    padding: 2rem;
-    animation: none;
-    border-radius: 16px;
-  }
-  .tech-group { display: flex; flex-direction: column; width: 100%; }
+  .floating-card { padding: 2rem; animation: none; border-radius: 16px; }
+  .tech-group  { display: flex; flex-direction: column; width: 100%; }
   .tech-groups { gap: 1.5rem; }
   .tech-group-label { font-size: 0.68rem; }
-  .tech-stack { display: flex; flex-direction: column; gap: 0.5rem; }
+  .tech-stack  { display: flex; flex-direction: column; gap: 0.5rem; }
   .tech-badge {
     padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
@@ -505,31 +391,19 @@ export default {
     display: block;
   }
 
-  .hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-  }
-  .btn {
-    display: flex;
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 12px;
-    box-sizing: border-box;
-  }
+  .hero-buttons { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
+  .btn { display: flex; width: 100%; padding: 1rem; font-size: 1rem; border-radius: 12px; box-sizing: border-box; }
 }
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
   .home { padding: 7rem 1rem 2rem; }
-  .hero-title { font-size: 2rem; }
-  .hero-role  { font-size: 1.1rem; }
+  .hero-title  { font-size: 2rem; }
+  .hero-role   { font-size: 1.1rem; }
   .hero-description { font-size: 0.9rem; }
-  .stats-grid { padding: 1rem 0; }
+  .stats-grid  { padding: 1rem 0; }
   .stat-number { font-size: 1.75rem; }
   .floating-card { padding: 1.5rem; }
-  .tech-badge { font-size: 0.82rem; padding: 0.65rem 1rem; display: block; width: 100%; box-sizing: border-box; }
+  .tech-badge  { font-size: 0.82rem; padding: 0.65rem 1rem; display: block; width: 100%; box-sizing: border-box; }
 }
 </style>
