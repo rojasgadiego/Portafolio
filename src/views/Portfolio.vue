@@ -151,15 +151,17 @@ export default {
 .portfolio-item {
   border-radius: 16px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.35s ease;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .portfolio-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
   border-color: var(--badge-border);
 }
 
@@ -182,7 +184,7 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .portfolio-item:hover .portfolio-image img {
@@ -199,7 +201,7 @@ export default {
   justify-content: flex-end;
   padding: 1.5rem;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .portfolio-item:hover .portfolio-overlay {
