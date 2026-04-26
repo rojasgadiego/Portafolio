@@ -12,10 +12,30 @@
 
           <div class="timeline-item">
             <div class="timeline-header">
-              <div class="timeline-date">Jul 2025 – Ene 2026</div>
+              <div class="timeline-date">Abr 2026 – Presente</div>
+              <h3>Software Engineer II</h3>
+              <p class="company">
+                <a href="https://www.altia.es/" target="_blank" rel="noopener noreferrer">Altia</a>
+                  – <a href="https://www.medlogchile.cl/" target="_blank" rel="noopener noreferrer">Medlog</a>
+                &nbsp;·&nbsp; Santiago, Chile
+              </p>
+            </div>
+            <ul class="responsibilities">
+              <li>Diseño e implementación de soluciones full stack</li>
+              <li>Modelado de base de datos y desarrollo de procedimientos almacenados en SQL Server</li>
+              <li>Desarrollo de lógica de negocio en backend con .NET Core y construcción de interfaces con Angular</li>
+              <li>Participación activa en ceremonias ágiles y reporte continuo del estado de avance a equipos y
+                stakeholders</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div class="timeline-date">Jul 2025 – Mar 2026</div>
               <h3>.NET Developer C#</h3>
-              <p class="company">  <a href="https://www.xmslatam.com/" target="_blank" rel="noopener noreferrer">XMS</a>
- – <a href="https://chile.larrainvial.com/" target="_blank" rel="noopener noreferrer">Larrainvial</a> &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company"> <a href="https://www.xmslatam.com/" target="_blank" rel="noopener noreferrer">XMS</a>
+                – <a href="https://chile.larrainvial.com/" target="_blank" rel="noopener noreferrer">Larrainvial</a>
+                &nbsp;·&nbsp; Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo y mantenimiento de aplicaciones backend utilizando .NET Core 6/8</li>
@@ -30,8 +50,10 @@
             <div class="timeline-header">
               <div class="timeline-date">Ago 2024 – Jun 2025</div>
               <h3>.NET Developer C#</h3>
-              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
- – <a href="https://w3.metlife.cl/" target="_blank" rel="noopener noreferrer">MetLife</a> &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company"> <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius
+                  IARQ</a>
+                – <a href="https://w3.metlife.cl/" target="_blank" rel="noopener noreferrer">MetLife</a> &nbsp;·&nbsp;
+                Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo de servicios RESTful utilizando .NET Core 8</li>
@@ -44,14 +66,16 @@
             <div class="timeline-header">
               <div class="timeline-date">Oct 2021 – Abr 2023</div>
               <h3>Analista de Sistemas de TI</h3>
-              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
- –   <a href="https://banco.santander.cl/" target="_blank" rel="noopener noreferrer">Banco Santander</a>
- &nbsp;·&nbsp; Santiago, Chile</p>
+              <p class="company"> <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius
+                  IARQ</a>
+                – <a href="https://banco.santander.cl/" target="_blank" rel="noopener noreferrer">Banco Santander</a>
+                &nbsp;·&nbsp; Santiago, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Monitoreo y mantenimiento preventivo de servidores de producción</li>
               <li>Gestión de más de 700 incidencias a través de ServiceNow</li>
-              <li>Manipulación de bases de datos y ejecución de servicios REST/SOAP para la continuidad del sistema en producción</li>
+              <li>Manipulación de bases de datos y ejecución de servicios REST/SOAP para la continuidad del sistema en
+                producción</li>
               <li>Participación en equipos multidisciplinarios para resolver incidentes críticos</li>
             </ul>
           </div>
@@ -60,8 +84,9 @@
             <div class="timeline-header">
               <div class="timeline-date">Ago 2021 – Oct 2021</div>
               <h3>TIBCO BW Developer</h3>
-              <p class="company">  <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius IARQ</a>
- &nbsp;·&nbsp; Coquimbo, Chile</p>
+              <p class="company"> <a href="https://sociuscorp.com/" target="_blank" rel="noopener noreferrer">Socius
+                  IARQ</a>
+                &nbsp;·&nbsp; Coquimbo, Chile</p>
             </div>
             <ul class="responsibilities">
               <li>Desarrollo de aplicaciones y componentes de TIBCO BW en entorno SOA</li>
@@ -86,14 +111,17 @@
             <div class="timeline-header">
               <div class="timeline-date">Ene 2019 – Dic 2024</div>
               <h3>Ingeniería Civil en Computación e Informática</h3>
-              <p class="company">  <a href="https://www.ucn.cl/" target="_blank" rel="noopener noreferrer">Universidad Católica del Norte</a>
- &nbsp;·&nbsp; Coquimbo, Chile</p>
+              <p class="company"> <a href="https://www.ucn.cl/" target="_blank" rel="noopener noreferrer">Universidad
+                  Católica del Norte</a>
+                &nbsp;·&nbsp; Coquimbo, Chile</p>
             </div>
             <p class="timeline-desc">
-              Formación integral en desarrollo de software, bases de datos, arquitectura de sistemas y gestión de proyectos tecnológicos.
+              Formación integral en desarrollo de software, bases de datos, arquitectura de sistemas y gestión de
+              proyectos tecnológicos.
             </p>
             <ul class="responsibilities">
-              <li>Proyecto de título: Plataforma web de monitoreo con captura automática de pantallas, procesamiento de video y dashboard de visualización en tiempo real.</li>
+              <li>Proyecto de título: Plataforma web de monitoreo con captura automática de pantallas, procesamiento de
+                video y dashboard de visualización en tiempo real.</li>
             </ul>
           </div>
         </div>
@@ -110,23 +138,29 @@
         <div class="tech-grid">
 
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="tech-icon" alt="C#" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="tech-icon"
+              alt="C#" />
             <span>C# / .NET Core 6/8</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" class="tech-icon" alt="NestJS" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" class="tech-icon"
+              alt="NestJS" />
             <span>NestJS</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-icon" alt="Python" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-icon"
+              alt="Python" />
             <span>Python</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" class="tech-icon" alt="SQL Server" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
+              class="tech-icon" alt="SQL Server" />
             <span>SQL Server / DB2</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="tech-icon" alt="PostgreSQL" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+              class="tech-icon" alt="PostgreSQL" />
             <span>PostgreSQL</span>
           </div>
           <div class="tech-item">
@@ -138,27 +172,33 @@
             <span>Microservicios</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tech-icon" alt="NextJS" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" class="tech-icon"
+              alt="NextJS" />
             <span>Next JS</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tech-icon" alt="React" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="tech-icon"
+              alt="React" />
             <span>React JS</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" class="tech-icon" alt="Vue" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" class="tech-icon"
+              alt="Vue" />
             <span>Vue JS / Vite</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="tech-icon" alt="NodeJS" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="tech-icon"
+              alt="NodeJS" />
             <span>Node JS</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tech-icon" alt="Git" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tech-icon"
+              alt="Git" />
             <span>Git</span>
           </div>
           <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="tech-icon" alt="VS Code" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="tech-icon"
+              alt="VS Code" />
             <span>Visual Studio / VS Code</span>
           </div>
 
@@ -196,7 +236,8 @@ export default {
 /* ─── BASE ─────────────────────────────────────────── */
 .resume {
   min-height: 100vh;
-  padding: 5rem 2rem 4rem; /* desktop: sidebar lateral, no hay botón encima */
+  padding: 5rem 2rem 4rem;
+  /* desktop: sidebar lateral, no hay botón encima */
   background: #0a0a0a;
   position: relative;
 }
@@ -204,7 +245,10 @@ export default {
 .resume::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background:
     radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06) 0%, transparent 40%);
@@ -401,17 +445,32 @@ export default {
 
 /* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 768px) {
+
   /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
-  .resume { padding: 7.5rem 1.25rem 3rem; }
+  .resume {
+    padding: 7.5rem 1.25rem 3rem;
+  }
 
-  .section-title { font-size: 1.35rem; }
+  .section-title {
+    font-size: 1.35rem;
+  }
 
-  .timeline { padding-left: 1.75rem; }
-  .timeline-item::before { left: -2.2rem; }
+  .timeline {
+    padding-left: 1.75rem;
+  }
 
-  .timeline-item h3 { font-size: 1.05rem; }
+  .timeline-item::before {
+    left: -2.2rem;
+  }
 
-  .tech-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+  .timeline-item h3 {
+    font-size: 1.05rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
 
   .tech-item {
     padding: 0.75rem 0.875rem;
@@ -420,22 +479,55 @@ export default {
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
+
   /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
-  .resume { padding: 7rem 1rem 2.5rem; }
+  .resume {
+    padding: 7rem 1rem 2.5rem;
+  }
 
-  .section-title { font-size: 1.2rem; gap: 0.65rem; }
-  .section-icon  { width: 32px; height: 32px; border-radius: 8px; }
+  .section-title {
+    font-size: 1.2rem;
+    gap: 0.65rem;
+  }
 
-  .timeline { padding-left: 1.5rem; }
-  .timeline-item::before { left: -1.93rem; width: 8px; height: 8px; }
-  .timeline-item { margin-bottom: 2rem; }
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
 
-  .timeline-date { font-size: 0.72rem; }
-  .timeline-item h3 { font-size: 1rem; }
-  .company { font-size: 0.8rem; }
+  .timeline {
+    padding-left: 1.5rem;
+  }
 
-  .responsibilities li { font-size: 0.85rem; }
+  .timeline-item::before {
+    left: -1.93rem;
+    width: 8px;
+    height: 8px;
+  }
 
-  .tech-item span { font-size: 0.85rem; }
+  .timeline-item {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-date {
+    font-size: 0.72rem;
+  }
+
+  .timeline-item h3 {
+    font-size: 1rem;
+  }
+
+  .company {
+    font-size: 0.8rem;
+  }
+
+  .responsibilities li {
+    font-size: 0.85rem;
+  }
+
+  .tech-item span {
+    font-size: 0.85rem;
+  }
 }
 </style>

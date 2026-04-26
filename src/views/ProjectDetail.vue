@@ -288,7 +288,7 @@ export default {
       this.project = getProjectById(newId)
       this.lightboxOpen = false
       this.currentImageIndex = 0
-      window.scrollTo(0, 0)
+      this.$el.scrollTop = 0
     },
     lightboxOpen(isOpen) {
       document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -326,11 +326,12 @@ export default {
 <style scoped>
 /* ─── BASE ─────────────────────────────────────────── */
 .project-detail {
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 2rem 2rem 4rem;
   background: #0a0a0a;
   position: relative;
-  overflow: hidden;
 }
 
 .project-detail::before {
@@ -908,7 +909,12 @@ export default {
 
 /* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  .project-detail { padding: 7.5rem 1.25rem 3rem; }
+  .project-detail {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+    padding: 7.5rem 1.25rem 3rem;
+  }
 
   .back-btn-wrapper {
     display: flex;

@@ -85,6 +85,7 @@ body {
   margin-left: 250px;
   transition: margin-left 0.3s ease;
   position: relative;
+  overflow: hidden;
 }
 
 /* RESPONSIVE */

@@ -168,7 +168,7 @@ export default {
 .portfolio-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 340px;
 }
 
 /* ─── IMAGEN ───────────────────────────────────────── */
