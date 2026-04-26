@@ -308,11 +308,17 @@ export default {
   .tech-badge { font-size: 0.68rem; padding: 0.25rem 0.6rem; }
 
   .portfolio-item:hover { transform: none; box-shadow: none; }
+
+  .portfolio-card { height: 250px; }
 }
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
   .portfolio { padding: 7rem 1rem 2rem; }
   .portfolio-image { height: 160px; }
+
+  .portfolio-card {
+    height: 250px;
+  }
 }
 </style>
