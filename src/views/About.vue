@@ -8,11 +8,9 @@
         <h2 class="hero-role">Desarrollador Backend - Fullstack</h2>
 
         <p class="hero-description">
-          Ingeniero civil informático con experiencia en desarrollo backend con .NET Core, Nestjs y 
-          conocimientos en frontend. Especializado en la construcción y optimización de sistemas empresariales del 
-          sector financiero y migración de aplicaciones. 
+          Ingeniero Civil Informático con 3 años de experiencia en desarrollo de software, especializado en backend con .NET Core y Angular. He trabajado en sistemas empresariales del sector financiero, migración de aplicaciones y optimización de arquitecturas. Hoy me desempeño como desarrollador fullstack, explorando tecnologías modernas como agentes de IA y nuevos frameworks para seguir construyendo soluciones de mayor impacto.
         </p>
-        
+
         <div class="stats-grid">
           <div class="stat-item">
             <span class="stat-number">3+</span>
@@ -89,37 +87,40 @@ export default {
   },
   methods: {
     animateElements() {
+      // Saludo, título, rol, descripción, stats — cada uno con delay escalonado
       const contentEls = this.$el.querySelectorAll('.hero-content > *')
       contentEls.forEach((el, i) => {
         el.style.opacity = '0'
-        el.style.transform = 'translateY(20px)'
+        el.style.transform = 'translateY(28px)'
         setTimeout(() => {
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          el.style.transition = 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)'
           el.style.opacity = '1'
           el.style.transform = 'translateY(0)'
-        }, i * 100)
+        }, 120 + i * 110)
       })
 
+      // Card — entra desde la derecha con un pequeño desplazamiento
       const card = this.$el.querySelector('.hero-visual')
       if (card) {
         card.style.opacity = '0'
-        card.style.transform = 'translateY(20px)'
+        card.style.transform = 'translateX(32px) translateY(16px)'
         setTimeout(() => {
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          card.style.transition = 'opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)'
           card.style.opacity = '1'
-          card.style.transform = 'translateY(0)'
-        }, contentEls.length * 100 + 100)
+          card.style.transform = 'translateX(0) translateY(0)'
+        }, 180 + contentEls.length * 80)
       }
 
+      // Botones — entran juntos al final con un ligero retraso extra
       const buttons = this.$el.querySelector('.hero-buttons')
       if (buttons) {
         buttons.style.opacity = '0'
         buttons.style.transform = 'translateY(20px)'
         setTimeout(() => {
-          buttons.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+          buttons.style.transition = 'opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)'
           buttons.style.opacity = '1'
           buttons.style.transform = 'translateY(0)'
-        }, contentEls.length * 100 + 250)
+        }, 300 + contentEls.length * 110)
       }
     }
   }
@@ -127,12 +128,13 @@ export default {
 </script>
 
 <style scoped>
+/* ─── BASE ─────────────────────────────────────────── */
 .home {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 2rem;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -140,10 +142,10 @@ export default {
 .home::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, var(--aura-a) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--aura-b) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -168,7 +170,7 @@ export default {
 
 .hero-greeting {
   font-size: 1.1rem;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-weight: 500;
   display: block;
   margin-bottom: 1rem;
@@ -177,7 +179,7 @@ export default {
 .hero-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -186,7 +188,7 @@ export default {
 .hero-role {
   font-size: 1.75rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -195,7 +197,7 @@ export default {
 
 .hero-description {
   font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 3rem;
   max-width: 540px;
@@ -207,8 +209,8 @@ export default {
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .stat-item {
@@ -221,29 +223,26 @@ export default {
 .stat-divider {
   width: 1px;
   height: 3rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--border-default);
   flex-shrink: 0;
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: var(--stat-number);
   line-height: 1;
 }
 
 .stat-label {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--stat-label);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 /* ─── BOTONES ──────────────────────────────────────── */
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-}
+.hero-buttons { display: flex; gap: 1rem; }
 
 .btn {
   padding: 1rem 2rem;
@@ -251,7 +250,7 @@ export default {
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -259,31 +258,31 @@ export default {
 }
 
 .btn-primary {
-  background: #3b82f6;
+  background: var(--accent-primary);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 20px var(--accent-primary-glow);
 }
 .btn-primary:hover {
-  background: #2563eb;
+  background: var(--accent-primary-hover);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 8px 30px var(--accent-primary-glow);
 }
-.btn-primary svg { transition: transform 0.3s ease; }
+.btn-primary svg { transition: transform 0.25s ease; }
 .btn-primary:hover svg { transform: translateX(4px); }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: var(--btn-ghost-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--btn-ghost-border);
   backdrop-filter: blur(10px);
 }
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-bg-hover);
+  border-color: var(--btn-ghost-border-hover);
   transform: translateY(-3px);
 }
 
-/* ─── CARD Y GRUPOS ────────────────────────────────── */
+/* ─── CARD ─────────────────────────────────────────── */
 .hero-visual {
   position: relative;
   height: 500px;
@@ -291,8 +290,8 @@ export default {
 
 .floating-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
   border-radius: 24px;
   padding: 2.5rem;
   backdrop-filter: blur(20px);
@@ -300,51 +299,39 @@ export default {
   z-index: 2;
 }
 
-.tech-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+.tech-groups { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.tech-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.tech-group { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tech-group-label {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.tech-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.tech-stack { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .tech-badge {
   padding: 0.6rem 1.25rem;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
   border-radius: 50px;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 .tech-badge:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: var(--badge-bg-hover);
   transform: translateY(-2px);
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-20px); }
+  50%       { transform: translateY(-18px); }
 }
 
 /* ─── TABLET ───────────────────────────────────────── */
@@ -366,7 +353,6 @@ export default {
 /* ─── MÓVIL ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .home {
-    /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
     padding: 7.5rem 1.25rem 2.5rem;
     align-items: flex-start;
   }
@@ -376,11 +362,7 @@ export default {
   .hero-greeting { font-size: 1rem; }
   .hero-title    { font-size: 2.4rem; line-height: 1.15; }
   .hero-role     { font-size: 1.25rem; margin-bottom: 1rem; }
-  .hero-description {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 0;
-  }
+  .hero-description { font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
 
   .stats-grid {
     justify-content: center;
@@ -388,30 +370,17 @@ export default {
     padding: 1.25rem 0;
     text-align: center;
   }
-  .stat-item   { align-items: center; flex: unset; }
-  .stat-number { font-size: 2rem; }
-  .stat-label  { font-size: 0.7rem; }
+  .stat-item    { align-items: center; flex: unset; }
+  .stat-number  { font-size: 2rem; }
+  .stat-label   { font-size: 0.7rem; }
   .stat-divider { height: 2.5rem; }
 
   .hero-visual { height: auto; }
-  .floating-card {
-    padding: 2rem;
-    animation: none;
-    border-radius: 16px;
-  }
-  .tech-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
+  .floating-card { padding: 2rem; animation: none; border-radius: 16px; }
+  .tech-group  { display: flex; flex-direction: column; width: 100%; }
   .tech-groups { gap: 1.5rem; }
   .tech-group-label { font-size: 0.68rem; }
-  .tech-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .tech-stack  { display: flex; flex-direction: column; gap: 0.5rem; }
   .tech-badge {
     padding: 0.75rem 1.25rem;
     font-size: 0.875rem;
@@ -422,34 +391,19 @@ export default {
     display: block;
   }
 
-  .hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-  }
-  .btn {
-    display: flex;
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 12px;
-    box-sizing: border-box;
-  }
+  .hero-buttons { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
+  .btn { display: flex; width: 100%; padding: 1rem; font-size: 1rem; border-radius: 12px; box-sizing: border-box; }
 }
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
-  .home {
-    /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
-    padding: 7rem 1rem 2rem;
-  }
-  .hero-title { font-size: 2rem; }
-  .hero-role  { font-size: 1.1rem; }
+  .home { padding: 7rem 1rem 2rem; }
+  .hero-title  { font-size: 2rem; }
+  .hero-role   { font-size: 1.1rem; }
   .hero-description { font-size: 0.9rem; }
-  .stats-grid { padding: 1rem 0; }
+  .stats-grid  { padding: 1rem 0; }
   .stat-number { font-size: 1.75rem; }
   .floating-card { padding: 1.5rem; }
-  .tech-badge { font-size: 0.82rem; padding: 0.65rem 1rem; display: block; width: 100%; box-sizing: border-box; }
+  .tech-badge  { font-size: 0.82rem; padding: 0.65rem 1rem; display: block; width: 100%; box-sizing: border-box; }
 }
 </style>

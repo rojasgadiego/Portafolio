@@ -237,8 +237,7 @@ export default {
 .resume {
   min-height: 100vh;
   padding: 5rem 2rem 4rem;
-  /* desktop: sidebar lateral, no hay botón encima */
-  background: #0a0a0a;
+  background: var(--bg-primary);
   position: relative;
 }
 
@@ -250,8 +249,8 @@ export default {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, var(--aura-a) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, var(--aura-b) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -265,7 +264,7 @@ export default {
 /* ─── SEPARADOR DE SECCIÓN ─────────────────────────── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, var(--border-default), transparent);
   margin: 3rem 0;
 }
 
@@ -276,7 +275,7 @@ export default {
 
 .section-title {
   font-size: 1.75rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
@@ -287,8 +286,8 @@ export default {
 .section-icon {
   width: 38px;
   height: 38px;
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -297,7 +296,7 @@ export default {
 }
 
 .section-icon i {
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.95rem;
 }
 
@@ -314,7 +313,7 @@ export default {
   top: 6px;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #3b82f6 0%, rgba(59, 130, 246, 0.1) 100%);
+  background: linear-gradient(180deg, var(--accent-primary) 0%, transparent 100%);
 }
 
 .timeline-item {
@@ -326,7 +325,6 @@ export default {
   margin-bottom: 0;
 }
 
-/* Punto en la línea */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -334,9 +332,9 @@ export default {
   top: 6px;
   width: 10px;
   height: 10px;
-  background: #3b82f6;
+  background: var(--accent-primary);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px var(--badge-bg);
 }
 
 .timeline-header {
@@ -346,14 +344,14 @@ export default {
 .timeline-date {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #3b82f6;
+  color: var(--accent-primary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
 }
 
 .timeline-item h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
@@ -361,13 +359,23 @@ export default {
 }
 
 .company {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-muted);
   font-size: 0.875rem;
   margin: 0;
 }
 
+.company a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.company a:hover {
+  color: var(--accent-primary);
+}
+
 .timeline-desc {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.75;
   margin-bottom: 0.75rem;
@@ -380,7 +388,7 @@ export default {
 }
 
 .responsibilities li {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 0.4rem;
@@ -392,7 +400,7 @@ export default {
   content: '▹';
   position: absolute;
   left: 0;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -405,19 +413,19 @@ export default {
 }
 
 .tech-item {
-  background: rgba(59, 130, 246, 0.06);
+  background: var(--badge-bg);
   padding: 1rem 1.125rem;
   border-radius: 10px;
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  transition: all 0.25s ease;
+  border: 1px solid var(--badge-border);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .tech-item:hover {
-  background: rgba(59, 130, 246, 0.12);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--badge-bg-hover);
+  border-color: var(--accent-primary);
   transform: translateX(4px);
 }
 
@@ -428,9 +436,8 @@ export default {
   flex-shrink: 0;
 }
 
-/* Ícono de Font Awesome (fallback para REST, Microservicios) */
 .tech-icon-fa {
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 1.2rem;
   width: 24px;
   text-align: center;
@@ -438,52 +445,32 @@ export default {
 }
 
 .tech-item span {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   font-weight: 500;
 }
 
 /* ─── TABLET ───────────────────────────────────────── */
 @media (max-width: 768px) {
-
-  /* botón hamburguesa: top 1.5rem + alto 50px + aire = ~7.5rem */
-  .resume {
-    padding: 7.5rem 1.25rem 3rem;
-  }
+  .resume { padding: 7.5rem 1.25rem 3rem; }
 
   .section-title {
     font-size: 1.35rem;
   }
 
-  .timeline {
-    padding-left: 1.75rem;
-  }
+  .timeline { padding-left: 1.75rem; }
+  .timeline-item::before { left: -2.2rem; }
 
-  .timeline-item::before {
-    left: -2.2rem;
-  }
+  .timeline-item h3 { font-size: 1.05rem; }
 
-  .timeline-item h3 {
-    font-size: 1.05rem;
-  }
+  .tech-grid { grid-template-columns: 1fr; gap: 0.6rem; }
 
-  .tech-grid {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-
-  .tech-item {
-    padding: 0.75rem 0.875rem;
-  }
+  .tech-item { padding: 0.75rem 0.875rem; }
 }
 
 /* ─── MÓVIL PEQUEÑO ────────────────────────────────── */
 @media (max-width: 480px) {
-
-  /* botón hamburguesa: top 1rem + alto 45px + aire = ~7rem */
-  .resume {
-    padding: 7rem 1rem 2.5rem;
-  }
+  .resume { padding: 7rem 1rem 2.5rem; }
 
   .section-title {
     font-size: 1.2rem;
