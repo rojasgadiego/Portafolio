@@ -9,6 +9,7 @@
           Experiencia Laboral
         </h2>
         <div class="timeline">
+          <div class="timeline-progress" aria-hidden="true"></div>
 
           <div class="timeline-item">
             <div class="timeline-header">
@@ -107,6 +108,7 @@
           Educación
         </h2>
         <div class="timeline">
+          <div class="timeline-progress" aria-hidden="true"></div>
           <div class="timeline-item">
             <div class="timeline-header">
               <div class="timeline-date">Ene 2019 – Dic 2024</div>
@@ -210,23 +212,72 @@
 </template>
 
 <script>
+import { gsap, SplitText, reduceMotion, introDone } from '../animations/gsap'
+
 export default {
   name: 'Resume',
   mounted() {
-    this.animateEntrance()
+    if (reduceMotion) return
+    this.ctx = gsap.context(() => this.animateEntrance(), this.$el)
+  },
+  beforeUnmount() {
+    this.ctx?.revert()
+    this.ctx = null
   },
   methods: {
     animateEntrance() {
-      const sections = this.$el.querySelectorAll('.resume-section, .section-divider')
-      sections.forEach((el, i) => {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(24px)'
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
-          el.style.opacity = '1'
-          el.style.transform = 'translateY(0)'
-        }, i * 150)
-      })
+      const titles = gsap.utils.toArray('.section-title')
+      const timelines = gsap.utils.toArray('.timeline')
+      const items = gsap.utils.toArray('.timeline-item')
+
+      gsap.set(items, { opacity: 0, x: -30 })
+      gsap.set('.timeline-progress', { scaleY: 0 })
+      gsap.set('.tech-item', { opacity: 0, y: 20, scale: 0.92 })
+      gsap.set('.section-divider', { scaleX: 0 })
+
+      // Los ScrollTriggers se crean tras la intro para medir posiciones finales
+      introDone.then(() => this.ctx?.add(() => {
+        titles.forEach(title => {
+          // SplitText clona el contenido: el ícono se busca después de dividir
+          const split = SplitText.create(title, { type: 'chars', mask: 'chars' })
+          gsap.timeline({
+            scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+            onComplete: () => split.revert()
+          })
+            .from(title.querySelector('.section-icon'), { scale: 0, rotation: -90, duration: 0.7, ease: 'back.out(2)' })
+            .from(split.chars, { yPercent: 110, stagger: 0.02, duration: 0.6, ease: 'power4.out' }, 0.1)
+        })
+
+        // La línea del timeline se dibuja siguiendo el scroll
+        timelines.forEach(line => {
+          gsap.to(line.querySelector('.timeline-progress'), {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: { trigger: line, start: 'top 75%', end: 'bottom 60%', scrub: 0.6 }
+          })
+        })
+
+        items.forEach(item => {
+          gsap.to(item, {
+            opacity: 1, x: 0, duration: 0.8,
+            scrollTrigger: { trigger: item, start: 'top 85%', once: true }
+          })
+        })
+
+        gsap.utils.toArray('.section-divider').forEach(div => {
+          gsap.to(div, {
+            scaleX: 1, duration: 1.2, ease: 'expo.out',
+            scrollTrigger: { trigger: div, start: 'top 90%', once: true }
+          })
+        })
+
+        gsap.to('.tech-item', {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.6, ease: 'back.out(1.6)',
+          stagger: { each: 0.04, from: 'start' },
+          scrollTrigger: { trigger: '.tech-grid', start: 'top 85%', once: true }
+        })
+      }))
     }
   }
 }
@@ -313,7 +364,19 @@ export default {
   top: 6px;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, var(--accent-primary) 0%, transparent 100%);
+  background: var(--border-subtle);
+}
+
+/* Se dibuja con el scroll (GSAP anima scaleY) */
+.timeline-progress {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  box-shadow: 0 0 12px var(--accent-primary-glow);
+  transform-origin: top;
 }
 
 .timeline-item {

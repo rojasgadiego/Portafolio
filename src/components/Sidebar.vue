@@ -11,7 +11,8 @@
         <p class="profile-title">Desarrollador de Software - fullstack</p>
       </div>
 
-      <nav class="navigation">
+      <nav class="navigation" ref="nav">
+        <div ref="indicator" class="nav-indicator" aria-hidden="true"></div>
         <router-link to="/about"     class="nav-item" active-class="active" @click="closeSidebar">
           <i class="fas fa-user"></i><span>Sobre mí</span>
         </router-link>
@@ -54,16 +55,16 @@
       </div>
 
       <div class="social-links">
-        <a href="https://github.com/rojasgadiego"        target="_blank" class="social-link" aria-label="GitHub">
+        <a href="https://github.com/rojasgadiego"        target="_blank" class="social-link" aria-label="GitHub" v-magnetic="0.5">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://linkedin.com/in/diego-rojas-garcia" target="_blank" class="social-link" aria-label="LinkedIn">
+        <a href="https://linkedin.com/in/diego-rojas-garcia" target="_blank" class="social-link" aria-label="LinkedIn" v-magnetic="0.5">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="mailto:rojasgadiego@gmail.com"          target="_blank" class="social-link" aria-label="Email">
+        <a href="mailto:rojasgadiego@gmail.com"          target="_blank" class="social-link" aria-label="Email" v-magnetic="0.5">
           <i class="fas fa-envelope"></i>
         </a>
-        <a href="https://wa.me/56961282075"              target="_blank" class="social-link" aria-label="WhatsApp">
+        <a href="https://wa.me/56961282075"              target="_blank" class="social-link" aria-label="WhatsApp" v-magnetic="0.5">
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
@@ -82,6 +83,7 @@
 <script>
 import { useThemeStore } from '../store/theme'
 import { computed } from 'vue'
+import { gsap, reduceMotion, introDone } from '../animations/gsap'
 
 export default {
   name: 'Sidebar',
@@ -103,13 +105,44 @@ export default {
       this.isOpen = false
       this.toggleBodyScroll()
     },
+    moveIndicator(instant = false) {
+      const active = this.$refs.nav?.querySelector('.nav-item.active')
+      gsap.to(this.$refs.indicator, {
+        y: active ? active.offsetTop : 0,
+        height: active ? active.offsetHeight : 0,
+        opacity: active ? 1 : 0,
+        duration: instant || reduceMotion ? 0 : 0.55,
+        ease: 'power3.inOut'
+      })
+    },
+    animateEntrance() {
+      this.ctx = gsap.context(() => {
+        const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })
+        tl.from('.profile-image', { scale: 0.6, opacity: 0, duration: 0.9, ease: 'back.out(1.8)' })
+          .from('.profile-name, .profile-title', { y: 14, opacity: 0, stagger: 0.08, duration: 0.6 }, '-=0.5')
+          .from('.nav-item', { x: -24, opacity: 0, stagger: 0.07, duration: 0.6 }, '-=0.4')
+          .from('.nav-indicator', { scaleX: 0, transformOrigin: 'left', duration: 0.5 }, '-=0.3')
+          .from('.theme-row', { y: 10, opacity: 0, duration: 0.5 }, '-=0.3')
+          .from('.social-link', { scale: 0, stagger: 0.06, duration: 0.5, ease: 'back.out(2.5)' }, '-=0.3')
+        introDone.then(() => tl.play())
+      }, this.$el)
+    },
     toggleBodyScroll() {
       if (window.innerWidth <= 768) {
         document.body.style.overflow = this.isOpen ? 'hidden' : ''
       }
     }
   },
+  watch: {
+    // Tras cambiar de ruta, router-link actualiza la clase active en el siguiente tick
+    '$route.path'() {
+      this.$nextTick(() => this.moveIndicator())
+    }
+  },
   mounted() {
+    this.moveIndicator(true)
+    if (!reduceMotion) this.animateEntrance()
+
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         this.isOpen = false
@@ -119,7 +152,8 @@ export default {
   },
   beforeUnmount() {
     document.body.style.overflow = ''
-  }
+    this.ctx?.revert()
+  },
 }
 </script>
 
@@ -163,7 +197,20 @@ export default {
 .profile-title { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-weight: 400; }
 
 /* ─── NAV ──────────────────────────────────────────── */
-.navigation { padding: 1rem 0; flex: 1; }
+.navigation { padding: 1rem 0; flex: 1; position: relative; }
+
+/* Fondo del item activo; GSAP lo desliza entre secciones */
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  opacity: 0;
+  background: rgba(59, 130, 246, 0.15);
+  border-left: 3px solid #3b82f6;
+  pointer-events: none;
+}
 
 .nav-item {
   display: flex;
@@ -171,8 +218,11 @@ export default {
   padding: 0.875rem 1.5rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: all 0.3s ease;
+  /* Sin "all": GSAP anima opacity/transform y una transición CSS lo interfiere */
+  transition: color 0.3s ease, background 0.3s ease;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-item i    { width: 20px; margin-right: 1rem; font-size: 1.1rem; }
@@ -182,9 +232,9 @@ export default {
 
 .nav-item.active {
   color: #3b82f6;
-  background: rgba(59, 130, 246, 0.15);
-  border-left: 3px solid #3b82f6;
 }
+
+.nav-item.active:hover { background: transparent; }
 
 /* ─── TOGGLE DE TEMA ───────────────────────────────── */
 .theme-row {
@@ -273,13 +323,12 @@ export default {
   color: #fff;
   border-radius: 50%;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
   font-size: 0.9rem;
 }
 
 .social-link:hover {
   background: #3b82f6;
-  transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
 }
 
