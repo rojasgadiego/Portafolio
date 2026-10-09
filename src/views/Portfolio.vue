@@ -4,7 +4,7 @@
 
       <h2 class="section-title">
         <span class="section-icon"><i class="fas fa-briefcase"></i></span>
-        Proyectos
+        <span class="section-title-text">Proyectos</span>
       </h2>
 
       <div class="portfolio-grid" ref="grid">
@@ -77,7 +77,7 @@ export default {
       this.$router.push(`/proyectos/${id}`)
     },
     animateEntrance() {
-      const title = SplitText.create('.section-title', { type: 'chars', mask: 'chars' })
+      const title = SplitText.create('.section-title-text', { type: 'chars', mask: 'chars' })
       const tl = gsap.timeline({ paused: true, onComplete: () => title.revert() })
       tl.from('.section-icon', { scale: 0, rotation: -90, duration: 0.7, ease: 'back.out(2)' })
         .from(title.chars, { yPercent: 110, stagger: 0.03, duration: 0.7, ease: 'power4.out' }, 0.1)

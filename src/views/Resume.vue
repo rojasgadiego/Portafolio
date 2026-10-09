@@ -6,7 +6,7 @@
       <div class="resume-section">
         <h2 class="section-title">
           <span class="section-icon"><i class="fas fa-briefcase"></i></span>
-          Experiencia Laboral
+          <span class="section-title-text">Experiencia Laboral</span>
         </h2>
         <div class="timeline">
           <div class="timeline-progress" aria-hidden="true"></div>
@@ -105,7 +105,7 @@
       <div class="resume-section">
         <h2 class="section-title">
           <span class="section-icon"><i class="fas fa-graduation-cap"></i></span>
-          Educación
+          <span class="section-title-text">Educación</span>
         </h2>
         <div class="timeline">
           <div class="timeline-progress" aria-hidden="true"></div>
@@ -135,7 +135,7 @@
       <div class="resume-section">
         <h2 class="section-title">
           <span class="section-icon"><i class="fas fa-tools"></i></span>
-          Tecnologías y Herramientas
+          <span class="section-title-text">Tecnologías y Herramientas</span>
         </h2>
         <div class="tech-grid">
 
@@ -238,8 +238,8 @@ export default {
       // Los ScrollTriggers se crean tras la intro para medir posiciones finales
       introDone.then(() => this.ctx?.add(() => {
         titles.forEach(title => {
-          // SplitText clona el contenido: el ícono se busca después de dividir
-          const split = SplitText.create(title, { type: 'chars', mask: 'chars' })
+          // Solo se divide el texto: el título es flex y cada letra quedaría separada por el gap
+          const split = SplitText.create(title.querySelector('.section-title-text'), { type: 'chars', mask: 'chars' })
           gsap.timeline({
             scrollTrigger: { trigger: title, start: 'top 88%', once: true },
             onComplete: () => split.revert()
