@@ -12,6 +12,7 @@
           v-for="project in projects"
           :key="project.id"
           class="portfolio-item"
+          v-tilt="{ max: 6, lift: 6 }"
           @click="viewProject(project.id)"
         >
           <div class="portfolio-card">
@@ -56,6 +57,7 @@
 
 <script>
 import { projects } from '../data/projects'
+import { gsap, ScrollTrigger, SplitText, reduceMotion, introDone } from '../animations/gsap'
 
 export default {
   name: 'Portfolio',
@@ -63,23 +65,46 @@ export default {
     return { projects }
   },
   mounted() {
-    this.animateEntrance()
+    if (reduceMotion) return
+    this.ctx = gsap.context(() => this.animateEntrance(), this.$el)
+  },
+  beforeUnmount() {
+    this.ctx?.revert()
+    this.ctx = null
   },
   methods: {
     viewProject(id) {
       this.$router.push(`/proyectos/${id}`)
     },
     animateEntrance() {
-      const items = this.$el.querySelectorAll('.portfolio-item')
-      items.forEach((el, i) => {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(24px)'
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.55s ease, transform 0.55s ease'
-          el.style.opacity = '1'
-          el.style.transform = 'translateY(0)'
-        }, i * 100)
-      })
+      const title = SplitText.create('.section-title', { type: 'chars', mask: 'chars' })
+      const tl = gsap.timeline({ paused: true, onComplete: () => title.revert() })
+      tl.from('.section-icon', { scale: 0, rotation: -90, duration: 0.7, ease: 'back.out(2)' })
+        .from(title.chars, { yPercent: 110, stagger: 0.03, duration: 0.7, ease: 'power4.out' }, 0.1)
+      introDone.then(() => tl.play())
+
+      // Cada card entra al hacer scroll: sube y la imagen se descubre como cortina
+      gsap.set('.portfolio-item', { opacity: 0, y: 60 })
+      gsap.set('.portfolio-image', { clipPath: 'inset(100% 0% 0% 0%)' })
+      gsap.set('.portfolio-image img', { scale: 1.3 })
+
+      // ctx.add mantiene los triggers dentro del contexto para limpiarlos al salir
+      introDone.then(() => this.ctx?.add(() => {
+        ScrollTrigger.batch('.portfolio-item', {
+          start: 'top 90%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.to(batch, { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out' })
+            gsap.to(batch.map(el => el.querySelector('.portfolio-image')), {
+              clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, stagger: 0.12, ease: 'expo.out', delay: 0.1
+            })
+            gsap.to(batch.map(el => el.querySelector('.portfolio-image img')), {
+              scale: 1, duration: 1.4, stagger: 0.12, ease: 'expo.out', delay: 0.1,
+              clearProps: 'transform'
+            })
+          }
+        })
+      }))
     }
   }
 }
@@ -160,7 +185,6 @@ export default {
 }
 
 .portfolio-item:hover {
-  transform: translateY(-6px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
   border-color: var(--badge-border);
 }

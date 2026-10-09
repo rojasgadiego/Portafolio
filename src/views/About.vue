@@ -1,9 +1,14 @@
 <template>
   <div class="home">
+    <div class="blobs" aria-hidden="true">
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+    </div>
+
     <div class="hero-section">
 
       <div class="hero-content">
-        <span class="hero-greeting">👋 Hola, soy</span>
+        <span class="hero-greeting"><span class="wave">👋</span> Hola, soy</span>
         <h1 class="hero-title">Diego Rojas García</h1>
         <h2 class="hero-role">Desarrollador Backend - Fullstack</h2>
 
@@ -13,64 +18,66 @@
 
         <div class="stats-grid">
           <div class="stat-item">
-            <span class="stat-number">3+</span>
+            <span class="stat-number"><span class="stat-count">3</span>+</span>
             <span class="stat-label">Años de experiencia</span>
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-item">
-            <span class="stat-number">4+</span>
+            <span class="stat-number"><span class="stat-count">4</span>+</span>
             <span class="stat-label">Proyectos completados</span>
           </div>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="floating-card">
-          <div class="tech-groups">
+        <div class="tilt-wrap" v-tilt="{ max: 10 }">
+          <div class="floating-card">
+            <div class="tech-groups">
 
-            <div class="tech-group">
-              <span class="tech-group-label">Backend</span>
-              <div class="tech-stack">
-                <span class="tech-badge">.NET CORE / NESTJS / PYTHON</span>
-                <span class="tech-badge">MONOLITOS / MICROSERVICIOS</span>
+              <div class="tech-group">
+                <span class="tech-group-label">Backend</span>
+                <div class="tech-stack">
+                  <span class="tech-badge">.NET CORE / NESTJS / PYTHON</span>
+                  <span class="tech-badge">MONOLITOS / MICROSERVICIOS</span>
+                </div>
               </div>
-            </div>
 
-            <div class="tech-group">
-              <span class="tech-group-label">Frontend</span>
-              <div class="tech-stack">
-                <span class="tech-badge">NEXTJS / VUEJS / ANGULAR</span>
-                <span class="tech-badge">JAVASCRIPT / TYPESCRIPT</span>
+              <div class="tech-group">
+                <span class="tech-group-label">Frontend</span>
+                <div class="tech-stack">
+                  <span class="tech-badge">NEXTJS / VUEJS / ANGULAR</span>
+                  <span class="tech-badge">JAVASCRIPT / TYPESCRIPT</span>
+                </div>
               </div>
-            </div>
 
-            <div class="tech-group">
-              <span class="tech-group-label">APIs & Datos</span>
-              <div class="tech-stack">
-                <span class="tech-badge">REST / SOAP / GRPC / GRAPHQL</span>
-                <span class="tech-badge">SQL SERVER / POSTGRESQL / PLSQL</span>
+              <div class="tech-group">
+                <span class="tech-group-label">APIs & Datos</span>
+                <div class="tech-stack">
+                  <span class="tech-badge">REST / SOAP / GRPC / GRAPHQL</span>
+                  <span class="tech-badge">SQL SERVER / POSTGRESQL / PLSQL</span>
+                </div>
               </div>
-            </div>
 
-            <div class="tech-group">
-              <span class="tech-group-label">Cloud</span>
-              <div class="tech-stack">
-                <span class="tech-badge">AZURE / AWS</span>
+              <div class="tech-group">
+                <span class="tech-group-label">Cloud</span>
+                <div class="tech-stack">
+                  <span class="tech-badge">AZURE / AWS</span>
+                </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
 
       <div class="hero-buttons">
-        <router-link to="/proyectos" class="btn btn-primary">
+        <router-link to="/proyectos" class="btn btn-primary" v-magnetic>
           <span>Ver Proyectos</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/>
           </svg>
         </router-link>
-        <router-link to="/contact" class="btn btn-secondary">
+        <router-link to="/contact" class="btn btn-secondary" v-magnetic>
           Hablemos
         </router-link>
       </div>
@@ -80,48 +87,73 @@
 </template>
 
 <script>
+import { gsap, SplitText, reduceMotion, finePointer, introDone } from '../animations/gsap'
+
 export default {
   name: 'Home',
   mounted() {
-    this.animateElements()
+    if (reduceMotion) return
+    this.ctx = gsap.context(() => {
+      this.animateEntrance()
+      this.animateBlobs()
+    }, this.$el)
+  },
+  beforeUnmount() {
+    window.removeEventListener('mousemove', this.onPointer)
+    this.ctx?.revert()
   },
   methods: {
-    animateElements() {
-      // Saludo, título, rol, descripción, stats — cada uno con delay escalonado
-      const contentEls = this.$el.querySelectorAll('.hero-content > *')
-      contentEls.forEach((el, i) => {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(28px)'
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)'
-          el.style.opacity = '1'
-          el.style.transform = 'translateY(0)'
-        }, 120 + i * 110)
+    animateEntrance() {
+      const title = SplitText.create('.hero-title', { type: 'words,chars', mask: 'words' })
+      const desc = SplitText.create('.hero-description', { type: 'lines', mask: 'lines' })
+
+      const tl = gsap.timeline({
+        paused: true,
+        defaults: { ease: 'power4.out' },
+        // Al terminar se deshace el split para que el texto vuelva a fluir con el resize
+        onComplete: () => { title.revert(); desc.revert() }
       })
 
-      // Card — entra desde la derecha con un pequeño desplazamiento
-      const card = this.$el.querySelector('.hero-visual')
-      if (card) {
-        card.style.opacity = '0'
-        card.style.transform = 'translateX(32px) translateY(16px)'
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)'
-          card.style.opacity = '1'
-          card.style.transform = 'translateX(0) translateY(0)'
-        }, 180 + contentEls.length * 80)
-      }
+      tl.from('.hero-greeting', { y: 20, opacity: 0, duration: 0.6 })
+        .to('.wave', {
+          rotation: 18, transformOrigin: '70% 80%',
+          duration: 0.2, repeat: 5, yoyo: true, ease: 'sine.inOut'
+        }, 0.3)
+        .from(title.chars, { yPercent: 120, rotation: 6, duration: 1, stagger: 0.025 }, 0.2)
+        .from('.hero-role', { y: 24, opacity: 0, filter: 'blur(8px)', duration: 0.8 }, '-=0.6')
+        .from(desc.lines, { yPercent: 100, duration: 0.9, stagger: 0.08 }, '-=0.5')
+        .from('.stats-grid', { opacity: 0, y: 20, duration: 0.6 }, '-=0.6')
+        .from('.stat-count', {
+          textContent: 0, snap: { textContent: 1 },
+          duration: 1.4, ease: 'power2.out'
+        }, '<')
+        .from('.hero-visual', {
+          opacity: 0, x: 60, rotationY: -25,
+          transformPerspective: 1200, duration: 1.2
+        }, 0.4)
+        .from('.tech-group-label', { opacity: 0, x: -10, stagger: 0.1, duration: 0.5 }, 0.8)
+        .from('.floating-card .tech-badge', {
+          opacity: 0, y: 14, scale: 0.9,
+          stagger: 0.06, duration: 0.6, ease: 'back.out(1.7)'
+        }, 0.9)
+        .from('.hero-buttons .btn', { opacity: 0, y: 24, stagger: 0.1, duration: 0.7 }, '-=0.6')
 
-      // Botones — entran juntos al final con un ligero retraso extra
-      const buttons = this.$el.querySelector('.hero-buttons')
-      if (buttons) {
-        buttons.style.opacity = '0'
-        buttons.style.transform = 'translateY(20px)'
-        setTimeout(() => {
-          buttons.style.transition = 'opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1)'
-          buttons.style.opacity = '1'
-          buttons.style.transform = 'translateY(0)'
-        }, 300 + contentEls.length * 110)
+      introDone.then(() => tl.play())
+    },
+
+    animateBlobs() {
+      gsap.to('.blob-a', { x: 140, y: 90, duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut' })
+      gsap.to('.blob-b', { x: -120, y: -70, duration: 11, repeat: -1, yoyo: true, ease: 'sine.inOut' })
+
+      if (!finePointer) return
+      // Las auras se desplazan levemente en dirección contraria al mouse
+      const xTo = gsap.quickTo('.blobs', 'x', { duration: 1.5, ease: 'power2.out' })
+      const yTo = gsap.quickTo('.blobs', 'y', { duration: 1.5, ease: 'power2.out' })
+      this.onPointer = (e) => {
+        xTo((e.clientX / window.innerWidth - 0.5) * -60)
+        yTo((e.clientY / window.innerHeight - 0.5) * -60)
       }
+      window.addEventListener('mousemove', this.onPointer)
     }
   }
 }
@@ -148,6 +180,30 @@ export default {
     radial-gradient(circle at 80% 70%, var(--aura-b) 0%, transparent 50%);
   pointer-events: none;
 }
+
+/* ─── AURAS ANIMADAS ───────────────────────────────── */
+.blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.2;
+}
+
+.blob-a { background: var(--accent-primary);   top: -8%;    left: 0%; }
+.blob-b { background: var(--accent-secondary); bottom: -12%; right: 2%; }
+
+:root[data-theme="light"] .blob { opacity: 0.12; }
+
+.wave { display: inline-block; }
 
 /* ─── DESKTOP ──────────────────────────────────────── */
 .hero-section {
@@ -286,6 +342,10 @@ export default {
 .hero-visual {
   position: relative;
   height: 500px;
+}
+
+.tilt-wrap {
+  border-radius: 24px;
 }
 
 .floating-card {

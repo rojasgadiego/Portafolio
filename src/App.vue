@@ -1,10 +1,12 @@
 <template>
   <div id="app" class="app-container">
+    <IntroLoader />
+    <CursorFollower />
     <Sidebar />
 
     <main class="main-content">
       <router-view v-slot="{ Component }">
-        <transition name="slide-up" mode="out-in">
+        <transition name="slide-up" mode="out-in" @after-enter="refreshScroll">
           <component :is="Component" />
         </transition>
       </router-view>
@@ -17,12 +19,17 @@
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
 import Sidebar from './components/Sidebar.vue'
+import IntroLoader from './components/IntroLoader.vue'
+import CursorFollower from './components/CursorFollower.vue'
+import { ScrollTrigger } from './animations/gsap'
 // import HomeButton from './components/HomeButton.vue'
 
 export default {
   name: 'App',
   components: {
     Sidebar,
+    IntroLoader,
+    CursorFollower,
     // HomeButton,
   },
   setup() {
@@ -39,7 +46,10 @@ export default {
       window.removeEventListener('resize', handleResize)
     })
 
-    return { isMobile }
+    // La transición de ruta desplaza la vista; recalcular posiciones al terminar
+    const refreshScroll = () => ScrollTrigger.refresh()
+
+    return { isMobile, refreshScroll }
   }
 }
 </script>
@@ -128,7 +138,9 @@ export default {
 
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  /* clip (no hidden): hidden convierte a body en el contenedor de scroll
+     y ScrollTrigger, que escucha a window, deja de detectar el scroll */
+  overflow-x: clip;
 }
 
 body {
@@ -142,6 +154,35 @@ body {
 
 #app {
   min-height: 100vh;
+}
+
+/* ─── EFECTOS GSAP ──────────────────────────────────── */
+/* Reflejo de luz que agrega la directiva v-tilt */
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 55%
+  );
+}
+
+:root[data-theme="light"] .tilt-glare {
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.55) 0%,
+    transparent 55%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  *, *::before, *::after { cursor: none !important; }
+  input, textarea { cursor: text !important; }
 }
 </style>
 

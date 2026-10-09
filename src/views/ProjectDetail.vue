@@ -257,6 +257,7 @@
 
 <script>
 import { getProjectById, projects } from '../data/projects'
+import { gsap, ScrollTrigger, reduceMotion, introDone } from '../animations/gsap'
 
 export default {
   name: 'ProjectDetail',
@@ -274,9 +275,13 @@ export default {
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeydown)
+    introDone.then(() => this.animateEntrance())
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown)
+    this.ctx?.revert()
+    this.ctx = null
+    this.unmounted = true
   },
   watch: {
     '$route.params.id'(newId) {
@@ -284,6 +289,7 @@ export default {
       this.lightboxOpen = false
       this.currentImageIndex = 0
       this.$el.scrollTop = 0
+      this.$nextTick(() => this.animateEntrance())
     },
     lightboxOpen(isOpen) {
       document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -301,6 +307,37 @@ export default {
     }
   },
   methods: {
+    animateEntrance() {
+      if (reduceMotion || this.unmounted || !this.project) return
+      this.ctx?.revert()
+      // Esta vista hace scroll dentro de su propio contenedor, no en window
+      const scroller = this.$el
+      this.ctx = gsap.context(() => {
+        gsap.timeline({ defaults: { ease: 'power3.out' } })
+          .from('.back-btn', { x: -20, opacity: 0, duration: 0.5 })
+          .from('.project-category-wrapper > *', { y: 12, opacity: 0, stagger: 0.06, duration: 0.5 }, '-=0.3')
+          .from('.project-title', { y: 30, opacity: 0, duration: 0.8 }, '-=0.3')
+          .from('.project-subtitle', { y: 20, opacity: 0, duration: 0.6 }, '-=0.5')
+          .from('.meta-item', { y: 20, opacity: 0, stagger: 0.08, duration: 0.5 }, '-=0.4')
+          .from('.project-hero', { clipPath: 'inset(15% 10% 15% 10% round 24px)', opacity: 0, duration: 1.2, ease: 'expo.out' }, '-=0.4')
+          .from('.project-hero img', { scale: 1.25, duration: 1.6, ease: 'expo.out' }, '<')
+
+        gsap.utils.toArray('.content-section').forEach(section => {
+          gsap.from(section, {
+            y: 50, opacity: 0, duration: 0.9,
+            scrollTrigger: { trigger: section, scroller, start: 'top 88%', once: true }
+          })
+          const children = section.querySelectorAll('.tech-tag, .architecture-item, .feature-item, .gallery-item')
+          if (children.length) {
+            gsap.from(children, {
+              y: 20, opacity: 0, scale: 0.95, stagger: 0.04, duration: 0.5, delay: 0.2,
+              scrollTrigger: { trigger: section, scroller, start: 'top 85%', once: true }
+            })
+          }
+        })
+        ScrollTrigger.refresh()
+      }, this.$el)
+    },
     goBack() { this.$router.push('/proyectos') },
     goToPrev() { if (this.prevProject) this.$router.push(`/proyectos/${this.prevProject.id}`) },
     goToNext() { if (this.nextProject) this.$router.push(`/proyectos/${this.nextProject.id}`) },

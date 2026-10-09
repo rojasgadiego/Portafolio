@@ -42,7 +42,7 @@
             <label for="message">Mensaje</label>
             <textarea id="message" v-model="form.message" rows="6" placeholder="Tu mensaje aquí..." required></textarea>
           </div>
-          <button type="submit" class="submit-btn">
+          <button type="submit" class="submit-btn" v-magnetic="0.15">
             <i class="fab fa-whatsapp"></i>
             Enviar por WhatsApp
           </button>
@@ -53,12 +53,33 @@
 </template>
 
 <script>
+import { gsap, SplitText, reduceMotion, introDone } from '../animations/gsap'
+
 export default {
   name: 'Contact',
   data() {
     return {
       form: { name: '', email: '', subject: '', message: '' }
     }
+  },
+  mounted() {
+    if (reduceMotion) return
+    this.ctx = gsap.context(() => {
+      const title = SplitText.create('.page-title', { type: 'chars', mask: 'chars' })
+      const tl = gsap.timeline({ paused: true, onComplete: () => title.revert() })
+      tl.from(title.chars, { yPercent: 110, stagger: 0.04, duration: 0.8, ease: 'power4.out' })
+        .from('.page-subtitle', { y: 16, opacity: 0, duration: 0.6 }, '-=0.5')
+        .from('.info-card', {
+          y: 40, opacity: 0, rotationX: -25, transformPerspective: 800,
+          stagger: 0.1, duration: 0.8
+        }, '-=0.3')
+        .from('.contact-form', { y: 40, opacity: 0, duration: 0.8 }, '-=0.6')
+        .from('.form-group, .submit-btn', { y: 16, opacity: 0, stagger: 0.07, duration: 0.5 }, '-=0.5')
+      introDone.then(() => tl.play())
+    }, this.$el)
+  },
+  beforeUnmount() {
+    this.ctx?.revert()
   },
   methods: {
     handleSubmit() {
